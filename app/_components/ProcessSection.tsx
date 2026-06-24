@@ -148,27 +148,24 @@ export default function ProcessSection() {
   return (
     <section
       id="process"
-      aria-label='Interactive Product Execution Grid'
+      aria-label='Development Process'
       className='relative overflow-hidden bg-brand-dark py-28 sm:py-36 selection:bg-brand-primary/30'
     >
       <BackgroundMatrixDecor />
 
       <div className='relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
         <div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20'>
-          {/* ── Left Column: Fixed Context HUD Display ── */}
+          {/* Left column: sticky context panel */}
           <div className='lg:col-span-5 lg:sticky lg:top-28 flex flex-col gap-8'>
             <div className='flex flex-col gap-4'>
-              <span className='inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-3.5 py-1 text-xs font-bold tracking-wider uppercase text-brand-primary backdrop-blur-md'>
+              <span className='inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/2 px-3.5 py-1 text-xs font-medium text-brand-primary'>
                 <span className='h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse' />
-                Operational Telemetry
+                Development process
               </span>
 
-              <h2 className='text-[clamp(2rem,4.5vw,3.25rem)] font-black leading-[1.02] tracking-tighter text-white'>
-                Engineering <br />
-                Your Platform{" "}
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-blue-500 to-cyan-400'>
-                  Matrix
-                </span>
+              <h2 className='text-[clamp(2rem,4.5vw,3.25rem)] font-black leading-[1.02] tracking-tight text-white'>
+                Engineering{" "}
+                <span className='text-brand-primary'>Your Platform</span>
               </h2>
 
               <p className='max-w-md text-sm leading-relaxed text-white/40 font-medium'>
@@ -178,12 +175,8 @@ export default function ProcessSection() {
               </p>
             </div>
 
-            {/* High-Fidelity Data Display Cockpit Frame */}
-            <div className='relative overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-transparent p-6 backdrop-blur-xl shadow-2xl'>
-              <div className='absolute top-0 right-0 p-4 font-mono text-[9px] text-white/10 tracking-widest'>
-                STATE // ENGINE
-              </div>
-
+            {/* Active step detail panel */}
+            <div className='relative overflow-hidden rounded-xl border border-white/6 bg-linear-to-b from-white/3 to-transparent p-6 backdrop-blur-xl shadow-2xl'>
               <AnimatePresence mode='wait'>
                 <motion.div
                   key={activeStep}
@@ -192,13 +185,13 @@ export default function ProcessSection() {
                   exit={{ opacity: 0, x: 10 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className='flex items-center gap-4 border-b border-white/[0.05] pb-5 mb-5'>
+                  <div className='flex items-center gap-4 border-b border-white/5 pb-5 mb-5'>
                     <div className='h-12 w-12 rounded-xl flex items-center justify-center bg-brand-primary/10 text-brand-primary shadow-inner border border-brand-primary/20'>
                       {React.createElement(STEPS[activeStep].Icon)}
                     </div>
                     <div>
-                      <p className='text-[10px] font-mono tracking-wider text-brand-primary uppercase font-bold leading-none'>
-                        ACTIVE PHASE BLOCK
+                      <p className='text-[10px] font-mono tracking-wider text-brand-primary font-bold leading-none'>
+                        Active phase
                       </p>
                       <h4 className='text-lg font-black text-white mt-1.5 tracking-tight'>
                         {STEPS[activeStep].title}
@@ -207,7 +200,7 @@ export default function ProcessSection() {
                   </div>
 
                   <div className='grid grid-cols-2 gap-3 mb-4'>
-                    <div className='rounded-xl bg-white/[0.02] border border-white/[0.04] p-3'>
+                    <div className='rounded-xl bg-white/2 border border-white/4 p-3'>
                       <span className='block text-[9px] font-bold text-white/30 uppercase tracking-widest'>
                         Pipeline Anchor
                       </span>
@@ -215,7 +208,7 @@ export default function ProcessSection() {
                         SYSTEM_NODE_0{activeStep + 1}
                       </span>
                     </div>
-                    <div className='rounded-xl bg-white/[0.02] border border-white/[0.04] p-3'>
+                    <div className='rounded-xl bg-white/2 border border-white/4 p-3'>
                       <span className='block text-[9px] font-bold text-white/30 uppercase tracking-widest'>
                         Time Budget
                       </span>
@@ -225,8 +218,8 @@ export default function ProcessSection() {
                     </div>
                   </div>
 
-                  {/* Dynamic Progress Metric Bar */}
-                  <div className='rounded-xl bg-white/[0.01] border border-white/[0.03] p-4'>
+                  {/* Progress metric */}
+                  <div className='rounded-xl bg-white/1 border border-white/3 p-4'>
                     <div className='flex justify-between items-center mb-2 text-[10px] font-mono tracking-wide text-white/40'>
                       <span>{STEPS[activeStep].metricLabel}</span>
                       <span className='text-brand-primary font-bold'>
@@ -239,7 +232,7 @@ export default function ProcessSection() {
                         animate={{
                           width: `${((activeStep + 1) / STEPS.length) * 100}%`,
                         }}
-                        className='h-full bg-gradient-to-r from-brand-primary to-cyan-400'
+                        className='h-full bg-linear-to-r from-brand-primary to-amber-400'
                         transition={{ type: "spring", stiffness: 80 }}
                       />
                     </div>
@@ -249,10 +242,9 @@ export default function ProcessSection() {
             </div>
           </div>
 
-          {/* ── Right Column: High-End Interactive Step Grid ── */}
+          {/* Right column: interactive step list */}
           <div className='relative lg:col-span-7'>
-            {/* Fine Hairline Axis Grid Divider */}
-            <div className='absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-brand-primary/30 via-white/[0.06] to-transparent' />
+            <div className='absolute left-6 top-6 bottom-6 w-px bg-linear-to-b from-brand-primary/30 via-white/6 to-transparent' />
 
             <div className='space-y-3.5'>
               {STEPS.map((step, i) => {
@@ -263,7 +255,7 @@ export default function ProcessSection() {
                     onMouseEnter={() => setActiveStep(i)}
                     className='group relative flex gap-6 pl-14 pt-0.5 pb-0.5 transition-all duration-normal cursor-default'
                   >
-                    {/* Multi-Layer Crosshair Node Marker */}
+                    {/* Step node */}
                     <div className='absolute left-0 top-3.5 flex h-12 w-12 items-center justify-center'>
                       <div
                         className={`absolute font-mono text-[10px] font-bold tracking-tighter transition-colors duration-normal ${isActive ? "text-brand-primary" : "text-white/20 group-hover:text-white/40"}`}
@@ -274,13 +266,13 @@ export default function ProcessSection() {
                         className={`h-2 w-2 rounded-full ring-4 ring-brand-dark transition-all duration-normal ${isActive ? "bg-brand-primary scale-110" : "bg-white/10 group-hover:bg-white/30"}`}
                       />
                       <span
-                        className={`absolute inset-1.5 border border-white/[0.08] rounded-full transition-all duration-normal ${isActive ? "opacity-100 scale-105 border-brand-primary/30 animate-pulse" : "opacity-0 group-hover:opacity-100"}`}
+                        className={`absolute inset-1.5 border border-white/8 rounded-full transition-all duration-normal ${isActive ? "opacity-100 scale-105 border-brand-primary/30 animate-pulse" : "opacity-0 group-hover:opacity-100"}`}
                       />
                     </div>
 
-                    {/* Asymmetric Glass Container Row */}
+                    {/* Step card */}
                     <div
-                      className={`flex-1 rounded-xl border p-5 transition-all duration-normal ${isActive ? "bg-white/[0.03] border-white/[0.08] shadow-lg" : "bg-white/[0.01] border-white/[0.04] group-hover:bg-white/[0.02] group-hover:border-white/[0.06]"}`}
+                      className={`flex-1 rounded-xl border p-5 transition-all duration-normal ${isActive ? "bg-white/3 border-white/8 shadow-lg" : "bg-white/1 border-white/4 group-hover:bg-white/2 group-hover:border-white/6"}`}
                     >
                       <div className='flex items-center justify-between gap-4'>
                         <h3
@@ -289,7 +281,7 @@ export default function ProcessSection() {
                           {step.title}
                         </h3>
                         <span
-                          className={`font-mono text-[9px] tracking-wider uppercase border px-2.5 py-0.5 rounded-md transition-colors ${isActive ? "text-brand-primary bg-brand-primary/5 border-brand-primary/20" : "text-white/30 bg-white/[0.01] border-white/[0.04]"}`}
+                          className={`font-mono text-[9px] tracking-wider uppercase border px-2.5 py-0.5 rounded-md transition-colors ${isActive ? "text-brand-primary bg-brand-primary/5 border-brand-primary/20" : "text-white/30 bg-white/1 border-white/4"}`}
                         >
                           {step.duration}
                         </span>
@@ -301,7 +293,6 @@ export default function ProcessSection() {
                         {step.description}
                       </p>
 
-                      {/* Architecture Wireframe Blueprint Layout Elements */}
                       <div
                         className={`mt-4 flex items-center gap-1.5 transition-opacity duration-normal ${isActive ? "opacity-100" : "opacity-0"}`}
                       >
@@ -309,11 +300,6 @@ export default function ProcessSection() {
                         <span className='h-0.5 w-0.5 rounded-full bg-brand-primary/50' />
                         <span className='h-0.5 w-0.5 rounded-full bg-brand-primary/50' />
                       </div>
-                    </div>
-
-                    {/* Geometric Structural Corner Labels */}
-                    <div className='absolute right-4 top-4 font-mono text-[9px] text-white/[0.01] select-none pointer-events-none group-hover:text-white/[0.04] transition-colors'>
-                      + MATRIX_LOC_{step.number}
                     </div>
                   </div>
                 );
@@ -326,11 +312,10 @@ export default function ProcessSection() {
   );
 }
 
-/* ─── Premium Ambient Flowing Grid Systems ──────────────────────────────── */
+/* ─── Background ──────────────────────────────────────────────────────────── */
 function BackgroundMatrixDecor() {
   return (
     <div className='absolute inset-0 pointer-events-none select-none overflow-hidden'>
-      {/* High-Fidelity Technical Blueprint Dots */}
       <div
         className='absolute inset-0 opacity-[0.06]'
         style={{
@@ -339,22 +324,19 @@ function BackgroundMatrixDecor() {
           backgroundSize: "28px 28px",
         }}
       />
-      {/* Hairline Layout Grid Tracks */}
-      <div className='absolute inset-x-0 top-1/4 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent' />
-      <div className='absolute inset-x-0 bottom-1/3 h-px bg-gradient-to-r from-transparent via-white/[0.02] to-transparent' />
-
-      {/* Deep Orbital Ambient Aura Glow */}
+      <div className='absolute inset-x-0 top-1/4 h-px bg-linear-to-r from-transparent via-white/3 to-transparent' />
+      <div className='absolute inset-x-0 bottom-1/3 h-px bg-linear-to-r from-transparent via-white/2 to-transparent' />
       <div
         className='absolute left-[-10%] top-1/4 rounded-full blur-[140px]'
         style={{
           width: "650px",
           height: "650px",
           background:
-            "radial-gradient(circle, rgba(37,99,235,0.04) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(255,79,0,0.04) 0%, transparent 70%)",
         }}
       />
-      <div className='absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-brand-dark to-transparent' />
-      <div className='absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-dark to-transparent' />
+      <div className='absolute inset-x-0 top-0 h-32 bg-linear-to-b from-brand-dark to-transparent' />
+      <div className='absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-brand-dark to-transparent' />
     </div>
   );
 }

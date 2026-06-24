@@ -1,32 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  /* Gawa Developer Accent System — Premium Blue Update */
-  --color-brand-primary: #2563eb;       /* Modern, highly visible Royal Blue */
-  --color-brand-primary-hover: #1d4ed8; /* Deeper blue for active/hover states */
-  --color-brand-dark: #09090b;          /* Pure Obsidian Black (Main CTA backgrounds) */
-  --color-brand-light: #ffffff;         /* Pure White */
-  
-  /* Canvas Backgrounds (Derived from image_7d923d.jpg) */
-  --color-bg-canvas: #ffffff;          
-  --color-bg-surface: #f8fafc;         
-  --color-bg-muted: #f1f5f9;           
+  /* Gawa Developer — Zapier-Inspired Warm Identity */
+  --color-brand-primary: #ff4f00;       /* Gawa Orange — single conversion CTA accent */
+  --color-brand-primary-hover: #e64500; /* Deep orange for hover/active */
+  --color-brand-dark: #201515;          /* Coffee ink — warm near-black */
+  --color-brand-light: #fffefb;         /* Warm cream white */
 
-  /* WCAG AAA Contrast Typography (Optimized for Screen Readability) */
-  --color-text-primary: #0f172a;       
-  --color-text-secondary: #334155;     
-  --color-text-muted: #64748b;         
+  /* Canvas Backgrounds — warm cream system */
+  --color-bg-canvas: #fffefb;           /* Warm cream page canvas */
+  --color-bg-surface: #f8f4f0;          /* Cream soft — cards, alternating sections */
+  --color-bg-muted: #f0ece6;            /* Cream muted — pill fills, tags */
+
+  /* Typography — warm ink ladder */
+  --color-text-primary: #201515;        /* Coffee ink — headings and primary text */
+  --color-text-secondary: #605d52;      /* Warm body text */
+  --color-text-muted: #939084;          /* Warm metadata / captions */
 
   /* Structural Elements */
-  --color-border-subtle: #e2e8f0;      
-  --color-border-focus: #2563eb;        /* Accent Blue for focus rings and active states */
-  --shadow-card: 0px 10px 30px -5px rgba(0, 0, 0, 0.03), 0px 1px 3px 0px rgba(0, 0, 0, 0.02);
-  --shadow-input: inset 0px 1px 2px rgba(15, 23, 42, 0.05);
+  --color-border-subtle: #e6e2da;       /* Warm subtle border — no cool slate */
+  --color-border-focus: #ff4f00;        /* Orange focus ring — signals conversion context */
+  --shadow-card: 0px 10px 30px -5px rgba(32, 21, 21, 0.04), 0px 1px 3px 0px rgba(32, 21, 21, 0.02);
+  --shadow-input: inset 0px 1px 2px rgba(32, 21, 21, 0.05);
 
   /* Touch-Ready Radii */
-  --radius-card: 16px;                 
-  --radius-button: 9999px;             
-  --radius-input: 12px;                
+  --radius-card: 12px;                  /* 12px — brand's canonical radius */
+  --radius-button: 12px;                /* 12px rounded rect — not pill, not square */
+  --radius-input: 6px;                  /* 6px — tighter for form fields */
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* motion.dev Animation Tokens */
   --ease-spring-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.1);

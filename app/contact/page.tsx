@@ -21,8 +21,8 @@ export default function ContactPage() {
       <main className="flex-1 bg-bg-canvas px-5 py-12 sm:px-8 lg:px-14 lg:pb-24 lg:pt-28">
         <div className="mx-auto w-full max-w-xl">
           <div className="mb-8 flex flex-col gap-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-text-muted">
-              Project Inquiry
+            <p className="text-xs font-semibold text-text-muted">
+              Project inquiry
             </p>
             <h2 className="text-2xl font-black tracking-tight text-brand-dark">
               Tell us about your project

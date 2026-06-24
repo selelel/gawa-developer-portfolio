@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Mood Board — Zapier Design Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Design tokens (from DESIGN.md) ─────────────────────────────── */
+    :root {
+      --c-primary:     #ff4f00;
+      --c-on-primary:  #fffefb;
+      --c-ink:         #201515;
+      --c-ink-soft:    #2f2a26;
+      --c-ink-mid:     #36342e;
+      --c-body:        #605d52;
+      --c-body-mid:    #939084;
+      --c-mute:        #c5c0b1;
+      --c-canvas:      #fffefb;
+      --c-canvas-soft: #f8f4f0;
+
+      --r-sm:   6px;
+      --r-md:   12px;
+      --r-pill: 9999px;
+
+      --sp-xs:  4px;
+      --sp-sm:  8px;
+      --sp-md:  12px;
+      --sp-lg:  16px;
+      --sp-xl:  24px;
+      --sp-2xl: 32px;
+      --sp-3xl: 48px;
+      --sp-4xl: 64px;
+
+      --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* ── Base ─────────────────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--c-canvas);
+      color: var(--c-ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ───────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 var(--sp-xl);
+    }
+
+    .section {
+      padding: var(--sp-4xl) 0;
+      border-bottom: 1px solid var(--c-mute);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--c-body-mid);
+      margin-bottom: var(--sp-2xl);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-xl); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-xl); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-xl); }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--sp-xl); }
+
+    @media (max-width: 900px) {
+      .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+    }
+
+    /* ── Masthead ─────────────────────────────────────────────────────── */
+    .masthead {
+      background: var(--c-ink);
+      color: var(--c-on-primary);
+      padding: var(--sp-4xl) 0;
+    }
+
+    .masthead__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: var(--sp-lg);
+    }
+
+    .masthead__title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .masthead__desc {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255, 254, 251, 0.6);
+      max-width: 600px;
+    }
+
+    .masthead__meta {
+      margin-top: var(--sp-2xl);
+      display: flex;
+      gap: var(--sp-xl);
+      flex-wrap: wrap;
+    }
+
+    .masthead__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-sm);
+      background: rgba(255, 254, 251, 0.08);
+      border: 1px solid rgba(255, 254, 251, 0.15);
+      color: rgba(255, 254, 251, 0.65);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px var(--sp-md);
+      border-radius: var(--r-pill);
+    }
+
+    .masthead__chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--c-primary);
+    }
+
+    /* ── Color section ────────────────────────────────────────────────── */
+    .color-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--r-md);
+      border: 1px solid var(--c-mute);
+    }
+
+    .color-swatch {
+      height: 80px;
+      flex-shrink: 0;
+    }
+
+    .color-info {
+      padding: var(--sp-md) var(--sp-lg);
+      background: var(--c-canvas);
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-ink);
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--c-body-mid);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .color-role {
+      font-size: 11px;
+      color: var(--c-mute);
+      margin-top: 3px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Typography section ───────────────────────────────────────────── */
+    .type-row {
+      padding: var(--sp-xl) 0;
+      border-top: 1px solid var(--c-mute);
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-3xl);
+    }
+
+    .type-meta {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .type-token {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-primary);
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+
+    .type-specs {
+      font-size: 11px;
+      color: var(--c-body-mid);
+      line-height: 1.6;
+    }
+
+    .type-sample {
+      flex: 1;
+      color: var(--c-ink);
+    }
+
+    /* ── Buttons ──────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-sm);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+      padding: var(--sp-md) var(--sp-xl);
+      border-radius: var(--r-md);
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn--primary { background: var(--c-primary); color: var(--c-on-primary); }
+    .btn--secondary { background: var(--c-ink); color: var(--c-on-primary); }
+    .btn--tertiary {
+      background: var(--c-canvas);
+      color: var(--c-ink);
+      border: 1px solid var(--c-ink);
+    }
+    .btn--text {
+      background: transparent;
+      color: var(--c-ink);
+      font-size: 14.4px;
+      font-weight: 700;
+      padding: var(--sp-sm) var(--sp-lg);
+    }
+    .btn--sm {
+      font-size: 14.4px;
+      font-weight: 700;
+      padding: var(--sp-sm) var(--sp-lg);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-md);
+      align-items: center;
+    }
+
+    /* ── Cards ────────────────────────────────────────────────────────── */
+    .card {
+      border-radius: var(--r-md);
+      padding: var(--sp-xl);
+    }
+
+    .card--cream { background: var(--c-canvas-soft); }
+    .card--dark  { background: var(--c-ink); color: var(--c-on-primary); }
+    .card--outline {
+      background: var(--c-canvas);
+      border: 1px solid var(--c-ink);
+    }
+
+    .card__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: var(--sp-md);
+    }
+
+    .card--dark .card__eyebrow { color: var(--c-primary); }
+
+    .card__title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      margin-bottom: var(--sp-md);
+    }
+
+    .card__body {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--c-body);
+    }
+
+    .card--dark .card__body { color: rgba(255,254,251,0.6); }
+
+    .card__action {
+      margin-top: var(--sp-xl);
+    }
+
+    /* ── Inputs ───────────────────────────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: var(--sp-sm); }
+
+    .field__label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-ink);
+    }
+
+    .field__input {
+      width: 100%;
+      background: var(--c-canvas);
+      color: var(--c-ink);
+      border: 1px solid var(--c-ink);
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+      padding: var(--sp-md) var(--sp-lg);
+      border-radius: var(--r-sm);
+      transition: box-shadow 0.15s ease;
+      outline: none;
+    }
+    .field__input:focus {
+      box-shadow: 0 0 0 3px rgba(32,21,21,0.12);
+    }
+    .field__input::placeholder { color: var(--c-mute); }
+
+    .field__hint {
+      font-size: 13px;
+      color: var(--c-body-mid);
+    }
+
+    /* ── Badges & pills ───────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-xs);
+      background: var(--c-canvas-soft);
+      color: var(--c-ink);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 4px var(--sp-md);
+      border-radius: var(--r-pill);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+      align-items: center;
+    }
+
+    /* ── Nav sample ───────────────────────────────────────────────────── */
+    .nav-demo {
+      background: var(--c-canvas);
+      border: 1px solid var(--c-mute);
+      border-radius: var(--r-md);
+      padding: var(--sp-md) var(--sp-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-xl);
+    }
+
+    .nav-demo__logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--c-ink);
+    }
+
+    .nav-demo__links {
+      display: flex;
+      gap: var(--sp-2xl);
+      list-style: none;
+    }
+
+    .nav-demo__links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--c-ink);
+      text-decoration: none;
+    }
+    .nav-demo__links a:hover { opacity: 0.65; }
+
+    /* ── Hero sample ──────────────────────────────────────────────────── */
+    .hero-demo {
+      background: var(--c-canvas);
+      border-radius: var(--r-md);
+      overflow: hidden;
+    }
+
+    .hero-demo__inner {
+      padding: var(--sp-4xl) var(--sp-3xl);
+    }
+
+    .hero-demo--dark { background: var(--c-ink); color: var(--c-on-primary); }
+
+    .hero-demo__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: var(--sp-lg);
+    }
+
+    .hero-demo__h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: var(--sp-xl);
+    }
+
+    .hero-demo--dark .hero-demo__h1 { color: var(--c-on-primary); }
+
+    .hero-demo__sub {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--c-body);
+      max-width: 480px;
+      margin-bottom: var(--sp-2xl);
+    }
+
+    .hero-demo--dark .hero-demo__sub { color: rgba(255,254,251,0.6); }
+
+    /* ── Elevation row ────────────────────────────────────────────────── */
+    .elevation-card {
+      border-radius: var(--r-md);
+      padding: var(--sp-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-md);
+    }
+
+    .elevation-card__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--c-body-mid);
+    }
+
+    .elevation-card__desc {
+      font-size: 14px;
+      color: var(--c-body);
+      line-height: 1.5;
+    }
+
+    /* ── Spacing visual ───────────────────────────────────────────────── */
+    .spacing-row {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--sp-xl);
+      flex-wrap: wrap;
+    }
+
+    .spacing-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-sm);
+    }
+
+    .spacing-bar {
+      background: var(--c-primary);
+      width: 24px;
+      border-radius: 2px;
+    }
+
+    .spacing-unit span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-body-mid);
+      text-align: center;
+    }
+
+    /* ── Atmosphere / tone board ──────────────────────────────────────── */
+    .tone-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      border: 1px solid var(--c-mute);
+      min-height: 280px;
+    }
+
+    .tone-left {
+      background: var(--c-canvas-soft);
+      padding: var(--sp-3xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tone-right {
+      background: var(--c-ink);
+      padding: var(--sp-3xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tone-quote {
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--c-ink);
+    }
+
+    .tone-right .tone-quote { color: var(--c-on-primary); }
+
+    .tone-credit {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--c-body-mid);
+    }
+
+    .tone-right .tone-credit { color: rgba(255,254,251,0.4); }
+
+    /* ── Do/Don't ─────────────────────────────────────────────────────── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2xl);
+    }
+
+    .rule-group__head {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--sp-lg);
+      padding-bottom: var(--sp-sm);
+      border-bottom: 2px solid;
+    }
+
+    .rule-group--do .rule-group__head {
+      color: #2d6a4f;
+      border-color: #2d6a4f;
+    }
+
+    .rule-group--dont .rule-group__head {
+      color: var(--c-primary);
+      border-color: var(--c-primary);
+    }
+
+    .rule-group__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-md);
+    }
+
+    .rule-group__item {
+      display: flex;
+      gap: var(--sp-md);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--c-body);
+    }
+
+    .rule-group__item::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    .rule-group--do .rule-group__item::before { background: #2d6a4f; }
+    .rule-group--dont .rule-group__item::before { background: var(--c-primary); }
+
+    @media (max-width: 720px) {
+      .rules-grid, .tone-panel { grid-template-columns: 1fr; }
+      .type-row { flex-direction: column; gap: var(--sp-md); }
+      .type-meta { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       MASTHEAD
+  ════════════════════════════════════════════════════════════════════ -->
+  <header class="masthead">
+    <div class="container">
+      <p class="masthead__eyebrow">Design System · Mood Board</p>
+      <h1 class="masthead__title">Zapier Design Analysis</h1>
+      <p class="masthead__desc">
+        An inspired interpretation of Zapier's design language — warm-cream neutrals
+        with deep coffee ink and a single saturated orange CTA accent. Confident-warm,
+        not cool-tech.
+      </p>
+      <div class="masthead__meta">
+        <span class="masthead__chip">
+          <span class="masthead__chip-dot"></span>
+          Degular Display + Inter
+        </span>
+        <span class="masthead__chip">
+          <span class="masthead__chip-dot"></span>
+          Warm canvas · Coffee ink · Orange accent
+        </span>
+        <span class="masthead__chip">
+          <span class="masthead__chip-dot"></span>
+          12 px rounded · 4 px base unit
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       ATMOSPHERE / TONE BOARD
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Atmosphere</p>
+      <div class="tone-panel">
+        <div class="tone-left">
+          <p class="tone-quote">
+            "Connect your apps and automate workflows — without the cold precision of a dev tool."
+          </p>
+          <p class="tone-credit">Light mode · Warm canvas #fffefb</p>
+        </div>
+        <div class="tone-right">
+          <p class="tone-quote">
+            "Confident-warm, not cool-tech. The brand is a warm handshake, not a blueprint."
+          </p>
+          <p class="tone-credit">Dark surface · Coffee ink #201515</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       COLOR PALETTE
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Color Palette</p>
+
+      <!-- Accent -->
+      <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--c-body-mid);margin-bottom:var(--sp-lg);">Primary Accent</p>
+      <div style="margin-bottom:var(--sp-2xl);">
+        <div class="color-card" style="max-width:240px;">
+          <div class="color-swatch" style="background:#ff4f00;"></div>
+          <div class="color-info">
+            <div class="color-name">Zapier Orange</div>
+            <div class="color-hex">#ff4f00</div>
+            <div class="color-role">Primary CTA · Conversion</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--c-body-mid);margin-bottom:var(--sp-lg);">Surface</p>
+      <div class="grid-2" style="max-width:520px;margin-bottom:var(--sp-2xl);">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#fffefb;border-bottom:1px solid #e8e5e0;"></div>
+          <div class="color-info">
+            <div class="color-name">Canvas</div>
+            <div class="color-hex">#fffefb</div>
+            <div class="color-role">Page background</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#f8f4f0;"></div>
+          <div class="color-info">
+            <div class="color-name">Canvas Soft</div>
+            <div class="color-hex">#f8f4f0</div>
+            <div class="color-role">Cards · Inset regions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ink / Text -->
+      <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--c-body-mid);margin-bottom:var(--sp-lg);">Ink Scale</p>
+      <div class="grid-5">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#201515;"></div>
+          <div class="color-info">
+            <div class="color-name">Ink</div>
+            <div class="color-hex">#201515</div>
+            <div class="color-role">Headings · CTAs</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#2f2a26;"></div>
+          <div class="color-info">
+            <div class="color-name">Ink Soft</div>
+            <div class="color-hex">#2f2a26</div>
+            <div class="color-role">Near-black</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#36342e;"></div>
+          <div class="color-info">
+            <div class="color-name">Ink Mid</div>
+            <div class="color-hex">#36342e</div>
+            <div class="color-role">Mid emphasis</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#605d52;"></div>
+          <div class="color-info">
+            <div class="color-name">Body</div>
+            <div class="color-hex">#605d52</div>
+            <div class="color-role">Default body</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#939084;"></div>
+          <div class="color-info">
+            <div class="color-name">Body Mid</div>
+            <div class="color-hex">#939084</div>
+            <div class="color-role">Secondary / meta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       TYPOGRAPHY SCALE
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Typography Scale</p>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">display-xl</div>
+          <div class="type-specs">Inter 500 · 56px · LH 56px<br>Degular Display substitute</div>
+        </div>
+        <div class="type-sample" style="font-size:clamp(2rem,4vw,3.5rem);font-weight:500;line-height:1;">
+          Automate everything.
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">display-lg</div>
+          <div class="type-specs">Inter 500 · 48px · LH 48px</div>
+        </div>
+        <div class="type-sample" style="font-size:clamp(1.75rem,3.5vw,3rem);font-weight:500;line-height:1;">
+          Connect your apps.
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">display-md</div>
+          <div class="type-specs">Inter 500 · 32px · LH 36px<br>LS +1px</div>
+        </div>
+        <div class="type-sample" style="font-size:clamp(1.375rem,2.5vw,2rem);font-weight:500;line-height:1.125;letter-spacing:1px;">
+          Build workflows that work
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">display-sub-sm</div>
+          <div class="type-specs">Inter 600 · 24px · LH 30px<br>LS -0.6px</div>
+        </div>
+        <div class="type-sample" style="font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-0.6px;">
+          Card title style
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">body-lg</div>
+          <div class="type-specs">Inter 400 · 20px · LH 30px<br>LS -0.2px</div>
+        </div>
+        <div class="type-sample" style="font-size:20px;font-weight:400;line-height:1.5;letter-spacing:-0.2px;color:var(--c-body);">
+          Lead paragraph. Zapier helps 6 million+ companies connect their apps in minutes, not months.
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">body-md</div>
+          <div class="type-specs">Inter 400 · 18px · LH 27px</div>
+        </div>
+        <div class="type-sample" style="font-size:18px;font-weight:400;line-height:1.5;color:var(--c-body);">
+          Default body text. Clear, direct, no jargon. The brand writes the way a smart colleague would explain something.
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">body-sm · caption</div>
+          <div class="type-specs">Inter 400 · 16px / 14px</div>
+        </div>
+        <div class="type-sample" style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-size:16px;font-weight:400;line-height:1.5;color:var(--c-body);">Secondary body text — nav links, card supporting copy.</span>
+          <span style="font-size:14px;font-weight:400;line-height:1.5;color:var(--c-body-mid);">Caption · fine print · metadata · timestamps</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">eyebrow-uppercase</div>
+          <div class="type-specs">Inter 500 · 14px · LH 14px<br>LS +1px · UPPERCASE</div>
+        </div>
+        <div class="type-sample" style="font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--c-primary);">
+          Section eyebrow label
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-token">button-md · button-sm</div>
+          <div class="type-specs">Inter 600 · 18px<br>Inter 700 · 14.4px</div>
+        </div>
+        <div class="type-sample" style="display:flex;gap:var(--sp-md);flex-wrap:wrap;align-items:center;">
+          <span style="font-size:18px;font-weight:600;">Get started free</span>
+          <span style="font-size:14.4px;font-weight:700;letter-spacing:0.144px;">Learn more →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       BUTTONS
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Buttons</p>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-2xl);">
+
+        <div>
+          <p style="font-size:12px;font-weight:600;color:var(--c-body-mid);margin-bottom:var(--sp-md);text-transform:uppercase;letter-spacing:0.5px;">Standard Variants</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#">Get started free</a>
+            <a class="btn btn--secondary" href="#">Sign in</a>
+            <a class="btn btn--tertiary" href="#">Learn more</a>
+            <a class="btn btn--text" href="#">See all features →</a>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:12px;font-weight:600;color:var(--c-body-mid);margin-bottom:var(--sp-md);text-transform:uppercase;letter-spacing:0.5px;">On Dark Surface</p>
+          <div style="background:var(--c-ink);border-radius:var(--r-md);padding:var(--sp-xl);">
+            <div class="btn-row">
+              <a class="btn btn--primary" href="#">Get started free</a>
+              <a class="btn" style="background:rgba(255,254,251,0.1);color:var(--c-on-primary);border:1px solid rgba(255,254,251,0.2);" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:12px;font-weight:600;color:var(--c-body-mid);margin-bottom:var(--sp-md);text-transform:uppercase;letter-spacing:0.5px;">Radius Anatomy</p>
+          <div class="btn-row" style="align-items:stretch;">
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+              <a class="btn btn--primary" style="border-radius:0;" href="#">0 px</a>
+              <span style="font-size:11px;color:var(--c-mute);">none</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+              <a class="btn btn--primary" style="border-radius:6px;" href="#">6 px</a>
+              <span style="font-size:11px;color:var(--c-mute);">r-sm</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+              <a class="btn btn--primary" style="border-radius:12px;" href="#">12 px ✓</a>
+              <span style="font-size:11px;color:var(--c-primary);font-weight:600;">brand default</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+              <a class="btn btn--primary" style="border-radius:9999px;" href="#">pill</a>
+              <span style="font-size:11px;color:var(--c-mute);">not brand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CARDS & CONTAINERS
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Cards &amp; Containers</p>
+      <div class="grid-3">
+
+        <div class="card card--cream">
+          <p class="card__eyebrow">Feature</p>
+          <h3 class="card__title">Move data between apps automatically</h3>
+          <p class="card__body">Set up a Zap once and watch it run. Your tools talk to each other, you keep your focus.</p>
+          <div class="card__action">
+            <a class="btn btn--text" style="padding-left:0;" href="#">Explore integrations →</a>
+          </div>
+        </div>
+
+        <div class="card card--dark">
+          <p class="card__eyebrow">Highlighted</p>
+          <h3 class="card__title" style="color:var(--c-on-primary);">No code needed — ever</h3>
+          <p class="card__body">Build powerful automations with a visual editor. If you can use a spreadsheet, you can build a Zap.</p>
+          <div class="card__action">
+            <a class="btn btn--primary" href="#">Try it free</a>
+          </div>
+        </div>
+
+        <div class="card card--outline">
+          <p class="card__eyebrow" style="color:var(--c-body-mid);">Pricing</p>
+          <h3 class="card__title">Starter</h3>
+          <p class="card__body">$20 / month<br><br>750 tasks · 5 Zaps · Single-step Zaps</p>
+          <div class="card__action">
+            <a class="btn btn--secondary" href="#">Get started</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       INPUTS & BADGES
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Form Controls &amp; Badges</p>
+      <div class="grid-2">
+
+        <div style="display:flex;flex-direction:column;gap:var(--sp-xl);">
+          <div class="field">
+            <label class="field__label">Work email</label>
+            <input class="field__input" type="email" placeholder="you@company.com" />
+            <p class="field__hint">We'll send your confirmation here.</p>
+          </div>
+          <div class="field">
+            <label class="field__label">Company name</label>
+            <input class="field__input" type="text" placeholder="Acme Corp" />
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:var(--sp-xl);">
+          <div>
+            <p style="font-size:12px;font-weight:600;color:var(--c-body-mid);margin-bottom:var(--sp-md);text-transform:uppercase;letter-spacing:0.5px;">Pill Badges</p>
+            <div class="badge-row">
+              <span class="badge">CRM</span>
+              <span class="badge">Slack</span>
+              <span class="badge">Gmail</span>
+              <span class="badge">Notion</span>
+              <span class="badge">Airtable</span>
+              <span class="badge" style="background:var(--c-primary);color:var(--c-on-primary);">Popular</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:12px;font-weight:600;color:var(--c-body-mid);margin-bottom:var(--sp-md);text-transform:uppercase;letter-spacing:0.5px;">Nav Sample</p>
+            <nav class="nav-demo">
+              <span class="nav-demo__logo">Zapier</span>
+              <ul class="nav-demo__links">
+                <li><a href="#">Product</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Pricing</a></li>
+              </ul>
+              <a class="btn btn--primary btn--sm" href="#">Get started</a>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       HERO BAND SAMPLES
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Hero Band Samples</p>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-xl);">
+
+        <div class="hero-demo">
+          <div class="hero-demo__inner">
+            <p class="hero-demo__eyebrow">Workflow automation</p>
+            <h2 class="hero-demo__h1">Automate your work,<br>grow faster.</h2>
+            <p class="hero-demo__sub">Connect 6,000+ apps and automate repetitive tasks — no code required.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="#">Start for free</a>
+              <a class="btn btn--tertiary" href="#">Watch a demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-demo hero-demo--dark">
+          <div class="hero-demo__inner">
+            <p class="hero-demo__eyebrow">Polarity flip</p>
+            <h2 class="hero-demo__h1">Power your entire<br>business with Zaps.</h2>
+            <p class="hero-demo__sub">The same warm confidence — on a dark coffee surface. Orange stays the only accent.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="#">Try it free</a>
+              <a class="btn" style="background:rgba(255,254,251,0.1);color:var(--c-on-primary);border:1px solid rgba(255,254,251,0.2);" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       ELEVATION
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Elevation &amp; Depth</p>
+      <div class="grid-3">
+
+        <div class="elevation-card" style="background:var(--c-canvas);border:1px solid transparent;">
+          <p class="elevation-card__label">Level 0 — Flat</p>
+          <p class="elevation-card__desc">No shadow, no border. Used for hero bands and full-bleed sections. The canvas IS the elevation signal.</p>
+        </div>
+
+        <div class="elevation-card" style="background:var(--c-canvas);border:1px solid var(--c-ink);">
+          <p class="elevation-card__label">Level 1 — Hairline</p>
+          <p class="elevation-card__desc">1 px solid ink border. Pricing tier chrome, outline buttons. The border draws attention without lifting off the page.</p>
+        </div>
+
+        <div class="elevation-card" style="background:var(--c-canvas-soft);border:1px solid transparent;">
+          <p class="elevation-card__label">Level 2 — Soft Card</p>
+          <p class="elevation-card__desc">Cream fill (#f8f4f0) against canvas (#fffefb). Surface-tonal elevation — no shadow needed. The warmth does the work.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       SPACING SYSTEM
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Spacing System — 4 px base</p>
+      <div class="spacing-row">
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:2px;"></div>
+          <span>xxs<br>2px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:4px;"></div>
+          <span>xs<br>4px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:8px;"></div>
+          <span>sm<br>8px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:12px;"></div>
+          <span>md<br>12px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:16px;"></div>
+          <span>lg<br>16px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:24px;"></div>
+          <span>xl<br>24px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:32px;"></div>
+          <span>2xl<br>32px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:48px;"></div>
+          <span>3xl<br>48px</span>
+        </div>
+        <div class="spacing-unit">
+          <div class="spacing-bar" style="height:64px;"></div>
+          <span>4xl<br>64px</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       DO / DON'T
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Do's &amp; Don'ts</p>
+      <div class="rules-grid">
+
+        <div class="rule-group rule-group--do">
+          <p class="rule-group__head">✓ Do</p>
+          <ul class="rule-group__list">
+            <li class="rule-group__item">Reserve orange (#ff4f00) for every primary CTA. The saturated orange IS the conversion signature.</li>
+            <li class="rule-group__item">Keep canvas WARM — #fffefb cream, not pure white. The temperature is the brand voice.</li>
+            <li class="rule-group__item">Set hero headlines in Degular Display (or Inter 500 substitute) at weight 500. Sentence-case, no uppercase.</li>
+            <li class="rule-group__item">Use 12 px radius for buttons and cards. The middle radius is the brand's signature.</li>
+            <li class="rule-group__item">Pair orange CTA + ink text + cream background. This three-token rhythm is the entire conversion story.</li>
+          </ul>
+        </div>
+
+        <div class="rule-group rule-group--dont">
+          <p class="rule-group__head">✗ Don't</p>
+          <ul class="rule-group__list">
+            <li class="rule-group__item">Don't replace cream canvas with pure white. The warmth IS the brand.</li>
+            <li class="rule-group__item">Don't use pure black ink. The coffee-warmth in #201515 carries through every text color.</li>
+            <li class="rule-group__item">Don't render CTAs as pills. The brand's button is 12 px rounded rectangle — not a capsule.</li>
+            <li class="rule-group__item">Don't introduce a second chromatic accent. Orange + cream + coffee is the entire palette.</li>
+            <li class="rule-group__item">Don't substitute Degular Display with a cool geometric sans — the brand's display face has warm proportions.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════════════ -->
+  <footer style="background:var(--c-ink);color:var(--c-on-primary);padding:var(--sp-3xl) 0;">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-xl);">
+        <div>
+          <p style="font-size:16px;font-weight:600;color:var(--c-on-primary);margin-bottom:4px;">Design Mood Board</p>
+          <p style="font-size:13px;color:rgba(255,254,251,0.4);">Based on DESIGN.md · Zapier design analysis</p>
+        </div>
+        <div style="display:flex;gap:var(--sp-2xl);">
+          <div style="text-align:center;">
+            <p style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,254,251,0.35);margin-bottom:4px;">Primary</p>
+            <p style="font-size:14px;font-weight:500;color:var(--c-primary);">#ff4f00</p>
+          </div>
+          <div style="text-align:center;">
+            <p style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,254,251,0.35);margin-bottom:4px;">Canvas</p>
+            <p style="font-size:14px;font-weight:500;color:rgba(255,254,251,0.7);">#fffefb</p>
+          </div>
+          <div style="text-align:center;">
+            <p style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,254,251,0.35);margin-bottom:4px;">Ink</p>
+            <p style="font-size:14px;font-weight:500;color:rgba(255,254,251,0.7);">#201515</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

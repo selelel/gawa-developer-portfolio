@@ -112,21 +112,24 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang='en'
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <script
-          type="application/ld+json"
+          type='application/ld+json'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(professionalServiceJsonLd),
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-bg-canvas text-brand-dark">
+      <body className='min-h-full flex flex-col bg-bg-canvas text-brand-dark'>
         <Navbar />
         {children}
         <Footer />
+        {/* impeccable-live-start */}
+        <script src='http://localhost:8400/live.js'></script>
+        {/* impeccable-live-end */}
       </body>
     </html>
   );

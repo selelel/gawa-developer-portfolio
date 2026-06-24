@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-24T00:00:00.000Z",
+  "title": "Design System: Gawa Developer",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Gawa Orange",
+        "canonical": "oklch(61% 0.24 37)",
+        "tonalRamp": ["#4a1200", "#7a2000", "#a83000", "#d04000", "#ff4f00", "#ff7a35", "#ffa978", "#ffdcc7"]
+      },
+      "on-primary": {
+        "role": "on-primary",
+        "displayName": "Cream White",
+        "canonical": "oklch(99.5% 0.005 90)",
+        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#e0dbd3", "#ede9e3", "#f5f2ee", "#fffefb"]
+      },
+      "ink": {
+        "role": "neutral-dark",
+        "displayName": "Coffee Ink",
+        "canonical": "oklch(16% 0.02 30)",
+        "tonalRamp": ["#0a0706", "#201515", "#36302e", "#544d4a", "#7a7471", "#a8a29f", "#d4d1ce", "#f0eeec"]
+      },
+      "canvas": {
+        "role": "surface",
+        "displayName": "Warm Canvas",
+        "canonical": "oklch(99.5% 0.003 90)",
+        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#dedad3", "#eae7e0", "#f5f2ee", "#fffefb"]
+      },
+      "canvas-soft": {
+        "role": "surface-variant",
+        "displayName": "Cream Soft",
+        "canonical": "oklch(97% 0.008 70)",
+        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#d8d4cd", "#e5e1da", "#f0ece6", "#f8f4f0"]
+      },
+      "body": {
+        "role": "neutral-text",
+        "displayName": "Warm Body",
+        "canonical": "oklch(44% 0.02 50)",
+        "tonalRamp": ["#201515", "#36302e", "#504a47", "#6b6358", "#8c857c", "#b0aaa3", "#d4d0c9", "#f0eeec"]
+      },
+      "mute": {
+        "role": "neutral-muted",
+        "displayName": "Warm Mute",
+        "canonical": "oklch(78% 0.012 60)",
+        "tonalRamp": ["#4a4540", "#6b6660", "#8c8880", "#a8a49c", "#c5c0b1", "#d8d4cc", "#e8e5df", "#f5f3ef"]
+      }
+    },
+    "typographyMeta": {
+      "display-xl": {
+        "displayName": "Hero Display",
+        "purpose": "Hero headline — Mona Sans weight 500, fluid clamp scale."
+      },
+      "display-lg": {
+        "displayName": "Section Display",
+        "purpose": "Section-level headlines — Mona Sans weight 500."
+      },
+      "display-md": {
+        "displayName": "Sub-Section Display",
+        "purpose": "Sub-section displays with positive tracking — Mona Sans weight 500."
+      },
+      "body-md": {
+        "displayName": "Body Default",
+        "purpose": "Default paragraph text — Inter weight 400. Max-width 65–72ch."
+      },
+      "button-md": {
+        "displayName": "Button Label",
+        "purpose": "Primary button label — Inter weight 600."
+      },
+      "eyebrow-uppercase": {
+        "displayName": "Eyebrow Kicker",
+        "purpose": "UPPERCASE section kicker — Mona Sans weight 500, positive tracking. Used sparingly, not on every section."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-float",
+        "value": "0 4px 24px -2px rgba(32, 21, 21, 0.08), 0 1px 4px rgba(32, 21, 21, 0.04)",
+        "purpose": "Floating card shadow — applied to floating badge overlays, sticky nav on scroll. Not on static content cards."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-spring-snappy",
+        "value": "cubic-bezier(0.175, 0.885, 0.32, 1.1)",
+        "purpose": "Snappy spring for interactive feedback — button tap, badge hover."
+      },
+      {
+        "name": "ease-smooth-reveal",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Smooth reveal for scroll-triggered entrances. Ease-out-expo character."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.2s",
+        "purpose": "State transitions — hover, focus changes."
+      },
+      {
+        "name": "duration-normal",
+        "value": "0.4s",
+        "purpose": "Section entrances and content reveals."
+      },
+      {
+        "name": "stagger-children",
+        "value": "0.08s",
+        "purpose": "Stagger delay between children in a motion container."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "note": "Small: 1-up grids, mobile nav." },
+      { "name": "md", "value": "768px", "note": "Medium: 2-up grids, expanded layout." },
+      { "name": "lg", "value": "1024px", "note": "Large: full grids, hero split, desktop nav." },
+      { "name": "container-max", "value": "1200px", "note": "Max content container width." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The conversion CTA. Orange fill, cream label, 12px rounded rectangle. Every lead-gen trigger.",
+      "html": "<button class=\"ds-btn-primary\">Start Your Project →</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-primary:hover { background: #e64500; } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #ff4f00; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Dark CTA — coffee ink fill, cream label. Used in dark section bands alongside the primary orange.",
+      "html": "<button class=\"ds-btn-secondary\">View Our Work</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #201515; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-secondary:hover { background: #36302e; } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #201515; outline-offset: 2px; }"
+    },
+    {
+      "name": "Tertiary Button",
+      "kind": "button",
+      "refersTo": "button-tertiary",
+      "description": "Outline CTA — cream fill, ink label, ink border. Lower emphasis secondary action.",
+      "html": "<button class=\"ds-btn-tertiary\">Explore Services</button>",
+      "css": ".ds-btn-tertiary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #fffefb; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: 1px solid #201515; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-tertiary:hover { background: #f8f4f0; } .ds-btn-tertiary:active { transform: scale(0.98); } .ds-btn-tertiary:focus-visible { outline: 2px solid #201515; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Canonical form field. Cream background, ink border, 6px radius. Orange focus ring signals the conversion context.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 600; color: #201515; } .ds-input { width: 100%; padding: 12px 16px; background: #fffefb; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; border: 1px solid #201515; border-radius: 6px; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input::placeholder { color: #c5c0b1; } .ds-input:focus { border-color: #ff4f00; box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.12); }"
+    },
+    {
+      "name": "Feature Card — Cream",
+      "kind": "card",
+      "refersTo": "card-feature-cream",
+      "description": "Default content card on cream canvas. Canvas-soft surface, 12px radius, 24px padding.",
+      "html": "<div class=\"ds-card-cream\"><h3 class=\"ds-card-title\">Custom Web Apps</h3><p class=\"ds-card-body\">End-to-end web applications built on modern frameworks that scale with your business goals.</p></div>",
+      "css": ".ds-card-cream { background: #f8f4f0; border-radius: 12px; padding: 24px; } .ds-card-title { font-family: Inter, system-ui, sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; color: #201515; margin: 0 0 10px; } .ds-card-body { font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; color: #605d52; margin: 0; max-width: 65ch; }"
+    },
+    {
+      "name": "Feature Card — Dark",
+      "kind": "card",
+      "refersTo": "card-feature-dark",
+      "description": "Polarity-flipped dark card. Coffee ink background, cream text. High-emphasis feature callout.",
+      "html": "<div class=\"ds-card-dark\"><h3 class=\"ds-card-title-dark\">Long-Term Support</h3><p class=\"ds-card-body-dark\">We don't disappear after launch. Maintenance, updates, and enhancements on demand.</p></div>",
+      "css": ".ds-card-dark { background: #201515; border-radius: 12px; padding: 24px; } .ds-card-title-dark { font-family: Inter, system-ui, sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; color: #fffefb; margin: 0 0 10px; } .ds-card-body-dark { font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; color: rgba(255,254,251,0.65); margin: 0; max-width: 65ch; }"
+    },
+    {
+      "name": "Badge Pill",
+      "kind": "chip",
+      "refersTo": "badge-pill",
+      "description": "Inline pill for capability labels and metadata. Canvas-soft fill, ink text, full-pill radius.",
+      "html": "<span class=\"ds-badge\">Custom Solutions</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 4px 12px; background: #f8f4f0; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 400; border-radius: 9999px; white-space: nowrap; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Sticky top nav on cream canvas. Coffee ink links, orange primary CTA, 12px button radius.",
+      "html": "<nav class=\"ds-nav\"><a href=\"/\" class=\"ds-nav-brand\"><span class=\"ds-nav-logo\">G</span><span class=\"ds-nav-name\">Gawa <span class=\"ds-nav-name-light\">Developer</span></span></a><div class=\"ds-nav-links\"><a href=\"/\" class=\"ds-nav-link\">Home</a><a href=\"/contact\" class=\"ds-nav-cta\">Start Your Project</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; background: #fffefb; border-bottom: 1px solid transparent; } .ds-nav-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; } .ds-nav-logo { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; border-radius: 8px; } .ds-nav-name { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #201515; } .ds-nav-name-light { font-weight: 400; color: #939084; } .ds-nav-links { display: flex; align-items: center; gap: 24px; } .ds-nav-link { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 400; color: #201515; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover { color: #ff4f00; } .ds-nav-cta { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 20px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 12px; text-decoration: none; cursor: pointer; transition: background 0.2s ease; } .ds-nav-cta:hover { background: #e64500; }"
+    },
+    {
+      "name": "Footer",
+      "kind": "custom",
+      "refersTo": "footer",
+      "description": "Deep coffee footer. Dark ink background, cream text at varying opacity levels for hierarchy.",
+      "html": "<footer class=\"ds-footer\"><div class=\"ds-footer-brand\"><span class=\"ds-footer-logo\">G</span><span class=\"ds-footer-name\">Gawa Developer</span></div><p class=\"ds-footer-tagline\">Build Better Software. Grow Faster.</p><p class=\"ds-footer-copy\">© 2025 Gawa Developer. All rights reserved.</p></footer>",
+      "css": ".ds-footer { background: #201515; padding: 48px 32px 32px; } .ds-footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; } .ds-footer-logo { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; border-radius: 8px; } .ds-footer-name { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #fffefb; } .ds-footer-tagline { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.5; color: rgba(255,254,251,0.45); margin: 0 0 24px; } .ds-footer-copy { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; color: rgba(255,254,251,0.25); margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Confident Workshop",
+    "overview": "Gawa Developer's design language borrows the calm authority of a mature, well-run service brand — the kind that doesn't need to shout because its track record speaks. The palette is warm but not decorative: a cream-white canvas (#fffefb) that is slightly warmer than clinical, a deep coffee-brown ink (#201515) that is slightly warmer than pure black, and a single saturated orange CTA (#ff4f00) that signals action without aggression. Temperature is the voice.\n\nTypography delivers the second signal. Mona Sans at weight 500 carries hero and section headings. Inter handles sub-displays, body, buttons, and eyebrows. The two-face pairing reads as 'the brand has a distinct voice for the loud moments and uses the workhorse for the rest.'\n\nThe brand rejects the blue-and-slate developer cliché, gradient-heavy SaaS hero dashboards, overcrowded agency sites, and the clinical white-on-obsidian dark-mode portfolio aesthetic. Warmth is deliberate — it signals approachable competence, not terminal aesthetics.",
+    "keyCharacteristics": [
+      "Orange CTA accent #ff4f00 — the single conversion signature. High visibility, high intent.",
+      "Warm cream canvas #fffefb — not pure white. The temperature IS the brand voice.",
+      "Deep coffee ink #201515 — not pure black. Warmth carries through every text color.",
+      "Mona Sans weight 500 for hero and section displays; Inter for everything else. Two-face system.",
+      "12px rounded rectangle for buttons and cards — not pills, not square.",
+      "A warm neutral ladder where every surface carries warmth and none borrow from cool-slate."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "colors.primary orange appears on one element per viewport: the primary CTA. Every additional orange element dilutes the conversion signal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warmth Rule",
+        "body": "No cool-grey neutral enters this system. Every neutral must carry warmth. Slate-50 and slate-100 read as cold; canvas-soft and mute do not.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Face Rule",
+        "body": "Mona Sans for displays and eyebrows; Inter for everything else. Do not use Mona Sans at body sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence-Case Rule",
+        "body": "Display and headline copy is always sentence-case. All-caps reserved for eyebrow-uppercase labels only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Tonal elevation handles depth for content cards. Shadows appear only on floating elements.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reserve colors.primary orange for the primary CTA only. One orange element per viewport.",
+      "Do keep the canvas warm — #fffefb, not pure white. The temperature IS the brand voice.",
+      "Do set hero headlines in typography.display-xl Mona Sans weight 500. Sentence-case, never all-caps.",
+      "Do pair Mona Sans (displays, eyebrows) with Inter (body, labels, buttons). Strict role separation.",
+      "Do use rounded.md 12px for buttons and cards. The middle radius is the brand's shape signature.",
+      "Do use motion/react spring physics for interaction feedback.",
+      "Do cap body text at 65–72ch maximum width."
+    ],
+    "donts": [
+      "Don't replace cream canvas with pure white #ffffff or cool slate-50. Warmth carries through every surface.",
+      "Don't use pure black #000000 ink. The coffee-warmth in #201515 carries through every text color.",
+      "Don't render CTAs as pills (border-radius: 9999px). The brand's button is a 12px rounded rectangle.",
+      "Don't introduce a second chromatic accent. Orange + cream + coffee is the complete palette.",
+      "Don't use cool-grey neutrals from Tailwind. Replace with canvas-soft and mute.",
+      "Don't build gradient-heavy hero sections with large metric stat dashboards.",
+      "Don't use border-left stripes as card decoration. Use background tints or nothing.",
+      "Don't use glassmorphism as a default card style.",
+      "Don't animate layout properties. All animation via transform and opacity only."
+    ]
+  }
+}

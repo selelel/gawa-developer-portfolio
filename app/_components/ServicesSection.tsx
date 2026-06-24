@@ -124,8 +124,8 @@ const SERVICES: Service[] = [
     description:
       "Full-stack platforms engineered for speed, scale, and seamless UX — tailored precisely to your business processes and user workflows.",
     Icon: IconBrowser,
-    iconBg: "bg-blue-500/10",
-    iconColor: "text-blue-400",
+    iconBg: "bg-amber-500/10",
+    iconColor: "text-amber-400",
     tag: "Web",
   },
   {
@@ -133,8 +133,8 @@ const SERVICES: Service[] = [
     description:
       "Native and cross-platform mobile apps that deliver smooth, intuitive experiences on iOS and Android — from MVP to production.",
     Icon: IconMobile,
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-400",
+    iconBg: "bg-orange-500/10",
+    iconColor: "text-orange-400",
     tag: "Mobile",
   },
   {
@@ -142,8 +142,8 @@ const SERVICES: Service[] = [
     description:
       "End-to-end SaaS product development — multi-tenant architecture, subscription billing, dashboards, and the full product lifecycle.",
     Icon: IconLayers,
-    iconBg: "bg-sky-500/10",
-    iconColor: "text-sky-400",
+    iconBg: "bg-yellow-500/10",
+    iconColor: "text-yellow-400",
     tag: "SaaS",
   },
   {
@@ -151,8 +151,8 @@ const SERVICES: Service[] = [
     description:
       "Custom business management platforms that centralize client relationships, operations, and workflows in one unified system.",
     Icon: IconDatabase,
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-400",
+    iconBg: "bg-amber-600/10",
+    iconColor: "text-amber-500",
     tag: "Enterprise",
   },
   {
@@ -160,8 +160,8 @@ const SERVICES: Service[] = [
     description:
       "LLM-powered features, intelligent automation, and data-driven insights embedded directly into your existing product stack.",
     Icon: IconCpu,
-    iconBg: "bg-indigo-500/10",
-    iconColor: "text-indigo-400",
+    iconBg: "bg-red-500/10",
+    iconColor: "text-red-400",
     tag: "AI",
   },
   {
@@ -169,8 +169,8 @@ const SERVICES: Service[] = [
     description:
       "Robust RESTful and GraphQL APIs with clear documentation, authentication, rate limiting, and seamless third-party integrations.",
     Icon: IconCode,
-    iconBg: "bg-cyan-500/10",
-    iconColor: "text-cyan-400",
+    iconBg: "bg-orange-400/10",
+    iconColor: "text-orange-300",
     tag: "Backend",
   },
   {
@@ -196,8 +196,8 @@ const SERVICES: Service[] = [
     description:
       "Proactive monitoring, security patching, performance tuning, and ongoing feature iteration to keep your software thriving.",
     Icon: IconShield,
-    iconBg: "bg-teal-500/10",
-    iconColor: "text-teal-400",
+    iconBg: "bg-amber-300/10",
+    iconColor: "text-amber-300",
     tag: "Support",
   },
 ];
@@ -246,7 +246,7 @@ export default function ServicesSection() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, ease: "easeOut" as const, delay: 0.2 }}
-          className="mx-auto mt-12 h-px max-w-xs origin-center bg-gradient-to-r from-transparent via-brand-primary/40 to-transparent"
+          className="mx-auto mt-12 h-px max-w-xs origin-center bg-linear-to-r from-transparent via-brand-primary/40 to-transparent"
         />
 
         {/* ── Service cards grid ── */}
@@ -277,17 +277,17 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       }}
       whileHover={{ y: -5 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative flex flex-col gap-5 overflow-hidden rounded-card border border-white/[0.07] bg-white/[0.03] p-6 transition-colors duration-300 hover:border-brand-primary/25 hover:bg-white/[0.06]"
+      className="group relative flex flex-col gap-5 overflow-hidden rounded-card border border-white/[0.07] bg-white/3 p-6 transition-colors duration-300 hover:border-brand-primary/25 hover:bg-white/6"
     >
       {/* Top-edge accent line — sweeps in on hover */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px w-0 bg-gradient-to-r from-transparent via-brand-primary/70 to-transparent transition-all duration-500 group-hover:w-full" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px w-0 bg-linear-to-r from-transparent via-brand-primary/70 to-transparent transition-all duration-500 group-hover:w-full" />
 
       {/* Inner glow on hover */}
       <div
         className="pointer-events-none absolute inset-0 rounded-card opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           boxShadow:
-            "inset 0 1px 0 rgba(37,99,235,0.1), 0 0 50px rgba(37,99,235,0.04)",
+            "inset 0 1px 0 rgba(255,79,0,0.1), 0 0 50px rgba(255,79,0,0.04)",
         }}
       />
 
@@ -299,7 +299,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         >
           <Icon />
         </div>
-        <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/30">
+        <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] font-medium text-white/40">
           {tag}
         </span>
       </div>
@@ -345,18 +345,18 @@ function BackgroundEffects() {
         style={{
           width: "800px",
           height: "500px",
-          background: "radial-gradient(ellipse, rgba(37,99,235,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(255,79,0,0.07) 0%, transparent 70%)",
         }}
       />
 
       {/* Top fade into hero section */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-brand-dark to-transparent" />
       {/* Bottom fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-brand-dark to-transparent" />
 
       {/* Subtle side vignette */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-brand-dark to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-brand-dark to-transparent" />
     </>
   );
 }
