@@ -41,7 +41,7 @@ export default function FinalCTASection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.4, ease: "easeOut" as const }}
         >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5 text-sm font-medium text-white/70">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
             {/* Pulsing availability dot */}
             <span className="relative flex h-2 w-2 shrink-0" aria-hidden>
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" style={{ aspectRatio: "1/1" }} />
@@ -98,7 +98,7 @@ export default function FinalCTASection() {
           <motion.div whileTap={{ scale: 0.96 }}>
             <Link
               href="/contact"
-              className="group inline-flex min-h-14 min-w-12 items-center justify-center gap-2 rounded-button bg-brand-primary px-10 py-4 text-base font-semibold text-white shadow-[0_0_32px_rgba(37,99,235,0.22)] transition-all duration-300 hover:bg-brand-primary-hover hover:shadow-[0_0_56px_rgba(37,99,235,0.38)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+              className="group inline-flex min-h-14 min-w-12 items-center justify-center gap-2 rounded-button bg-brand-primary px-10 py-4 text-base font-semibold text-white shadow-[0_0_32px_rgba(255,79,0,0.22)] transition-all duration-300 hover:bg-brand-primary-hover hover:shadow-[0_0_56px_rgba(255,79,0,0.38)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
             >
               Start Your Project
               <svg
@@ -119,7 +119,7 @@ export default function FinalCTASection() {
           <motion.div whileTap={{ scale: 0.96 }}>
             <Link
               href="/#services"
-              className="inline-flex min-h-14 min-w-12 items-center justify-center rounded-button border border-white/[0.14] bg-white/[0.04] px-9 py-4 text-base font-semibold text-white/75 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.09] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-offset-2"
+              className="inline-flex min-h-14 min-w-12 items-center justify-center rounded-button border border-white/[0.14] bg-white/4 px-9 py-4 text-base font-semibold text-white/75 transition-all duration-300 hover:border-white/25 hover:bg-white/9 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-offset-2"
             >
               Explore Our Services
             </Link>
@@ -173,7 +173,7 @@ function BackgroundEffects() {
           width: "900px",
           height: "700px",
           background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, rgba(37,99,235,0.05) 45%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(255,79,0,0.16) 0%, rgba(255,79,0,0.05) 45%, transparent 70%)",
         }}
       />
 
@@ -184,7 +184,7 @@ function BackgroundEffects() {
           width: "420px",
           height: "420px",
           background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.09) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(255,79,0,0.09) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />
@@ -194,7 +194,7 @@ function BackgroundEffects() {
           width: "420px",
           height: "420px",
           background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.09) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(255,79,0,0.09) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />
@@ -210,8 +210,8 @@ function BackgroundEffects() {
       />
 
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-dark to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b from-brand-dark to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-brand-dark to-transparent" />
     </>
   );
 }

@@ -110,7 +110,7 @@ export default function ContactForm() {
         >
           {/* ── Contact details row ── */}
           <fieldset className="flex flex-col gap-5">
-            <legend className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <legend className="text-xs font-semibold text-text-muted">
               Your Details
             </legend>
 
@@ -169,7 +169,7 @@ export default function ContactForm() {
 
           {/* ── Project details ── */}
           <fieldset className="flex flex-col gap-5">
-            <legend className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+            <legend className="text-xs font-semibold text-text-muted">
               Project Details
             </legend>
 
@@ -250,7 +250,7 @@ export default function ContactForm() {
                 value={data.description}
                 onChange={set("description")}
                 disabled={status === "submitting"}
-                className={`${inputCls} min-h-[140px] resize-y leading-relaxed`}
+                className={`${inputCls} min-h-35 resize-y leading-relaxed`}
               />
             </Field>
           </fieldset>
@@ -276,8 +276,11 @@ export default function ContactForm() {
               )}
             </motion.button>
 
-            <p className="text-center text-xs text-text-muted">
-              <span className="mr-1" aria-hidden>🔒</span>
+            <p className="flex items-center justify-center gap-1.5 text-center text-xs text-text-muted">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 shrink-0" aria-hidden>
+                <rect x="3" y="7" width="10" height="8" rx="1.5" />
+                <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
+              </svg>
               Your information is secure and will never be shared.
             </p>
           </div>
@@ -413,7 +416,7 @@ function SuccessState() {
         transition={{ delay: 0.36, duration: 0.35 }}
         className="flex flex-col gap-3 rounded-card border border-border-subtle bg-bg-surface px-6 py-5 text-left"
       >
-        <p className="text-xs font-semibold uppercase tracking-widest text-text-muted">
+        <p className="text-xs font-semibold text-text-muted">
           What happens next
         </p>
         {[

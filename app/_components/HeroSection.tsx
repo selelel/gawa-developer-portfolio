@@ -1,301 +1,349 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 
-const TRUST_ITEMS = [
-  "Custom Solutions",
-  "Scalable Architecture",
-  "Modern Tech Stack",
-  "Long-Term Support",
-];
+// ── Data ──────────────────────────────────────────────────────────────────
 
-const STATS = [
-  { value: "10+", label: "Projects Delivered" },
-  { value: "100%", label: "Custom Dev" },
-  { value: "98/100", label: "Core Web Vitals" },
-];
+const HEADLINE = [
+  { text: "Build Software That", accent: false },
+  { text: "Powers Your Business", accent: true },
+] as const;
 
-const CODE_LINES = [
-  { indent: 0, token: "const", name: " solution", op: " =", rest: " await" },
-  { indent: 1, token: "gawa", name: ".build", op: "({", rest: "" },
-  { indent: 2, token: "idea:", name: " yourVision", op: ",", rest: "" },
-  { indent: 2, token: "stack:", name: " 'modern'", op: ",", rest: "" },
-  { indent: 2, token: "quality:", name: " 'premium'", op: ",", rest: "" },
-  { indent: 1, token: "}", name: ")", op: ";", rest: "" },
-];
-
-// High-end spring curves mirroring modern layout platforms
-const transitionSpring = { type: "spring", stiffness: 90, damping: 20 } as const;
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: transitionSpring },
-};
+// ── Section ───────────────────────────────────────────────────────────────
 
 export default function HeroSection() {
-  const scrollToServices = () => {
+  const scrollToServices = () =>
     document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
-    <section
-      aria-label='Hero'
-      className='relative isolate min-h-[95svh] flex items-center overflow-hidden bg-bg-canvas px-4 sm:px-6 lg:px-8'
-    >
-      {/* Premium Futuristic Canvas Framework Backdrop */}
-      <BackgroundDecor />
+    <MotionConfig reducedMotion='user'>
+      <section
+        aria-label='Hero'
+        className='relative isolate min-h-svh flex items-center overflow-hidden bg-bg-canvas px-5 sm:px-8 lg:px-12'
+      >
+        <HeroBackground />
 
-      <div className='relative z-10 mx-auto w-full max-w-7xl pt-24 pb-16 lg:pt-32'>
-        <div className='grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8'>
-          {/* ── Left Column: Content & Conversion Value Structure ── */}
-          <motion.div
-            variants={containerVariants}
-            initial='hidden'
-            animate='visible'
-            className='flex flex-col gap-6 lg:col-span-7 lg:pr-4 text-center lg:text-left items-center lg:items-start'
-          >
-            {/* Inline Glow Badge */}
-            <motion.div variants={itemVariants}>
-              <span className='inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/5 px-3.5 py-1.5 text-xs font-semibold tracking-wide uppercase text-brand-primary backdrop-blur-sm'>
-                <span className='relative flex h-2 w-2'>
-                  <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75'></span>
-                  <span className='relative inline-flex rounded-full h-2 w-2 bg-brand-primary'></span>
-                </span>
-                Production-Ready Code
-              </span>
-            </motion.div>
+        <div className='relative z-10 mx-auto w-full max-w-7xl pt-28 pb-20 lg:pt-32 lg:pb-28'>
+          <div className='grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-8'>
+            {/* ── Left: copy ── */}
+            <div className='flex flex-col items-center gap-7 text-center lg:col-span-7 lg:items-start lg:pr-4 lg:text-left'>
+              {/* Headline — clip-mask line reveal */}
+              <h1 className='text-[clamp(2.5rem,5.5vw,4.75rem)] font-black leading-[1.04] tracking-[-0.02em] text-balance'>
+                {HEADLINE.map((line, i) => (
+                  <span key={i} className='block overflow-hidden pb-[0.06em]'>
+                    <motion.span
+                      className={`block ${line.accent ? "text-brand-primary" : "text-brand-dark"}`}
+                      initial={{ y: "110%", opacity: 0 }}
+                      animate={{ y: "0%", opacity: 1 }}
+                      transition={{
+                        delay: 0.1 + i * 0.15 + (line.accent ? 0.08 : 0),
+                        duration: 0.65,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                    >
+                      {line.text}
+                    </motion.span>
+                  </span>
+                ))}
+              </h1>
 
-            {/* Typography Header */}
-            <motion.h1
-              variants={itemVariants}
-              className='text-[clamp(2.25rem,6vw,4rem)] font-black leading-[1.05] tracking-tighter text-brand-dark'
-            >
-              Build Software That <br />
-              <span className='relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400'>
-                Powers Your Business
-              </span>
-            </motion.h1>
-
-            {/* Subtext Paragraph */}
-            <motion.p
-              variants={itemVariants}
-              className='max-w-xl text-[clamp(1rem,2.5vw,1.125rem)] leading-relaxed text-text-secondary'
-            >
-              We engineer scalable custom web applications, SaaS ecosystems, and
-              robust automation layers that help businesses optimize performance
-              and step into the digital future.
-            </motion.p>
-
-            {/* Trust List with Clean Micro-Dividers */}
-            <motion.ul
-              variants={itemVariants}
-              className='flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2 border-y border-border-subtle/60 py-3 w-full max-w-xl'
-              aria-label='Core Agency Vectors'
-            >
-              {TRUST_ITEMS.map((item) => (
-                <li
-                  key={item}
-                  className='flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-text-secondary'
-                >
-                  <span
-                    className='h-1.5 w-1.5 rounded-full bg-brand-primary'
-                    aria-hidden
-                  />
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
-
-            {/* Interaction Conversion Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className='flex flex-wrap justify-center lg:justify-start gap-4 w-full'
-            >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              {/* Subline */}
+              <motion.p
+                className='max-w-[52ch] text-[clamp(1rem,2vw,1.125rem)] leading-relaxed text-text-secondary'
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65, duration: 0.5, ease: "easeOut" }}
               >
-                <Link
-                  href='/contact'
-                  className='inline-flex min-h-12 items-center justify-center rounded-button bg-brand-primary px-8 text-sm font-bold text-white shadow-lg shadow-brand-primary/20 transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary'
-                >
-                  Start Your Project
-                </Link>
-              </motion.div>
+                We engineer scalable web applications, SaaS platforms, and
+                business automation that help companies streamline operations
+                and grow with confidence.
+              </motion.p>
 
+              {/* CTAs */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className='flex flex-wrap items-center justify-center gap-5 lg:justify-start'
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.82, duration: 0.45, ease: "easeOut" }}
               >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Link
+                    href='/contact'
+                    className='inline-flex min-h-12 items-center justify-center rounded-button bg-brand-primary px-8 text-sm font-semibold text-white shadow-[0_2px_12px_rgba(255,79,0,0.25)] transition-all duration-300 hover:bg-brand-primary-hover hover:shadow-[0_4px_20px_rgba(255,79,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2'
+                  >
+                    Start Your Project
+                  </Link>
+                </motion.div>
+
                 <button
                   onClick={scrollToServices}
-                  className='inline-flex min-h-12 items-center justify-center rounded-button border border-border-subtle bg-bg-canvas/50 backdrop-blur-sm px-8 text-sm font-bold text-brand-dark transition-colors duration-fast hover:bg-bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark'
+                  className='group inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-brand-dark transition-colors hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary'
                 >
-                  Explore Services
+                  See our services
+                  <svg
+                    viewBox='0 0 16 16'
+                    fill='currentColor'
+                    className='h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5'
+                    aria-hidden
+                  >
+                    <path
+                      fillRule='evenodd'
+                      d='M2 8a.5.5 0 0 1 .5-.5h9.793L10.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.293 8.5H2.5A.5.5 0 0 1 2 8z'
+                    />
+                  </svg>
                 </button>
               </motion.div>
-            </motion.div>
 
-            {/* Grid Metrics Display Panel */}
+              {/* Authority line */}
+              <motion.p
+                className='text-xs text-text-muted'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.05, duration: 0.5 }}
+              >
+                Trusted by founders, operators, and engineering teams to deliver
+                production-ready software
+              </motion.p>
+            </div>
+
+            {/* ── Right: craft mark ── */}
             <motion.div
-              variants={itemVariants}
-              className='mt-4 grid grid-cols-3 gap-3 w-full max-w-xl'
+              className='hidden items-center justify-center lg:col-span-5 lg:flex'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.7 }}
+              aria-hidden
             >
-              {STATS.map((stat) => (
-                <div
-                  key={stat.label}
-                  className='flex flex-col rounded-card border border-border-subtle bg-bg-canvas/40 p-4 shadow-card backdrop-blur-sm'
-                >
-                  <span className='text-xl sm:text-2xl font-black tracking-tight text-brand-dark'>
-                    {stat.value}
-                  </span>
-                  <span className='mt-1 text-[11px] font-medium uppercase tracking-wider text-text-muted leading-none'>
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+              <CraftMark />
             </motion.div>
-          </motion.div>
-
-          {/* ── Right Column: Interactive Integrated IDE Simulation Visual ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ ...transitionSpring, delay: 0.4 }}
-            className='relative lg:col-span-5 hidden lg:flex items-center justify-center'
-            aria-hidden
-          >
-            <VisualPanel />
-          </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 }
 
-/* ─── Background Architectural Components ───────────────────────────────── */
-function BackgroundDecor() {
-  return (
-    <div className='absolute inset-0 pointer-events-none select-none overflow-hidden'>
-      {/* Futuristic Mesh Neumorphic Glow Matrices */}
-      <div className='absolute -right-1/4 -top-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-brand-primary/10 to-blue-500/5 blur-[120px]' />
-      <div className='absolute -left-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-brand-primary/5 to-cyan-500/5 blur-[100px]' />
+// ── Craft Mark SVG ────────────────────────────────────────────────────────
 
-      {/* Performance Grid Pattern Accent matching image_7d923d.jpg */}
-      <div
-        className='absolute inset-0 opacity-[0.015]'
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, var(--color-brand-dark) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--color-brand-dark) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
+const EASE_DRAW: [number, number, number, number] = [0.6, 0, 0.4, 1];
+
+const CORNER_BRACKETS = [
+  "M 52 52 L 52 84 L 84 84",
+  "M 428 52 L 428 84 L 396 84",
+  "M 52 428 L 52 396 L 84 396",
+  "M 428 428 L 428 396 L 396 396",
+];
+
+const QUARTER_DOTS = [
+  { cx: 240, cy: 40 },
+  { cx: 440, cy: 240 },
+  { cx: 240, cy: 440 },
+  { cx: 40, cy: 240 },
+];
+
+const TICK_LINES = [
+  { x1: 240, y1: 110, x2: 240, y2: 96 },
+  { x1: 370, y1: 240, x2: 384, y2: 240 },
+  { x1: 240, y1: 370, x2: 240, y2: 384 },
+  { x1: 110, y1: 240, x2: 96, y2: 240 },
+];
+
+function CraftMark() {
+  return (
+    <svg
+      viewBox='0 0 480 480'
+      fill='none'
+      className='w-full max-w-[440px]'
+      style={{ aspectRatio: "1 / 1" }}
+    >
+      {/* Outer ring */}
+      <motion.circle
+        cx={240}
+        cy={240}
+        r={200}
+        stroke='#201515'
+        strokeWidth='1'
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.13 }}
+        transition={{ delay: 0.5, duration: 1.4, ease: EASE_DRAW }}
+      />
+
+      {/* Middle ring */}
+      <motion.circle
+        cx={240}
+        cy={240}
+        r={130}
+        stroke='#201515'
+        strokeWidth='1'
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.1 }}
+        transition={{ delay: 0.7, duration: 1.1, ease: EASE_DRAW }}
+      />
+
+      {/* Inner accent ring — orange */}
+      <motion.circle
+        cx={240}
+        cy={240}
+        r={68}
+        stroke='#ff4f00'
+        strokeWidth='1.5'
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.65 }}
+        transition={{ delay: 1.0, duration: 0.9, ease: EASE_DRAW }}
+      />
+
+      {/* Horizontal axis */}
+      <motion.line
+        x1='40'
+        y1='240'
+        x2='440'
+        y2='240'
+        stroke='#201515'
+        strokeWidth='0.75'
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.09 }}
+        transition={{ delay: 0.55, duration: 0.9, ease: EASE_DRAW }}
+      />
+
+      {/* Vertical axis */}
+      <motion.line
+        x1='240'
+        y1='40'
+        x2='240'
+        y2='440'
+        stroke='#201515'
+        strokeWidth='0.75'
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.09 }}
+        transition={{ delay: 0.6, duration: 0.9, ease: EASE_DRAW }}
+      />
+
+      {/* Dashed diagonal — TL to BR */}
+      <motion.line
+        x1='90'
+        y1='90'
+        x2='390'
+        y2='390'
+        stroke='#201515'
+        strokeWidth='0.5'
+        strokeDasharray='3 10'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.06 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
+      />
+
+      {/* Dashed diagonal — TR to BL */}
+      <motion.line
+        x1='390'
+        y1='90'
+        x2='90'
+        y2='390'
+        stroke='#201515'
+        strokeWidth='0.5'
+        strokeDasharray='3 10'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.06 }}
+        transition={{ delay: 1.15, duration: 0.5 }}
+      />
+
+      {/* Cardinal tick marks */}
+      {TICK_LINES.map((t, i) => (
+        <motion.line
+          key={i}
+          x1={t.x1}
+          y1={t.y1}
+          x2={t.x2}
+          y2={t.y2}
+          stroke='#201515'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          transition={{ delay: 1.25 + i * 0.05, duration: 0.3 }}
+        />
+      ))}
+
+      {/* Corner brackets — orange */}
+      {CORNER_BRACKETS.map((d, i) => (
+        <motion.path
+          key={i}
+          d={d}
+          stroke='#ff4f00'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.5 }}
+          transition={{
+            delay: 1.35 + i * 0.07,
+            duration: 0.35,
+            ease: "easeOut",
+          }}
+        />
+      ))}
+
+      {/* Quarter dots on outer ring */}
+      {QUARTER_DOTS.map((p, i) => (
+        <motion.circle
+          key={i}
+          cx={p.cx}
+          cy={p.cy}
+          r={3.5}
+          fill='#ff4f00'
+          style={{ transformOrigin: `${p.cx}px ${p.cy}px` }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.5 }}
+          transition={{ delay: 1.6 + i * 0.06, duration: 0.3, ease: "backOut" }}
+        />
+      ))}
+
+      {/* Center dot — last to arrive */}
+      <motion.circle
+        cx={240}
+        cy={240}
+        r={5.5}
+        fill='#ff4f00'
+        style={{ transformOrigin: "240px 240px" }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          delay: 1.85,
+          duration: 0.4,
+          ease: [0.175, 0.885, 0.32, 1.2],
         }}
       />
-    </div>
+    </svg>
   );
 }
 
-/* ─── Interactive Visual Code Panel ─────────────────────────────────────── */
-function VisualPanel() {
+// ── Background ─────────────────────────────────────────────────────────────
+
+function HeroBackground() {
   return (
-    <div className='relative w-full max-w-[440px] group'>
-      {/* Outer ambient blur shadow */}
-      <div className='absolute -inset-1.5 rounded-card bg-gradient-to-r from-brand-primary/20 to-blue-500/20 opacity-40 blur-xl group-hover:opacity-60 transition duration-1000' />
-
-      {/* Core Terminal Frame Container */}
-      <div className='relative flex flex-col overflow-hidden rounded-card border border-white/10 bg-brand-dark shadow-2xl backdrop-blur-md'>
-        {/* IDE Top Bar Window Trim */}
-        <div className='flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-4 py-3'>
-          <div className='flex items-center gap-1.5'>
-            <span className='h-2.5 w-2.5 rounded-full bg-rose-500/80' />
-            <span className='h-2.5 w-2.5 rounded-full bg-amber-500/80' />
-            <span className='h-2.5 w-2.5 rounded-full bg-emerald-500/80' />
-            <span className='ml-2 font-mono text-[11px] font-medium text-white/30 tracking-wider'>
-              gawa-manifest.ts
-            </span>
-          </div>
-          <span className='font-mono text-[10px] text-brand-primary bg-brand-primary/10 px-2 py-0.5 rounded-full font-bold'>
-            v2.0
-          </span>
-        </div>
-
-        {/* Dynamic Code Space */}
-        <div className='flex-1 p-6 font-mono text-xs sm:text-sm leading-relaxed tracking-wide text-white/80'>
-          {CODE_LINES.map((line, i) => (
-            <div
-              key={i}
-              style={{ paddingLeft: `${line.indent * 1.25}rem` }}
-              className='flex items-center whitespace-pre'
-            >
-              <span className='text-blue-400 font-medium'>{line.token}</span>
-              <span className='text-sky-200'>{line.name}</span>
-              <span className='text-brand-primary font-bold'>{line.op}</span>
-              <span className='text-emerald-400 font-light'>{line.rest}</span>
-            </div>
-          ))}
-
-          {/* Sharp CSS-Driven Blinking Caret */}
-          <div className='mt-1.5 h-4 w-1.5 animate-pulse bg-brand-primary' />
-        </div>
-
-        {/* Dynamic Output Status Drawer */}
-        <div className='flex items-center justify-between border-t border-white/5 bg-white/[0.01] px-4 py-2.5 font-mono text-[10px] tracking-wider text-white/40'>
-          <span className='flex items-center gap-1.5'>
-            <span className='h-1.5 w-1.5 rounded-full bg-brand-primary animate-ping' />
-            Engine Ready
-          </span>
-          <span className='text-emerald-400/90 font-medium'>
-            Production Build Successful
-          </span>
-        </div>
-      </div>
-
-      {/* Overlapping Floating Status Badges */}
-      <motion.div
-        whileHover={{ y: -4 }}
-        transition={transitionSpring}
-        className='absolute -right-6 -top-6 flex items-center gap-3 rounded-card border border-border-subtle bg-white/90 p-3 shadow-card backdrop-blur-md'
-      >
-        <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600 font-bold text-sm'>
-          ⚡
-        </div>
-        <div>
-          <p className='text-xs font-black text-brand-dark leading-none'>
-            Next.js 16
-          </p>
-          <p className='text-[10px] font-semibold text-text-muted mt-1'>
-            App Router Edge
-          </p>
-        </div>
-      </motion.div>
-
-      <motion.div
-        whileHover={{ y: 4 }}
-        transition={transitionSpring}
-        className='absolute -bottom-6 -left-6 flex items-center gap-3 rounded-card border border-border-subtle bg-white/90 p-3 shadow-card backdrop-blur-md'
-      >
-        <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 font-bold text-sm'>
-          🚀
-        </div>
-        <div>
-          <p className='text-[10px] font-bold text-text-muted uppercase tracking-wider leading-none'>
-            Performance
-          </p>
-          <p className='text-sm font-black text-brand-primary mt-1'>
-            100% Mobile Score
-          </p>
-        </div>
-      </motion.div>
+    <div className='pointer-events-none absolute inset-0 select-none overflow-hidden'>
+      {/* Warm radial glow behind craft mark area */}
+      <div
+        className='absolute -right-32 top-1/2 -translate-y-1/2 rounded-full blur-[140px]'
+        style={{
+          width: "700px",
+          height: "700px",
+          background:
+            "radial-gradient(ellipse, rgba(255,79,0,0.05) 0%, transparent 70%)",
+        }}
+      />
+      {/* Fine dot grid — warm ink, barely-there */}
+      <div
+        className='absolute inset-0 opacity-[0.022]'
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #201515 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
     </div>
   );
 }

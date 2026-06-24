@@ -34,25 +34,23 @@ export default function ContactInfoPanel() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" as const }}
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-primary"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/10 px-3.5 py-1.5 text-xs font-medium text-brand-primary"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2" aria-hidden>
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-primary opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-primary" />
             </span>
-            Free Consultation
+            Free consultation
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" as const, delay: 0.06 }}
-            className="text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.06] tracking-tighter text-white"
+            className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-black leading-[1.06] tracking-tight text-white"
           >
             Let&apos;s build something{" "}
-            <span className="bg-gradient-to-r from-brand-primary via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              remarkable
-            </span>{" "}
+            <span className="text-brand-primary">remarkable</span>{" "}
             together.
           </motion.h1>
 
@@ -82,7 +80,7 @@ export default function ContactInfoPanel() {
           {NEXT_STEPS.map((item, i) => (
             <div
               key={item.title}
-              className="flex gap-4 border-b border-white/[0.05] py-4 last:border-none"
+              className="flex gap-4 border-b border-white/5 py-4 last:border-none"
             >
               <div className="flex flex-col items-center gap-1 pt-0.5">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 font-mono text-[10px] font-bold text-brand-primary">
@@ -110,7 +108,7 @@ export default function ContactInfoPanel() {
           {TRUST.map((chip) => (
             <span
               key={chip}
-              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-semibold text-white/50"
+              className="rounded-full border border-white/8 bg-white/3 px-3.5 py-1.5 text-[11px] font-semibold text-white/50"
             >
               {chip}
             </span>

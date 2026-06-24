@@ -205,13 +205,13 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
       className={[
         "group relative flex flex-col gap-5 overflow-hidden rounded-card border p-7 transition-all duration-300",
         featured
-          ? "border-brand-primary/20 bg-gradient-to-br from-brand-primary/[0.05] via-transparent to-transparent hover:border-brand-primary/35 hover:shadow-[0_8px_40px_rgba(37,99,235,0.08)] sm:col-span-2 lg:col-span-2"
+          ? "border-brand-primary/20 bg-linear-to-br from-brand-primary/5 via-transparent to-transparent hover:border-brand-primary/35 hover:shadow-[0_8px_40px_rgba(255,79,0,0.08)] sm:col-span-2 lg:col-span-2"
           : "border-border-subtle bg-bg-canvas hover:border-brand-primary/25 hover:shadow-card",
       ].join(" ")}
     >
       {/* Corner accent line on featured cards */}
       {featured && (
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-brand-primary/50 via-brand-primary/20 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-brand-primary/50 via-brand-primary/20 to-transparent" />
       )}
 
       {/* Top row: icon + highlight badge */}
@@ -280,7 +280,7 @@ function BackgroundDecor() {
           width: "600px",
           height: "600px",
           background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(255,79,0,0.05) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />

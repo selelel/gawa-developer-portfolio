@@ -1,102 +1,72 @@
 import Link from "next/link";
 
-const PAGES = [
-  { label: "Home", href: "/" },
-  { label: "Contact", href: "/contact" },
-];
-
 const SERVICES = [
-  { label: "Web Applications", href: "/#services" },
-  { label: "Mobile Apps", href: "/#services" },
+  { label: "Custom Web Applications", href: "/#services" },
+  { label: "Mobile Applications", href: "/#services" },
   { label: "SaaS Platforms", href: "/#services" },
+  { label: "CRM & ERP Systems", href: "/#services" },
   { label: "AI Integrations", href: "/#services" },
-  { label: "API Development", href: "/#services" },
   { label: "Business Automation", href: "/#services" },
 ];
 
-const PROCESS_STEPS = [
-  { label: "Discovery & Planning", href: "/#process" },
-  { label: "Design & Development", href: "/#process" },
-  { label: "Testing & Deployment", href: "/#process" },
-  { label: "Continuous Support", href: "/#process" },
+const COMPANY = [
+  { label: "Services", href: "/#services" },
+  { label: "Our Process", href: "/#process" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Start a Project", href: "/contact" },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-brand-dark" aria-label="Site footer">
-      {/* Top border accent */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent" />
+    <footer aria-label="Site footer" className="bg-brand-dark">
+      {/* ── Main grid ── */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 gap-12 border-b border-white/[0.07] py-16 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] lg:gap-8">
 
-      <div className="mx-auto max-w-7xl px-5 pt-16 pb-8 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
-
-          {/* ── Brand column ── */}
-          <div className="flex flex-col gap-5">
+          {/* Brand column */}
+          <div className="flex flex-col gap-6 sm:col-span-2 lg:col-span-1 lg:pr-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg w-fit"
+              className="inline-flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-lg w-fit"
               aria-label="Gawa Developer — Home"
             >
               <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-primary text-sm font-black text-white"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-primary text-[11px] font-black text-white"
                 style={{ aspectRatio: "1/1" }}
                 aria-hidden
               >
                 G
               </span>
-              <span className="text-base font-bold text-white">
+              <span className="text-sm font-bold text-white/90">
                 Gawa{" "}
-                <span className="font-medium text-white/40">Developer</span>
+                <span className="font-medium text-white/45">Developer</span>
               </span>
             </Link>
 
-            <p className="max-w-[260px] text-sm leading-relaxed text-white/40">
-              We help businesses transform ideas into scalable digital products
-              through modern software engineering and thoughtful design.
+            <p className="max-w-[28ch] text-sm leading-relaxed text-white/35">
+              We engineer custom software that helps businesses streamline
+              operations and grow with confidence.
             </p>
 
-            {/* Availability indicator */}
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-xs text-white/40">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-emerald-400"
-                aria-hidden
-              />
-              Available for new projects
-            </span>
+            <Link
+              href="/contact"
+              className="inline-flex min-h-10 w-fit items-center justify-center rounded-button bg-brand-primary px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            >
+              Start Your Project
+            </Link>
           </div>
 
-          {/* ── Pages ── */}
-          <div>
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-widest text-white/25">
-              Pages
-            </p>
-            <ul className="flex flex-col gap-3">
-              {PAGES.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/45 transition-colors duration-fast hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Services ── */}
-          <div>
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-widest text-white/25">
-              Services
-            </p>
-            <ul className="flex flex-col gap-3">
+          {/* Services */}
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold text-white/30">Services</p>
+            <ul className="flex flex-col gap-2.5">
               {SERVICES.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 transition-colors duration-fast hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
+                    className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -105,17 +75,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Process ── */}
-          <div>
-            <p className="mb-5 text-[11px] font-semibold uppercase tracking-widest text-white/25">
-              Our Process
-            </p>
-            <ul className="flex flex-col gap-3">
-              {PROCESS_STEPS.map((link) => (
+          {/* Company */}
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold text-white/30">Company</p>
+            <ul className="flex flex-col gap-2.5">
+              {COMPANY.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 transition-colors duration-fast hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
+                    className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -123,20 +91,36 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Contact nudge */}
+          <div className="flex flex-col gap-4">
+            <p className="text-xs font-semibold text-white/30">Get in touch</p>
+            <div className="flex flex-col gap-3">
+              <a
+                href="mailto:gimelcontz@gmail.com"
+                className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
+              >
+                gimelcontz@gmail.com
+              </a>
+              <div className="flex items-center gap-2 text-xs text-white/25">
+                <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                </span>
+                Accepting new projects
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* ── Divider ── */}
-        <div className="mt-14 h-px bg-white/[0.06]" />
-
         {/* ── Bottom bar ── */}
-        <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-white/25 sm:flex-row">
-          <span>
+        <div className="flex flex-col items-center gap-3 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="text-[11px] text-white/20">
             © {year} Gawa Developer. All rights reserved.
-          </span>
-          <span className="flex items-center gap-1.5">
-            Built with
-            <span className="text-white/40">Next.js 16 · React 19 · Tailwind CSS v4</span>
-          </span>
+          </p>
+          <p className="text-[11px] text-white/15">
+            Build Better Software. Grow Faster.
+          </p>
         </div>
       </div>
     </footer>
