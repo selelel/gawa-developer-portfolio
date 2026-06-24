@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* Gawa Developer Accent System — Premium Blue Update */
+  --color-brand-primary: #2563eb;       /* Modern, highly visible Royal Blue */
+  --color-brand-primary-hover: #1d4ed8; /* Deeper blue for active/hover states */
+  --color-brand-dark: #09090b;          /* Pure Obsidian Black (Main CTA backgrounds) */
+  --color-brand-light: #ffffff;         /* Pure White */
+  
+  /* Canvas Backgrounds (Derived from image_7d923d.jpg) */
+  --color-bg-canvas: #ffffff;          
+  --color-bg-surface: #f8fafc;         
+  --color-bg-muted: #f1f5f9;           
+
+  /* WCAG AAA Contrast Typography (Optimized for Screen Readability) */
+  --color-text-primary: #0f172a;       
+  --color-text-secondary: #334155;     
+  --color-text-muted: #64748b;         
+
+  /* Structural Elements */
+  --color-border-subtle: #e2e8f0;      
+  --color-border-focus: #2563eb;        /* Accent Blue for focus rings and active states */
+  --shadow-card: 0px 10px 30px -5px rgba(0, 0, 0, 0.03), 0px 1px 3px 0px rgba(0, 0, 0, 0.02);
+  --shadow-input: inset 0px 1px 2px rgba(15, 23, 42, 0.05);
+
+  /* Touch-Ready Radii */
+  --radius-card: 16px;                 
+  --radius-button: 9999px;             
+  --radius-input: 12px;                
+
+  /* motion.dev Animation Tokens */
+  --ease-spring-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --ease-smooth-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+}
+
+/* Mobile-First Utility Breakpoint Architecture */
+@utility container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;                  
+  padding-right: 1rem;
+  
+  @media (min-width: 640px) { padding-left: 2rem; padding-right: 2rem; }
+  @media (min-width: 1024px) { max-width: 1200px; }
+}
+
+body {
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Disable all animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0px, 0); }
+  50%       { transform: translate3d(0, -10px, 0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.7; }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
