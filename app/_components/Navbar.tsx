@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 const NAV_LINKS = [
@@ -14,6 +14,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -21,10 +23,42 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on navigation
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  // Focus first item on open, trap Tab within panel, Escape returns focus to trigger
+  useEffect(() => {
+    if (!menuOpen) return;
+    const panel = menuRef.current;
+    if (!panel) return;
+
+    const focusables = Array.from(
+      panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+    focusables[0]?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
   return (
     <>
@@ -83,11 +117,11 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — min-h-11 meets WCAG 2.5.5 44px target */}
           <motion.div className='hidden md:block' whileTap={{ scale: 0.97 }}>
             <Link
               href='/contact'
-              className='inline-flex min-h-10 min-w-10 items-center justify-center rounded-button bg-brand-primary px-5 py-2 text-sm font-semibold text-white transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2'
+              className='inline-flex min-h-11 min-w-10 items-center justify-center rounded-button bg-brand-primary px-5 py-2 text-sm font-semibold text-white transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2'
             >
               Start Your Project
             </Link>
@@ -95,9 +129,11 @@ export default function Navbar() {
 
           {/* Mobile menu toggle — 48×48 touch target */}
           <button
+            ref={hamburgerRef}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
+            aria-controls='mobile-nav'
             className='flex h-12 w-12 items-center justify-center rounded-xl border border-border-subtle bg-bg-surface transition-colors hover:bg-bg-muted md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary'
           >
             <HamburgerIcon open={menuOpen} />
@@ -126,6 +162,11 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             key='menu'
+            ref={menuRef}
+            id='mobile-nav'
+            role='dialog'
+            aria-modal='true'
+            aria-label='Navigation menu'
             initial={{ opacity: 0, y: -8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}

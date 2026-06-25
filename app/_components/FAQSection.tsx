@@ -158,7 +158,7 @@ function FAQItem({
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex min-h-[52px] w-full items-center justify-between gap-6 py-5 px-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-inset"
+        className="flex min-h-13 w-full items-center justify-between gap-6 py-5 px-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-inset"
       >
         <span
           className={[
@@ -176,7 +176,7 @@ function FAQItem({
           className={[
             "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-colors duration-200",
             isOpen
-              ? "border-brand-dark/20 bg-brand-dark/6 text-text-primary"
+              ? "border-accent/30 bg-accent/8 text-accent"
               : "border-border-subtle bg-bg-surface text-text-muted",
           ].join(" ")}
           style={{ aspectRatio: "1/1" }}
@@ -254,7 +254,7 @@ function ContactNudge() {
       <motion.div whileTap={{ scale: 0.97 }}>
         <Link
           href="/contact"
-          className="flex min-h-12 w-full items-center justify-center rounded-button bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+          className="flex min-h-12 w-full items-center justify-center rounded-button bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-fast hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           Schedule a Free Call
         </Link>
@@ -269,7 +269,7 @@ function ContactNudge() {
         ].map((item) => (
           <li key={item} className="flex items-center gap-2 text-xs text-text-muted">
             <span
-              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-bg-muted text-[9px] font-bold text-text-secondary"
+              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent/10 text-[9px] font-bold text-accent-hover"
               aria-hidden
             >
               ✓
