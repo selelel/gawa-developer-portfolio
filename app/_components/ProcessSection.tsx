@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import React, { useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 
 // ── Icons ──────────────────────────────────────────────────────────────────
 
@@ -128,150 +128,193 @@ const STEPS: Step[] = [
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const goTo = useCallback((i: number) => {
+    const clamped = Math.max(0, Math.min(i, STEPS.length - 1));
+    setActiveStep(clamped);
+    tabRefs.current[clamped]?.focus();
+  }, []);
 
   return (
-    <section
-      id="process"
-      aria-label='Development Process'
-      className='relative overflow-hidden bg-brand-dark py-28 sm:py-36'
-    >
-      <BackgroundDecor />
+    <MotionConfig reducedMotion='user'>
+      <section
+        id='process'
+        aria-label='Development Process'
+        className='relative overflow-hidden bg-brand-dark py-28 sm:py-36'
+      >
+        <BackgroundDecor />
 
-      <div className='relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
-        <div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20'>
-
-          {/* Left column: sticky context panel */}
-          <div className='lg:col-span-5 lg:sticky lg:top-28 flex flex-col gap-8'>
-            <div className='flex flex-col gap-4'>
-              <h2 className='font-heading text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.06] text-white text-balance'>
-                Engineering{" "}
-                <em>your platform</em>
-              </h2>
-
-              <p className='max-w-md text-sm leading-relaxed text-white/60'>
-                A predictable, transparent pipeline that takes your idea from
-                brief to production without surprises.
-              </p>
-            </div>
-
-            {/* Active step detail panel */}
-            <div className='overflow-hidden rounded-xl border border-white/8 bg-white/3 p-6'>
-              <AnimatePresence mode='wait'>
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                >
-                  {/* Step icon + identity */}
-                  <div className='flex items-start gap-4 border-b border-white/8 pb-5 mb-5'>
-                    <div className='flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/12 text-white/60'>
-                      {React.createElement(STEPS[activeStep].Icon)}
-                    </div>
-                    <div>
-                      <p className='text-xs text-white/40 mb-1'>
-                        Step {STEPS[activeStep].number} · {STEPS[activeStep].duration}
-                      </p>
-                      <h4 className='text-lg font-semibold text-white'>
-                        {STEPS[activeStep].title}
-                      </h4>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className='text-sm leading-relaxed text-white/60'>
-                    {STEPS[activeStep].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          {/* Right column: interactive step list */}
-          <div className='relative lg:col-span-7'>
-            <div className='absolute left-6 top-6 bottom-6 w-px bg-linear-to-b from-white/15 via-white/6 to-transparent' />
-
-            <div
-              className='space-y-2'
-              role='listbox'
-              aria-label='Process steps'
+        <div className='relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
+          <div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20'>
+            {/* Left: sticky detail panel — below step list on mobile, left on desktop */}
+            <motion.div
+              className='lg:col-span-5 lg:sticky lg:top-28 flex flex-col gap-8 order-last lg:order-first'
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              {STEPS.map((step, i) => {
-                const isActive = activeStep === i;
-                return (
-                  <div
-                    key={step.number}
-                    role='option'
-                    aria-selected={isActive}
-                    tabIndex={0}
-                    onMouseEnter={() => setActiveStep(i)}
-                    onFocus={() => setActiveStep(i)}
-                    onKeyDown={(e) => {
-                      if (e.key === "ArrowDown") setActiveStep(Math.min(i + 1, STEPS.length - 1));
-                      if (e.key === "ArrowUp") setActiveStep(Math.max(i - 1, 0));
-                    }}
-                    className='group relative flex gap-6 pl-14 pt-0.5 pb-0.5 cursor-default outline-none'
+              <div className='flex flex-col gap-4'>
+                <h2 className='font-heading text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.06] text-white text-balance'>
+                  Engineering <em>your platform</em>
+                </h2>
+
+                <p className='max-w-md text-sm leading-relaxed text-white/60'>
+                  A predictable, transparent pipeline that takes your idea from
+                  brief to production without surprises.
+                </p>
+              </div>
+
+              {/* Active step detail panel */}
+              <div
+                role='tabpanel'
+                id='process-panel'
+                aria-labelledby={`process-tab-${activeStep}`}
+                aria-live='polite'
+                aria-atomic='true'
+                className='overflow-hidden rounded-xl border border-white/8 bg-white/3 p-6'
+              >
+                <AnimatePresence mode='wait'>
+                  <motion.div
+                    key={activeStep}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                   >
-                    {/* Step node */}
-                    <div className='absolute left-0 top-3.5 flex h-12 w-12 items-center justify-center'>
-                      <span
-                        className={`absolute text-xs font-semibold transition-colors duration-300 ${
-                          isActive ? "text-white/70" : "text-white/25 group-hover:text-white/40"
-                        }`}
-                      >
-                        {step.number}
-                      </span>
-                      <div
-                        className={`h-2 w-2 rounded-full ring-4 ring-brand-dark transition-all duration-300 ${
-                          isActive ? "bg-white scale-110" : "bg-white/15 group-hover:bg-white/30"
-                        }`}
-                      />
+                    <div className='flex items-start gap-4 border-b border-white/8 pb-5 mb-5'>
+                      <div className='flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/12 text-white/60'>
+                        {React.createElement(STEPS[activeStep].Icon)}
+                      </div>
+                      <div>
+                        <p className='text-xs text-white/50 mb-1'>
+                          Step {STEPS[activeStep].number} ·{" "}
+                          {STEPS[activeStep].duration}
+                        </p>
+                        <p className='text-lg font-semibold text-white leading-snug'>
+                          {STEPS[activeStep].title}
+                        </p>
+                      </div>
                     </div>
 
-                    {/* Step card */}
+                    <p className='text-sm leading-relaxed text-white/60'>
+                      {STEPS[activeStep].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.div>
+
+            {/* Right: interactive step list — first on mobile, right on desktop */}
+            <motion.div
+              className='relative lg:col-span-7 order-first lg:order-last'
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            >
+              <div className='absolute left-6 top-6 bottom-6 w-px bg-linear-to-b from-white/15 via-white/6 to-transparent' />
+
+              <div
+                role='tablist'
+                aria-orientation='vertical'
+                aria-label='Process steps'
+                className='space-y-2'
+              >
+                {STEPS.map((step, i) => {
+                  const isActive = activeStep === i;
+                  return (
                     <div
-                      className={`flex-1 rounded-xl border p-5 transition-all duration-300 ${
-                        isActive
-                          ? "bg-white/4 border-white/10"
-                          : "bg-white/1 border-white/5 group-hover:bg-white/3 group-hover:border-white/8"
-                      }`}
+                      key={step.number}
+                      ref={(el) => {
+                        tabRefs.current[i] = el;
+                      }}
+                      id={`process-tab-${i}`}
+                      role='tab'
+                      aria-selected={isActive}
+                      aria-controls='process-panel'
+                      tabIndex={isActive ? 0 : -1}
+                      onMouseEnter={() => setActiveStep(i)}
+                      onFocus={() => setActiveStep(i)}
+                      onClick={() => goTo(i)}
+                      onKeyDown={(e) => {
+                        if (e.key === "ArrowDown") {
+                          e.preventDefault();
+                          goTo(i + 1);
+                        }
+                        if (e.key === "ArrowUp") {
+                          e.preventDefault();
+                          goTo(i - 1);
+                        }
+                        if (e.key === "Home") {
+                          e.preventDefault();
+                          goTo(0);
+                        }
+                        if (e.key === "End") {
+                          e.preventDefault();
+                          goTo(STEPS.length - 1);
+                        }
+                      }}
+                      className='group relative flex gap-6 pl-14 pt-0.5 pb-0.5 cursor-pointer rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-white/35'
                     >
-                      <div className='flex items-center justify-between gap-4'>
-                        <h3
-                          className={`text-sm font-semibold transition-colors duration-300 ${
-                            isActive ? "text-white" : "text-white/65 group-hover:text-white/85"
-                          }`}
-                        >
-                          {step.title}
-                        </h3>
+                      {/* Step node */}
+                      <div className='absolute left-0 top-3.5 flex h-12 w-12 items-center justify-center'>
                         <span
-                          className={`text-xs transition-colors duration-300 ${
-                            isActive ? "text-white/55" : "text-white/30"
+                          aria-hidden='true'
+                          className={`absolute text-xs font-semibold transition-colors duration-300 ${
+                            isActive
+                              ? "text-white/70"
+                              : "text-white/40 group-hover:text-white/55"
                           }`}
                         >
-                          {step.duration}
+                          {step.number}
                         </span>
+                        <div
+                          className={`h-2 w-2 rounded-full ring-4 ring-brand-dark transition-all duration-300 ${
+                            isActive
+                              ? "bg-white scale-110"
+                              : "bg-white/15 group-hover:bg-white/30"
+                          }`}
+                        />
                       </div>
 
-                      <p
-                        className={`mt-2.5 text-xs sm:text-sm leading-relaxed transition-all duration-300 ${
+                      {/* Step card — title + duration only; description lives in the detail panel */}
+                      <div
+                        className={`flex-1 rounded-xl border p-5 transition-all duration-300 ${
                           isActive
-                            ? "text-white/55 max-h-40 opacity-100"
-                            : "text-white/40 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100 group-hover:text-white/50"
+                            ? "bg-white/4 border-white/10"
+                            : "bg-white/1 border-white/5 group-hover:bg-white/3 group-hover:border-white/8"
                         }`}
                       >
-                        {step.description}
-                      </p>
+                        <div className='flex items-center justify-between gap-4'>
+                          <h3
+                            className={`text-sm font-semibold transition-colors duration-300 ${
+                              isActive
+                                ? "text-white"
+                                : "text-white/65 group-hover:text-white/85"
+                            }`}
+                          >
+                            {step.title}
+                          </h3>
+                          <span
+                            className={`shrink-0 text-xs transition-colors duration-300 ${
+                              isActive ? "text-white/55" : "text-white/50"
+                            }`}
+                          >
+                            {step.duration}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MotionConfig>
   );
 }
 
@@ -279,15 +322,17 @@ export default function ProcessSection() {
 
 function BackgroundDecor() {
   return (
-    <div className='absolute inset-0 pointer-events-none select-none overflow-hidden'>
-      {/* Lavender atmospheric orb */}
+    <div
+      className='absolute inset-0 pointer-events-none select-none overflow-hidden'
+      aria-hidden='true'
+    >
       <div
         className='absolute left-[-10%] top-1/3 rounded-full blur-[160px]'
         style={{
           width: "600px",
           height: "500px",
           background:
-            "radial-gradient(ellipse, rgba(200,184,224,0.08) 0%, transparent 70%)",
+            "radial-gradient(ellipse, color-mix(in srgb, var(--color-gradient-lavender) 8%, transparent) 0%, transparent 70%)",
         }}
       />
       <div className='absolute inset-x-0 top-0 h-32 bg-linear-to-b from-brand-dark to-transparent' />

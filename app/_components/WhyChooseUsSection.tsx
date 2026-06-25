@@ -200,21 +200,21 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
       className={[
         "group relative flex flex-col gap-5 overflow-hidden rounded-card border p-7 transition-all duration-300",
         featured
-          ? "border-border-subtle bg-bg-surface hover:border-brand-dark/20 hover:shadow-card sm:col-span-2 lg:col-span-2"
-          : "border-border-subtle bg-bg-canvas hover:bg-bg-surface hover:shadow-card",
+          ? "border-border-subtle bg-bg-surface hover:border-accent/25 hover:shadow-card sm:col-span-2 lg:col-span-2"
+          : "border-border-subtle bg-bg-canvas hover:border-accent/15 hover:bg-bg-surface hover:shadow-card",
       ].join(" ")}
     >
       {/* Top row: icon + highlight badge */}
       <div className="flex items-start justify-between gap-4">
         <div
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-bg-muted text-text-secondary transition-colors duration-300 group-hover:bg-brand-dark/8 group-hover:text-text-primary"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-bg-muted text-text-secondary transition-colors duration-300 group-hover:bg-accent/8 group-hover:text-accent"
           style={{ aspectRatio: "1/1" }}
         >
           <Icon />
         </div>
 
         {highlight && (
-          <span className="shrink-0 rounded-full bg-bg-muted px-3 py-1 text-[11px] font-semibold tracking-wide text-text-muted">
+          <span className="shrink-0 rounded-full bg-accent/8 px-3 py-1 text-[11px] font-semibold tracking-wide text-accent-hover">
             {highlight}
           </span>
         )}

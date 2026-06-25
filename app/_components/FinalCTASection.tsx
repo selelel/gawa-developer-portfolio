@@ -64,8 +64,8 @@ export default function FinalCTASection() {
                 ease: "easeOut" as const,
               }}
               className={[
-                "mr-[0.22em] inline-block last:mr-0 text-white",
-                word.italic ? "italic" : "",
+                "mr-[0.22em] inline-block last:mr-0",
+                word.italic ? "italic text-accent" : "text-white",
               ].join(" ")}
             >
               {word.text}
@@ -138,7 +138,7 @@ export default function FinalCTASection() {
               key={chip}
               className="flex items-center gap-2 text-xs text-white/40"
             >
-              <span className="h-1 w-1 rounded-full bg-white/30" aria-hidden />
+              <span className="h-1 w-1 rounded-full bg-accent/50" aria-hidden />
               {chip}
             </span>
           ))}

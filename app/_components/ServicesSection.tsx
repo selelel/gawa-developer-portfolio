@@ -257,7 +257,7 @@ function FeaturedRow({ service, index }: { service: Service; index: number }) {
       className="group flex flex-col gap-3 py-7 sm:flex-row sm:items-center sm:gap-8"
     >
       <div className="flex shrink-0 items-center gap-4 sm:w-64 lg:w-72">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 text-white/50 transition-colors duration-200 group-hover:border-white/25 group-hover:text-white/75">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/25 text-accent/70 transition-colors duration-200 group-hover:border-accent/50 group-hover:text-accent">
           <Icon />
         </div>
         <h3 className="text-base font-semibold text-white">{title}</h3>
@@ -285,7 +285,7 @@ function CompactCard({ service, index }: { service: Service; index: number }) {
       }}
       className="flex flex-col gap-3 rounded-card border border-white/7 p-5 transition-colors duration-200 hover:border-white/13 hover:bg-white/3"
     >
-      <div className="text-white/40">
+      <div className="text-white/40 transition-colors duration-200 group-hover:text-accent/70">
         <Icon />
       </div>
       <div className="flex flex-col gap-1.5">

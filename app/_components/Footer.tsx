@@ -52,7 +52,7 @@ export default function Footer() {
 
             <Link
               href="/contact"
-              className="inline-flex min-h-10 w-fit items-center justify-center rounded-button border border-white/15 px-5 text-xs font-semibold text-white/70 transition-colors duration-200 hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="inline-flex min-h-11 w-fit items-center justify-center rounded-button border border-white/15 px-5 text-xs font-semibold text-white/70 transition-colors duration-200 hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               Start Your Project
             </Link>
@@ -60,13 +60,13 @@ export default function Footer() {
 
           {/* Services */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-semibold text-white/30">Services</p>
+            <p className="text-xs font-semibold text-white/50">Services</p>
             <ul className="flex flex-col gap-2.5">
               {SERVICES.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
+                    className="block py-1 text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -77,13 +77,13 @@ export default function Footer() {
 
           {/* Company */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-semibold text-white/30">Company</p>
+            <p className="text-xs font-semibold text-white/50">Company</p>
             <ul className="flex flex-col gap-2.5">
               {COMPANY.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
+                    className="block py-1 text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -94,15 +94,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-semibold text-white/30">Get in touch</p>
+            <p className="text-xs font-semibold text-white/50">Get in touch</p>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:gimelcontz@gmail.com"
-                className="text-sm text-white/50 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
+                className="block py-1 text-sm text-white/50 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
               >
                 gimelcontz@gmail.com
               </a>
-              <div className="flex items-center gap-2 text-xs text-white/35">
+              <div className="flex items-center gap-2 text-xs text-white/55">
                 <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden>
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -115,10 +115,10 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="flex flex-col items-center gap-3 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-[11px] text-white/30">
+          <p className="text-xs text-white/50">
             © {year} Gawa Developer. All rights reserved.
           </p>
-          <p className="text-[11px] text-white/20">
+          <p className="text-xs text-white/45">
             Build Better Software. Grow Faster.
           </p>
         </div>
