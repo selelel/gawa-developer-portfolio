@@ -55,7 +55,7 @@ const IconHeadset = () => (
   </svg>
 );
 
-// ── Data Types ─────────────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────
 
 type Step = {
   number: string;
@@ -63,8 +63,6 @@ type Step = {
   description: string;
   Icon: () => React.JSX.Element;
   duration: string;
-  metric: string;
-  metricLabel: string;
 };
 
 const STEPS: Step[] = [
@@ -75,8 +73,6 @@ const STEPS: Step[] = [
       "We learn your business, goals, and users through structured workshops. This phase surfaces constraints, defines success criteria, and ensures we solve the right problem — before writing a single line of code.",
     Icon: IconSearch,
     duration: "1–2 weeks",
-    metric: "0% → 15%",
-    metricLabel: "Scope Alignment",
   },
   {
     number: "02",
@@ -85,8 +81,6 @@ const STEPS: Step[] = [
       "A detailed technical roadmap is created — architecture decisions, sprint milestones, tech stack choices, and resource allocation. You'll know exactly what's being built and when.",
     Icon: IconMap,
     duration: "1 week",
-    metric: "15% → 30%",
-    metricLabel: "Blueprint Fixed",
   },
   {
     number: "03",
@@ -95,8 +89,6 @@ const STEPS: Step[] = [
       "Wireframes, UI systems, and interactive prototypes are crafted and reviewed with your team. Nothing moves to development until the design is validated — saving costly revisions later.",
     Icon: IconPenTool,
     duration: "2–3 weeks",
-    metric: "30% → 45%",
-    metricLabel: "UI Specs Locked",
   },
   {
     number: "04",
@@ -104,9 +96,7 @@ const STEPS: Step[] = [
     description:
       "Engineers build in focused sprints with daily standups, continuous integration, and code reviews. You receive regular demos so progress is always visible and aligned with your expectations.",
     Icon: IconCode,
-    duration: "Sprints",
-    metric: "45% → 75%",
-    metricLabel: "Active Compilation",
+    duration: "Ongoing sprints",
   },
   {
     number: "05",
@@ -115,8 +105,6 @@ const STEPS: Step[] = [
       "Automated and manual QA across browsers, devices, and edge cases. We test for performance, accessibility, and security before anything reaches production — so launch day is clean.",
     Icon: IconCheckCircle,
     duration: "1–2 weeks",
-    metric: "75% → 90%",
-    metricLabel: "QA Pass Index",
   },
   {
     number: "06",
@@ -125,8 +113,6 @@ const STEPS: Step[] = [
       "Your product goes live on scalable infrastructure with zero-downtime deployments, monitoring dashboards, and rollback capabilities. Launch is controlled, confident, and rehearsed.",
     Icon: IconRocket,
     duration: "1–3 days",
-    metric: "90% → 100%",
-    metricLabel: "Production Push",
   },
   {
     number: "07",
@@ -135,12 +121,10 @@ const STEPS: Step[] = [
       "We don't disappear after launch. Ongoing monitoring, security patches, performance tuning, and iterative feature development keep your software improving as your business grows.",
     Icon: IconHeadset,
     duration: "Ongoing",
-    metric: "24/7",
-    metricLabel: "Telemetry Feed",
   },
 ];
 
-// ── Main Section Component ─────────────────────────────────────────────────
+// ── Section ────────────────────────────────────────────────────────────────
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -149,94 +133,56 @@ export default function ProcessSection() {
     <section
       id="process"
       aria-label='Development Process'
-      className='relative overflow-hidden bg-brand-dark py-28 sm:py-36 selection:bg-brand-primary/30'
+      className='relative overflow-hidden bg-brand-dark py-28 sm:py-36'
     >
-      <BackgroundMatrixDecor />
+      <BackgroundDecor />
 
       <div className='relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
         <div className='grid grid-cols-1 items-start gap-16 lg:grid-cols-12 lg:gap-20'>
+
           {/* Left column: sticky context panel */}
           <div className='lg:col-span-5 lg:sticky lg:top-28 flex flex-col gap-8'>
             <div className='flex flex-col gap-4'>
-              <span className='inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/2 px-3.5 py-1 text-xs font-medium text-brand-primary'>
-                <span className='h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse' />
-                Development process
-              </span>
-
-              <h2 className='text-[clamp(2rem,4.5vw,3.25rem)] font-black leading-[1.02] tracking-tight text-white'>
+              <h2 className='font-heading text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.06] text-white text-balance'>
                 Engineering{" "}
-                <span className='text-brand-primary'>Your Platform</span>
+                <em>your platform</em>
               </h2>
 
-              <p className='max-w-md text-sm leading-relaxed text-white/40 font-medium'>
-                A highly continuous, predictable pipeline meticulously optimized
-                to transition complex business logic into custom production
-                builds.
+              <p className='max-w-md text-sm leading-relaxed text-white/60'>
+                A predictable, transparent pipeline that takes your idea from
+                brief to production without surprises.
               </p>
             </div>
 
             {/* Active step detail panel */}
-            <div className='relative overflow-hidden rounded-xl border border-white/6 bg-linear-to-b from-white/3 to-transparent p-6 backdrop-blur-xl shadow-2xl'>
+            <div className='overflow-hidden rounded-xl border border-white/8 bg-white/3 p-6'>
               <AnimatePresence mode='wait'>
                 <motion.div
                   key={activeStep}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                 >
-                  <div className='flex items-center gap-4 border-b border-white/5 pb-5 mb-5'>
-                    <div className='h-12 w-12 rounded-xl flex items-center justify-center bg-brand-primary/10 text-brand-primary shadow-inner border border-brand-primary/20'>
+                  {/* Step icon + identity */}
+                  <div className='flex items-start gap-4 border-b border-white/8 pb-5 mb-5'>
+                    <div className='flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/12 text-white/60'>
                       {React.createElement(STEPS[activeStep].Icon)}
                     </div>
                     <div>
-                      <p className='text-[10px] font-mono tracking-wider text-brand-primary font-bold leading-none'>
-                        Active phase
+                      <p className='text-xs text-white/40 mb-1'>
+                        Step {STEPS[activeStep].number} · {STEPS[activeStep].duration}
                       </p>
-                      <h4 className='text-lg font-black text-white mt-1.5 tracking-tight'>
+                      <h4 className='text-lg font-semibold text-white'>
                         {STEPS[activeStep].title}
                       </h4>
                     </div>
                   </div>
 
-                  <div className='grid grid-cols-2 gap-3 mb-4'>
-                    <div className='rounded-xl bg-white/2 border border-white/4 p-3'>
-                      <span className='block text-[9px] font-bold text-white/30 uppercase tracking-widest'>
-                        Pipeline Anchor
-                      </span>
-                      <span className='mt-1 block font-mono text-xs font-bold text-white'>
-                        SYSTEM_NODE_0{activeStep + 1}
-                      </span>
-                    </div>
-                    <div className='rounded-xl bg-white/2 border border-white/4 p-3'>
-                      <span className='block text-[9px] font-bold text-white/30 uppercase tracking-widest'>
-                        Time Budget
-                      </span>
-                      <span className='mt-1 block font-mono text-xs font-bold text-white/80'>
-                        {STEPS[activeStep].duration}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Progress metric */}
-                  <div className='rounded-xl bg-white/1 border border-white/3 p-4'>
-                    <div className='flex justify-between items-center mb-2 text-[10px] font-mono tracking-wide text-white/40'>
-                      <span>{STEPS[activeStep].metricLabel}</span>
-                      <span className='text-brand-primary font-bold'>
-                        {STEPS[activeStep].metric}
-                      </span>
-                    </div>
-                    <div className='h-1 w-full bg-white/5 rounded-full overflow-hidden'>
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{
-                          width: `${((activeStep + 1) / STEPS.length) * 100}%`,
-                        }}
-                        className='h-full bg-linear-to-r from-brand-primary to-amber-400'
-                        transition={{ type: "spring", stiffness: 80 }}
-                      />
-                    </div>
-                  </div>
+                  {/* Description */}
+                  <p className='text-sm leading-relaxed text-white/60'>
+                    {STEPS[activeStep].description}
+                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -244,62 +190,79 @@ export default function ProcessSection() {
 
           {/* Right column: interactive step list */}
           <div className='relative lg:col-span-7'>
-            <div className='absolute left-6 top-6 bottom-6 w-px bg-linear-to-b from-brand-primary/30 via-white/6 to-transparent' />
+            <div className='absolute left-6 top-6 bottom-6 w-px bg-linear-to-b from-white/15 via-white/6 to-transparent' />
 
-            <div className='space-y-3.5'>
+            <div
+              className='space-y-2'
+              role='listbox'
+              aria-label='Process steps'
+            >
               {STEPS.map((step, i) => {
                 const isActive = activeStep === i;
                 return (
                   <div
                     key={step.number}
+                    role='option'
+                    aria-selected={isActive}
+                    tabIndex={0}
                     onMouseEnter={() => setActiveStep(i)}
-                    className='group relative flex gap-6 pl-14 pt-0.5 pb-0.5 transition-all duration-normal cursor-default'
+                    onFocus={() => setActiveStep(i)}
+                    onKeyDown={(e) => {
+                      if (e.key === "ArrowDown") setActiveStep(Math.min(i + 1, STEPS.length - 1));
+                      if (e.key === "ArrowUp") setActiveStep(Math.max(i - 1, 0));
+                    }}
+                    className='group relative flex gap-6 pl-14 pt-0.5 pb-0.5 cursor-default outline-none'
                   >
                     {/* Step node */}
                     <div className='absolute left-0 top-3.5 flex h-12 w-12 items-center justify-center'>
-                      <div
-                        className={`absolute font-mono text-[10px] font-bold tracking-tighter transition-colors duration-normal ${isActive ? "text-brand-primary" : "text-white/20 group-hover:text-white/40"}`}
+                      <span
+                        className={`absolute text-xs font-semibold transition-colors duration-300 ${
+                          isActive ? "text-white/70" : "text-white/25 group-hover:text-white/40"
+                        }`}
                       >
                         {step.number}
-                      </div>
+                      </span>
                       <div
-                        className={`h-2 w-2 rounded-full ring-4 ring-brand-dark transition-all duration-normal ${isActive ? "bg-brand-primary scale-110" : "bg-white/10 group-hover:bg-white/30"}`}
-                      />
-                      <span
-                        className={`absolute inset-1.5 border border-white/8 rounded-full transition-all duration-normal ${isActive ? "opacity-100 scale-105 border-brand-primary/30 animate-pulse" : "opacity-0 group-hover:opacity-100"}`}
+                        className={`h-2 w-2 rounded-full ring-4 ring-brand-dark transition-all duration-300 ${
+                          isActive ? "bg-white scale-110" : "bg-white/15 group-hover:bg-white/30"
+                        }`}
                       />
                     </div>
 
                     {/* Step card */}
                     <div
-                      className={`flex-1 rounded-xl border p-5 transition-all duration-normal ${isActive ? "bg-white/3 border-white/8 shadow-lg" : "bg-white/1 border-white/4 group-hover:bg-white/2 group-hover:border-white/6"}`}
+                      className={`flex-1 rounded-xl border p-5 transition-all duration-300 ${
+                        isActive
+                          ? "bg-white/4 border-white/10"
+                          : "bg-white/1 border-white/5 group-hover:bg-white/3 group-hover:border-white/8"
+                      }`}
                     >
                       <div className='flex items-center justify-between gap-4'>
                         <h3
-                          className={`text-sm font-black tracking-wide transition-colors ${isActive ? "text-white" : "text-white/70 group-hover:text-white/90"}`}
+                          className={`text-sm font-semibold transition-colors duration-300 ${
+                            isActive ? "text-white" : "text-white/65 group-hover:text-white/85"
+                          }`}
                         >
                           {step.title}
                         </h3>
                         <span
-                          className={`font-mono text-[9px] tracking-wider uppercase border px-2.5 py-0.5 rounded-md transition-colors ${isActive ? "text-brand-primary bg-brand-primary/5 border-brand-primary/20" : "text-white/30 bg-white/1 border-white/4"}`}
+                          className={`text-xs transition-colors duration-300 ${
+                            isActive ? "text-white/55" : "text-white/30"
+                          }`}
                         >
                           {step.duration}
                         </span>
                       </div>
 
                       <p
-                        className={`mt-3 text-xs sm:text-sm leading-relaxed transition-colors font-medium ${isActive ? "text-white/60" : "text-white/40 group-hover:text-white/50"}`}
+                        className={`mt-2.5 text-xs sm:text-sm leading-relaxed transition-all duration-300 ${
+                          isActive
+                            ? "text-white/55 max-h-40 opacity-100"
+                            : "text-white/40 max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100 group-hover:text-white/50"
+                        }`}
                       >
                         {step.description}
                       </p>
-
-                      <div
-                        className={`mt-4 flex items-center gap-1.5 transition-opacity duration-normal ${isActive ? "opacity-100" : "opacity-0"}`}
-                      >
-                        <span className='h-0.5 w-6 rounded-full bg-brand-primary/50' />
-                        <span className='h-0.5 w-0.5 rounded-full bg-brand-primary/50' />
-                        <span className='h-0.5 w-0.5 rounded-full bg-brand-primary/50' />
-                      </div>
                     </div>
                   </div>
                 );
@@ -312,27 +275,19 @@ export default function ProcessSection() {
   );
 }
 
-/* ─── Background ──────────────────────────────────────────────────────────── */
-function BackgroundMatrixDecor() {
+// ── Background ─────────────────────────────────────────────────────────────
+
+function BackgroundDecor() {
   return (
     <div className='absolute inset-0 pointer-events-none select-none overflow-hidden'>
+      {/* Lavender atmospheric orb */}
       <div
-        className='absolute inset-0 opacity-[0.06]'
+        className='absolute left-[-10%] top-1/3 rounded-full blur-[160px]'
         style={{
-          backgroundImage:
-            "radial-gradient(circle, var(--color-brand-primary) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      <div className='absolute inset-x-0 top-1/4 h-px bg-linear-to-r from-transparent via-white/3 to-transparent' />
-      <div className='absolute inset-x-0 bottom-1/3 h-px bg-linear-to-r from-transparent via-white/2 to-transparent' />
-      <div
-        className='absolute left-[-10%] top-1/4 rounded-full blur-[140px]'
-        style={{
-          width: "650px",
-          height: "650px",
+          width: "600px",
+          height: "500px",
           background:
-            "radial-gradient(circle, rgba(255,79,0,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(200,184,224,0.08) 0%, transparent 70%)",
         }}
       />
       <div className='absolute inset-x-0 top-0 h-32 bg-linear-to-b from-brand-dark to-transparent' />

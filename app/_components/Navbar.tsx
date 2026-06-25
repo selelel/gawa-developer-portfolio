@@ -66,9 +66,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={[
-                  "relative text-sm font-medium transition-colors duration-fast hover:text-brand-primary",
+                  "relative text-sm font-medium transition-colors duration-fast hover:text-text-primary",
                   pathname === link.href
-                    ? "text-brand-primary"
+                    ? "text-text-primary"
                     : "text-text-secondary",
                 ].join(" ")}
               >
@@ -76,7 +76,7 @@ export default function Navbar() {
                 {pathname === link.href && (
                   <motion.span
                     layoutId='nav-indicator'
-                    className='absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-brand-primary'
+                    className='absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-text-primary'
                   />
                 )}
               </Link>
@@ -140,8 +140,8 @@ export default function Navbar() {
                   className={[
                     "flex min-h-12 items-center rounded-xl px-4 text-sm font-medium transition-colors",
                     pathname === link.href
-                      ? "bg-brand-primary/8 text-brand-primary"
-                      : "text-text-secondary hover:bg-bg-surface hover:text-brand-dark",
+                      ? "bg-bg-muted text-text-primary font-semibold"
+                      : "text-text-secondary hover:bg-bg-surface hover:text-text-primary",
                   ].join(" ")}
                 >
                   {link.label}

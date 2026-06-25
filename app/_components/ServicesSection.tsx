@@ -11,7 +11,7 @@ const iconProps = {
   strokeWidth: 1.6,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
-  className: "h-[22px] w-[22px]",
+  className: "h-5 w-5",
 };
 
 function IconBrowser() {
@@ -113,92 +113,65 @@ type Service = {
   title: string;
   description: string;
   Icon: () => React.JSX.Element;
-  iconBg: string;
-  iconColor: string;
-  tag: string;
 };
 
-const SERVICES: Service[] = [
+const FEATURED: Service[] = [
   {
     title: "Custom Web Applications",
     description:
       "Full-stack platforms engineered for speed, scale, and seamless UX — tailored precisely to your business processes and user workflows.",
     Icon: IconBrowser,
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-400",
-    tag: "Web",
-  },
-  {
-    title: "Mobile Applications",
-    description:
-      "Native and cross-platform mobile apps that deliver smooth, intuitive experiences on iOS and Android — from MVP to production.",
-    Icon: IconMobile,
-    iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-400",
-    tag: "Mobile",
   },
   {
     title: "SaaS Platforms",
     description:
       "End-to-end SaaS product development — multi-tenant architecture, subscription billing, dashboards, and the full product lifecycle.",
     Icon: IconLayers,
-    iconBg: "bg-yellow-500/10",
-    iconColor: "text-yellow-400",
-    tag: "SaaS",
-  },
-  {
-    title: "CRM & ERP Systems",
-    description:
-      "Custom business management platforms that centralize client relationships, operations, and workflows in one unified system.",
-    Icon: IconDatabase,
-    iconBg: "bg-amber-600/10",
-    iconColor: "text-amber-500",
-    tag: "Enterprise",
   },
   {
     title: "AI Integrations",
     description:
       "LLM-powered features, intelligent automation, and data-driven insights embedded directly into your existing product stack.",
     Icon: IconCpu,
-    iconBg: "bg-red-500/10",
-    iconColor: "text-red-400",
-    tag: "AI",
+  },
+];
+
+const SUPPORTING: Service[] = [
+  {
+    title: "Mobile Applications",
+    description:
+      "Native and cross-platform mobile apps that deliver smooth, intuitive experiences on iOS and Android.",
+    Icon: IconMobile,
+  },
+  {
+    title: "CRM & ERP Systems",
+    description:
+      "Custom business management platforms that centralize client relationships, operations, and workflows.",
+    Icon: IconDatabase,
   },
   {
     title: "API Development",
     description:
-      "Robust RESTful and GraphQL APIs with clear documentation, authentication, rate limiting, and seamless third-party integrations.",
+      "Robust RESTful and GraphQL APIs with clear documentation, authentication, and third-party integrations.",
     Icon: IconCode,
-    iconBg: "bg-orange-400/10",
-    iconColor: "text-orange-300",
-    tag: "Backend",
   },
   {
     title: "Business Automation",
     description:
-      "Custom automation pipelines that eliminate repetitive tasks, reduce costly errors, and free your team to focus on what matters.",
+      "Custom pipelines that eliminate repetitive tasks, reduce errors, and free your team to focus on growth.",
     Icon: IconGear,
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-400",
-    tag: "Automation",
   },
   {
     title: "UI/UX Design",
     description:
-      "Research-driven interface design — from wireframes to pixel-perfect, accessible UI systems built to convert and retain users.",
+      "Research-driven interface design — from wireframes to pixel-perfect, accessible UI systems.",
     Icon: IconPen,
-    iconBg: "bg-rose-500/10",
-    iconColor: "text-rose-400",
-    tag: "Design",
   },
   {
     title: "Maintenance & Support",
     description:
-      "Proactive monitoring, security patching, performance tuning, and ongoing feature iteration to keep your software thriving.",
+      "Proactive monitoring, security patching, and ongoing iteration to keep your software thriving.",
     Icon: IconShield,
-    iconBg: "bg-amber-300/10",
-    iconColor: "text-amber-300",
-    tag: "Support",
   },
 ];
 
@@ -222,37 +195,44 @@ export default function ServicesSection() {
           transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-brand-primary">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-primary" />
-            Our Services
-          </span>
-
-          <h2 className="mt-5 text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight text-white">
-            Everything Your Business
-            <br className="hidden sm:block" />
-            <span className="text-brand-primary"> Needs to Scale</span>
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-normal text-white text-balance">
+            Everything your business{" "}
+            <em>needs to grow</em>
           </h2>
 
-          <p className="mt-4 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed text-white/55">
+          <p className="mt-4 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed text-white/60">
             From idea to production — we deliver the full stack of digital
             solutions modern businesses rely on to grow, automate, and lead
             their markets.
           </p>
         </motion.div>
 
-        {/* ── Divider line ── */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.7, ease: "easeOut" as const, delay: 0.2 }}
-          className="mx-auto mt-12 h-px max-w-xs origin-center bg-linear-to-r from-transparent via-brand-primary/40 to-transparent"
-        />
+        {/* ── Featured services — editorial list ── */}
+        <div className="mt-14 divide-y divide-white/8">
+          {FEATURED.map((service, i) => (
+            <FeaturedRow key={service.title} service={service} index={i} />
+          ))}
+        </div>
 
-        {/* ── Service cards grid ── */}
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {SERVICES.map((service, i) => (
-            <ServiceCard key={service.title} service={service} index={i} />
+        {/* ── Section bridge ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-10 flex items-center gap-4"
+        >
+          <div className="h-px flex-1 bg-white/8" />
+          <span className="text-xs font-medium text-white/30">
+            Additional services
+          </span>
+          <div className="h-px flex-1 bg-white/8" />
+        </motion.div>
+
+        {/* ── Supporting services — compact grid ── */}
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {SUPPORTING.map((service, i) => (
+            <CompactCard key={service.title} service={service} index={i} />
           ))}
         </div>
       </div>
@@ -260,65 +240,57 @@ export default function ServicesSection() {
   );
 }
 
-// ── Service card ───────────────────────────────────────────────────────────
+// ── Featured row ───────────────────────────────────────────────────────────
 
-function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const { title, description, Icon, iconBg, iconColor, tag } = service;
-
+function FeaturedRow({ service, index }: { service: Service; index: number }) {
+  const { title, description, Icon } = service;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      initial={{ opacity: 0, x: -16 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{
-        delay: (index % 3) * 0.08,
+        delay: index * 0.1,
         duration: 0.5,
         ease: "easeOut" as const,
       }}
-      whileHover={{ y: -5 }}
-      whileTap={{ scale: 0.98 }}
-      className="group relative flex flex-col gap-5 overflow-hidden rounded-card border border-white/[0.07] bg-white/3 p-6 transition-colors duration-300 hover:border-brand-primary/25 hover:bg-white/6"
+      className="group flex flex-col gap-3 py-7 sm:flex-row sm:items-center sm:gap-8"
     >
-      {/* Top-edge accent line — sweeps in on hover */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px w-0 bg-linear-to-r from-transparent via-brand-primary/70 to-transparent transition-all duration-500 group-hover:w-full" />
-
-      {/* Inner glow on hover */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-card opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          boxShadow:
-            "inset 0 1px 0 rgba(255,79,0,0.1), 0 0 50px rgba(255,79,0,0.04)",
-        }}
-      />
-
-      {/* Tag pill */}
-      <div className="flex items-start justify-between">
-        <div
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${iconBg} ${iconColor}`}
-          style={{ aspectRatio: "1/1" }}
-        >
+      <div className="flex shrink-0 items-center gap-4 sm:w-64 lg:w-72">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 text-white/50 transition-colors duration-200 group-hover:border-white/25 group-hover:text-white/75">
           <Icon />
         </div>
-        <span className="rounded-full border border-white/8 bg-white/4 px-2.5 py-1 text-[10px] font-medium text-white/40">
-          {tag}
-        </span>
-      </div>
-
-      {/* Text */}
-      <div className="flex flex-col gap-2">
         <h3 className="text-base font-semibold text-white">{title}</h3>
-        <p className="text-sm leading-relaxed text-white/50">{description}</p>
       </div>
+      <p className="text-sm leading-relaxed text-white/55 sm:flex-1">
+        {description}
+      </p>
+    </motion.div>
+  );
+}
 
-      {/* Hover CTA */}
-      <div className="mt-auto flex -translate-x-1 items-center gap-1.5 text-xs font-medium text-brand-primary opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-        Learn more
-        <svg viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5">
-          <path
-            fillRule="evenodd"
-            d="M2 8a.5.5 0 0 1 .5-.5h9.793L10.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.293 8.5H2.5A.5.5 0 0 1 2 8z"
-          />
-        </svg>
+// ── Compact card ───────────────────────────────────────────────────────────
+
+function CompactCard({ service, index }: { service: Service; index: number }) {
+  const { title, description, Icon } = service;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{
+        delay: (index % 3) * 0.07,
+        duration: 0.45,
+        ease: "easeOut" as const,
+      }}
+      className="flex flex-col gap-3 rounded-card border border-white/7 p-5 transition-colors duration-200 hover:border-white/13 hover:bg-white/3"
+    >
+      <div className="text-white/40">
+        <Icon />
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <h3 className="text-sm font-semibold text-white">{title}</h3>
+        <p className="text-xs leading-relaxed text-white/50">{description}</p>
       </div>
     </motion.div>
   );
@@ -329,34 +301,19 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 function BackgroundEffects() {
   return (
     <>
-      {/* Dot-grid texture */}
+      {/* Subtle rose atmospheric orb */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
+          width: "700px",
+          height: "480px",
+          background:
+            "radial-gradient(ellipse, rgba(200,184,224,0.09) 0%, transparent 70%)",
         }}
       />
-
-      {/* Central blue depth glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-        style={{
-          width: "800px",
-          height: "500px",
-          background: "radial-gradient(ellipse, rgba(255,79,0,0.07) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Top fade into hero section */}
+      {/* Top + bottom fade */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-brand-dark to-transparent" />
-      {/* Bottom fade */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-brand-dark to-transparent" />
-
-      {/* Subtle side vignette */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-linear-to-r from-brand-dark to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-linear-to-l from-brand-dark to-transparent" />
     </>
   );
 }

@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { EB_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ebGaramond = EB_Garamond({
+  variable: "--font-eb-garamond",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -21,7 +23,7 @@ const siteUrl = "https://gawadeveloper.com";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#2563eb",
+  themeColor: "#292524",
 };
 
 export const metadata: Metadata = {
@@ -113,7 +115,7 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -127,9 +129,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        {/* impeccable-live-start */}
-        <script src='http://localhost:8400/live.js'></script>
-        {/* impeccable-live-end */}
       </body>
     </html>
   );

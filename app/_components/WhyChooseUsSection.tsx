@@ -157,15 +157,10 @@ export default function WhyChooseUsSection() {
           transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-bg-surface px-4 py-1.5 text-sm font-medium text-brand-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-primary" />
-            Why Choose Us
-          </span>
-
-          <h2 className="mt-5 text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight text-brand-dark">
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-normal tracking-tight text-brand-dark text-balance">
             Built on principles
             <br className="hidden sm:block" />
-            <span className="text-brand-primary"> that actually matter</span>
+            <em> that actually matter</em>
           </h2>
 
           <p className="mt-4 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed text-text-secondary">
@@ -200,43 +195,26 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
         duration: 0.5,
         ease: "easeOut" as const,
       }}
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -3 }}
       whileTap={{ scale: 0.98 }}
       className={[
         "group relative flex flex-col gap-5 overflow-hidden rounded-card border p-7 transition-all duration-300",
         featured
-          ? "border-brand-primary/20 bg-linear-to-br from-brand-primary/5 via-transparent to-transparent hover:border-brand-primary/35 hover:shadow-[0_8px_40px_rgba(255,79,0,0.08)] sm:col-span-2 lg:col-span-2"
-          : "border-border-subtle bg-bg-canvas hover:border-brand-primary/25 hover:shadow-card",
+          ? "border-border-subtle bg-bg-surface hover:border-brand-dark/20 hover:shadow-card sm:col-span-2 lg:col-span-2"
+          : "border-border-subtle bg-bg-canvas hover:bg-bg-surface hover:shadow-card",
       ].join(" ")}
     >
-      {/* Corner accent line on featured cards */}
-      {featured && (
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-brand-primary/50 via-brand-primary/20 to-transparent" />
-      )}
-
       {/* Top row: icon + highlight badge */}
       <div className="flex items-start justify-between gap-4">
         <div
-          className={[
-            "flex shrink-0 items-center justify-center rounded-xl transition-colors duration-300",
-            featured
-              ? "h-13 w-13 bg-brand-primary/10 text-brand-primary group-hover:bg-brand-primary/15"
-              : "h-11 w-11 bg-bg-muted text-text-secondary group-hover:bg-brand-primary/10 group-hover:text-brand-primary",
-          ].join(" ")}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-bg-muted text-text-secondary transition-colors duration-300 group-hover:bg-brand-dark/8 group-hover:text-text-primary"
           style={{ aspectRatio: "1/1" }}
         >
           <Icon />
         </div>
 
         {highlight && (
-          <span
-            className={[
-              "shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide",
-              featured
-                ? "bg-brand-primary/10 text-brand-primary"
-                : "bg-bg-muted text-text-muted",
-            ].join(" ")}
-          >
+          <span className="shrink-0 rounded-full bg-bg-muted px-3 py-1 text-[11px] font-semibold tracking-wide text-text-muted">
             {highlight}
           </span>
         )}
@@ -254,16 +232,6 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
         </h3>
         <p className="text-sm leading-relaxed text-text-muted">{description}</p>
       </div>
-
-      {/* Bottom indicator — decorative on featured, subtle on regular */}
-      {featured ? (
-        <div className="mt-auto flex items-center gap-2 text-xs font-medium text-brand-primary">
-          <span className="h-1 w-6 rounded-full bg-brand-primary/40" />
-          Core Commitment
-        </div>
-      ) : (
-        <div className="mt-auto h-px w-0 rounded-full bg-brand-primary/30 transition-all duration-500 group-hover:w-full" />
-      )}
     </motion.div>
   );
 }
@@ -273,24 +241,26 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
 function BackgroundDecor() {
   return (
     <>
-      {/* Faint blue radial top-right */}
+      {/* Sky atmospheric orb — top right */}
       <div
         className="pointer-events-none absolute -right-40 -top-40 rounded-full blur-3xl"
         style={{
           width: "600px",
           height: "600px",
           background:
-            "radial-gradient(ellipse, rgba(255,79,0,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(168,200,232,0.22) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />
-      {/* Fine line grid texture */}
+      {/* Peach orb — bottom left */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="pointer-events-none absolute -bottom-32 -left-32 rounded-full blur-3xl"
         style={{
-          backgroundImage:
-            "linear-gradient(var(--color-brand-dark) 1px, transparent 1px), linear-gradient(90deg, var(--color-brand-dark) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          width: "480px",
+          height: "480px",
+          background:
+            "radial-gradient(ellipse, rgba(244,197,168,0.18) 0%, transparent 70%)",
+          aspectRatio: "1/1",
         }}
       />
     </>
