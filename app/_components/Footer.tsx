@@ -23,17 +23,17 @@ export default function Footer() {
     <footer aria-label="Site footer" className="bg-brand-dark">
       {/* ── Main grid ── */}
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 gap-12 border-b border-white/[0.07] py-16 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] lg:gap-8">
+        <div className="grid grid-cols-1 gap-12 border-b border-white/7 py-16 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] lg:gap-8">
 
           {/* Brand column */}
           <div className="flex flex-col gap-6 sm:col-span-2 lg:col-span-1 lg:pr-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-lg w-fit"
+              className="inline-flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-lg w-fit"
               aria-label="Gawa Developer — Home"
             >
               <span
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-primary text-[11px] font-black text-white"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-[11px] font-black text-white/80"
                 style={{ aspectRatio: "1/1" }}
                 aria-hidden
               >
@@ -45,14 +45,14 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="max-w-[28ch] text-sm leading-relaxed text-white/35">
+            <p className="max-w-[28ch] text-sm leading-relaxed text-white/50">
               We engineer custom software that helps businesses streamline
               operations and grow with confidence.
             </p>
 
             <Link
               href="/contact"
-              className="inline-flex min-h-10 w-fit items-center justify-center rounded-button bg-brand-primary px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="inline-flex min-h-10 w-fit items-center justify-center rounded-button border border-white/15 px-5 text-xs font-semibold text-white/70 transition-colors duration-200 hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               Start Your Project
             </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
+                    className="text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
+                    className="text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -92,17 +92,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact nudge */}
+          {/* Contact */}
           <div className="flex flex-col gap-4">
             <p className="text-xs font-semibold text-white/30">Get in touch</p>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:gimelcontz@gmail.com"
-                className="text-sm text-white/40 transition-colors hover:text-white/75 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-primary rounded-sm"
+                className="text-sm text-white/50 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded-sm"
               >
                 gimelcontz@gmail.com
               </a>
-              <div className="flex items-center gap-2 text-xs text-white/25">
+              <div className="flex items-center gap-2 text-xs text-white/35">
                 <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden>
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -115,10 +115,10 @@ export default function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="flex flex-col items-center gap-3 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-[11px] text-white/20">
+          <p className="text-[11px] text-white/30">
             © {year} Gawa Developer. All rights reserved.
           </p>
-          <p className="text-[11px] text-white/15">
+          <p className="text-[11px] text-white/20">
             Build Better Software. Grow Faster.
           </p>
         </div>

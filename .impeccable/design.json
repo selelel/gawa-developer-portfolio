@@ -1,250 +1,356 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-06-24T00:00:00.000Z",
-  "title": "Design System: Gawa Developer",
+  "generatedAt": "2026-06-25T00:00:00.000Z",
+  "title": "Design System: Gawa Developer — ElevenLabs Direction",
   "extensions": {
     "colorMeta": {
       "primary": {
         "role": "primary",
-        "displayName": "Gawa Orange",
-        "canonical": "oklch(61% 0.24 37)",
-        "tonalRamp": ["#4a1200", "#7a2000", "#a83000", "#d04000", "#ff4f00", "#ff7a35", "#ffa978", "#ffdcc7"]
+        "displayName": "Warm Near-Black",
+        "canonical": "oklch(26.7% 0.010 33)",
+        "tonalRamp": ["#0c0a09", "#1c1917", "#221e1d", "#292524", "#3a3534", "#5c5250", "#9e9a99", "#e4e3e2"]
       },
-      "on-primary": {
-        "role": "on-primary",
-        "displayName": "Cream White",
-        "canonical": "oklch(99.5% 0.005 90)",
-        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#e0dbd3", "#ede9e3", "#f5f2ee", "#fffefb"]
+      "primary-active": {
+        "role": "primary-pressed",
+        "displayName": "Deep Ink",
+        "canonical": "oklch(8.5% 0.006 30)",
+        "tonalRamp": ["#050403", "#0c0a09", "#141110", "#1c1917", "#292524", "#5c5250", "#9e9a99", "#e4e3e2"]
       },
       "ink": {
-        "role": "neutral-dark",
-        "displayName": "Coffee Ink",
-        "canonical": "oklch(16% 0.02 30)",
-        "tonalRamp": ["#0a0706", "#201515", "#36302e", "#544d4a", "#7a7471", "#a8a29f", "#d4d1ce", "#f0eeec"]
-      },
-      "canvas": {
-        "role": "surface",
-        "displayName": "Warm Canvas",
-        "canonical": "oklch(99.5% 0.003 90)",
-        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#dedad3", "#eae7e0", "#f5f2ee", "#fffefb"]
-      },
-      "canvas-soft": {
-        "role": "surface-variant",
-        "displayName": "Cream Soft",
-        "canonical": "oklch(97% 0.008 70)",
-        "tonalRamp": ["#3d3830", "#6b6358", "#9e9587", "#c5c0b1", "#d8d4cd", "#e5e1da", "#f0ece6", "#f8f4f0"]
+        "role": "ink",
+        "displayName": "Editorial Ink",
+        "canonical": "oklch(8.5% 0.006 30)",
+        "tonalRamp": ["#050403", "#0c0a09", "#141110", "#1c1917", "#292524", "#5c5250", "#9e9a99", "#e4e3e2"]
       },
       "body": {
-        "role": "neutral-text",
-        "displayName": "Warm Body",
-        "canonical": "oklch(44% 0.02 50)",
-        "tonalRamp": ["#201515", "#36302e", "#504a47", "#6b6358", "#8c857c", "#b0aaa3", "#d4d0c9", "#f0eeec"]
+        "role": "text-secondary",
+        "displayName": "Quiet Charcoal",
+        "canonical": "oklch(37.8% 0 0)",
+        "tonalRamp": ["#111111", "#222222", "#333333", "#4e4e4e", "#666666", "#888888", "#b3b3b3", "#e5e5e5"]
       },
-      "mute": {
-        "role": "neutral-muted",
-        "displayName": "Warm Mute",
-        "canonical": "oklch(78% 0.012 60)",
-        "tonalRamp": ["#4a4540", "#6b6660", "#8c8880", "#a8a49c", "#c5c0b1", "#d8d4cc", "#e8e5df", "#f5f3ef"]
+      "body-strong": {
+        "role": "text-emphasis",
+        "displayName": "Warm Near-Black (Emphasis)",
+        "canonical": "oklch(26.7% 0.010 33)",
+        "tonalRamp": ["#0c0a09", "#1c1917", "#221e1d", "#292524", "#3a3534", "#5c5250", "#9e9a99", "#e4e3e2"]
+      },
+      "muted": {
+        "role": "text-muted",
+        "displayName": "Warm Pewter",
+        "canonical": "oklch(50.3% 0.012 60)",
+        "tonalRamp": ["#1f1d19", "#39362f", "#52504a", "#777169", "#94908a", "#b4b0aa", "#d3d0ca", "#f0eeea"]
+      },
+      "muted-soft": {
+        "role": "text-disabled",
+        "displayName": "Stone Mist",
+        "canonical": "oklch(67.7% 0.010 60)",
+        "tonalRamp": ["#2a2820", "#4a4840", "#6a6860", "#8a8880", "#a8a29e", "#c5c2be", "#dedad8", "#f4f3f1"]
+      },
+      "canvas": {
+        "role": "surface-base",
+        "displayName": "Magazine Off-White",
+        "canonical": "oklch(96.6% 0 0)",
+        "tonalRamp": ["#0d0d0d", "#262626", "#3d3d3d", "#595959", "#7a7a7a", "#9e9e9e", "#c4c4c4", "#f5f5f5"]
+      },
+      "canvas-soft": {
+        "role": "surface-alt",
+        "displayName": "Soft Paper",
+        "canonical": "oklch(98.1% 0 0)",
+        "tonalRamp": ["#0d0d0d", "#262626", "#3d3d3d", "#595959", "#7a7a7a", "#9e9e9e", "#c4c4c4", "#fafafa"]
+      },
+      "canvas-deep": {
+        "role": "surface-dark",
+        "displayName": "Obsidian Floor",
+        "canonical": "oklch(8.5% 0.006 30)",
+        "tonalRamp": ["#050403", "#0c0a09", "#141110", "#1c1917", "#292524", "#5c5250", "#9e9a99", "#e4e3e2"]
+      },
+      "surface-card": {
+        "role": "surface-card",
+        "displayName": "Pure White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": ["#0d0d0d", "#262626", "#3d3d3d", "#595959", "#7a7a7a", "#9e9e9e", "#c4c4c4", "#ffffff"]
+      },
+      "surface-strong": {
+        "role": "surface-raised",
+        "displayName": "Warm Linen",
+        "canonical": "oklch(94.3% 0.005 60)",
+        "tonalRamp": ["#1a1917", "#302e2c", "#484643", "#62605c", "#7e7c78", "#9e9c98", "#c4c2be", "#f0efed"]
+      },
+      "surface-dark": {
+        "role": "surface-inverted",
+        "displayName": "Obsidian",
+        "canonical": "oklch(8.5% 0.006 30)",
+        "tonalRamp": ["#050403", "#0c0a09", "#141110", "#1c1917", "#292524", "#5c5250", "#9e9a99", "#e4e3e2"]
+      },
+      "surface-dark-elevated": {
+        "role": "surface-inverted-raised",
+        "displayName": "Coal Elevated",
+        "canonical": "oklch(13.8% 0.008 40)",
+        "tonalRamp": ["#080604", "#100e0c", "#171412", "#1c1917", "#222120", "#3d3b3a", "#7a7875", "#d0cecc"]
+      },
+      "hairline": {
+        "role": "border",
+        "displayName": "Warm Hairline",
+        "canonical": "oklch(91.3% 0.006 60)",
+        "tonalRamp": ["#1a1917", "#302e2c", "#484643", "#62605c", "#8a8884", "#b4b2ae", "#d3d1cd", "#e7e5e4"]
+      },
+      "hairline-strong": {
+        "role": "border-emphasis",
+        "displayName": "Stone Outline",
+        "canonical": "oklch(84.3% 0.007 55)",
+        "tonalRamp": ["#161412", "#2c2a28", "#424140", "#585654", "#757371", "#9e9c9a", "#bdbbb9", "#d6d3d1"]
+      },
+      "gradient-mint": {
+        "role": "atmospheric",
+        "displayName": "Atmospheric Mint",
+        "canonical": "oklch(87.5% 0.065 175)",
+        "tonalRamp": ["#0a3b30", "#115c4c", "#1a8a72", "#29b596", "#6dd4be", "#a7e5d3", "#cff2ea", "#ebfaf6"]
+      },
+      "gradient-peach": {
+        "role": "atmospheric",
+        "displayName": "Atmospheric Peach",
+        "canonical": "oklch(84.0% 0.068 45)",
+        "tonalRamp": ["#3d1a00", "#6b3500", "#9a5210", "#c97030", "#e89860", "#f4c5a8", "#f9dece", "#fdf0e8"]
+      },
+      "gradient-lavender": {
+        "role": "atmospheric",
+        "displayName": "Atmospheric Lavender",
+        "canonical": "oklch(79.0% 0.070 295)",
+        "tonalRamp": ["#1a0a3b", "#30145e", "#4a2080", "#6c42a8", "#9478d0", "#c8b8e0", "#ddd2ee", "#f2ecfa"]
+      },
+      "gradient-sky": {
+        "role": "atmospheric",
+        "displayName": "Atmospheric Sky",
+        "canonical": "oklch(80.0% 0.060 220)",
+        "tonalRamp": ["#0a1a3b", "#14305e", "#1e4c80", "#3066a8", "#6a9ed0", "#a8c8e8", "#ccddf4", "#e8f2fb"]
+      },
+      "gradient-rose": {
+        "role": "atmospheric",
+        "displayName": "Atmospheric Rose",
+        "canonical": "oklch(81.0% 0.065 355)",
+        "tonalRamp": ["#3b0a18", "#6e1430", "#9e2048", "#c44068", "#da7898", "#e8b8c4", "#f2d4da", "#faeaee"]
+      },
+      "semantic-error": {
+        "role": "semantic-error",
+        "displayName": "Alert Red",
+        "canonical": "oklch(52.2% 0.215 25)",
+        "tonalRamp": ["#5a0000", "#8c1010", "#b82020", "#dc2626", "#e85555", "#f09090", "#f8c8c8", "#fdeaea"]
+      },
+      "semantic-success": {
+        "role": "semantic-success",
+        "displayName": "Confirm Green",
+        "canonical": "oklch(57.9% 0.155 145)",
+        "tonalRamp": ["#042b18", "#08502d", "#0d7840", "#16a34a", "#34c465", "#72da92", "#b0edbb", "#e4f9e8"]
       }
     },
     "typographyMeta": {
+      "display-mega": {
+        "displayName": "Mega Display",
+        "purpose": "Homepage hero h1 only. Waldenburg Light weight 300 at 64px, tightest tracking (-1.92px). The editorial signature — never bold."
+      },
       "display-xl": {
-        "displayName": "Hero Display",
-        "purpose": "Hero headline — Mona Sans weight 500, fluid clamp scale."
+        "displayName": "XL Display",
+        "purpose": "Subsidiary hero headlines on inner pages. Waldenburg Light 48px, -0.96px tracking."
       },
       "display-lg": {
-        "displayName": "Section Display",
-        "purpose": "Section-level headlines — Mona Sans weight 500."
+        "displayName": "Large Display",
+        "purpose": "Section headings. Waldenburg Light 36px, -0.36px tracking."
       },
       "display-md": {
-        "displayName": "Sub-Section Display",
-        "purpose": "Sub-section displays with positive tracking — Mona Sans weight 500."
+        "displayName": "Medium Display",
+        "purpose": "Sub-section headings, card group titles. Waldenburg Light 32px, -0.32px tracking."
+      },
+      "display-sm": {
+        "displayName": "Small Display",
+        "purpose": "Component group headers. Waldenburg Light 24px, neutral tracking."
+      },
+      "title-md": {
+        "displayName": "Title Medium",
+        "purpose": "Card titles, feature headings. Inter weight 500 at 20px — the Inter voice, not the editorial voice."
       },
       "body-md": {
         "displayName": "Body Default",
-        "purpose": "Default paragraph text — Inter weight 400. Max-width 65–72ch."
+        "purpose": "Default running text. Inter 16px weight 400, +0.16px tracking — slightly looser than raw Inter for editorial feel. Max-width 65–75ch."
       },
-      "button-md": {
+      "caption-uppercase": {
+        "displayName": "Uppercase Caption",
+        "purpose": "Badge labels, section classifiers. Inter 12px weight 600, +0.96px tracking, all-caps. One deliberate brand kicker, not on every section."
+      },
+      "button": {
         "displayName": "Button Label",
-        "purpose": "Primary button label — Inter weight 600."
+        "purpose": "CTA pill labels. Inter 15px weight 500, neutral tracking."
       },
-      "eyebrow-uppercase": {
-        "displayName": "Eyebrow Kicker",
-        "purpose": "UPPERCASE section kicker — Mona Sans weight 500, positive tracking. Used sparingly, not on every section."
+      "nav-link": {
+        "displayName": "Nav Link",
+        "purpose": "Top navigation links. Inter 15px weight 500, neutral tracking."
       }
     },
     "shadows": [
       {
-        "name": "card-float",
-        "value": "0 4px 24px -2px rgba(32, 21, 21, 0.08), 0 1px 4px rgba(32, 21, 21, 0.04)",
-        "purpose": "Floating card shadow — applied to floating badge overlays, sticky nav on scroll. Not on static content cards."
+        "name": "card-hover",
+        "value": "0 4px 16px rgba(0, 0, 0, 0.04)",
+        "purpose": "Single hover shadow on feature cards. Appears on :hover only — surfaces are flat at rest."
       }
     ],
     "motion": [
       {
-        "name": "ease-spring-snappy",
-        "value": "cubic-bezier(0.175, 0.885, 0.32, 1.1)",
-        "purpose": "Snappy spring for interactive feedback — button tap, badge hover."
-      },
-      {
         "name": "ease-smooth-reveal",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Smooth reveal for scroll-triggered entrances. Ease-out-expo character."
+        "purpose": "Ease-out-expo for scroll-triggered entrances and content reveals."
       },
       {
-        "name": "duration-fast",
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Material-standard easing for state transitions (hover, focus)."
+      },
+      {
+        "name": "duration-state",
         "value": "0.2s",
-        "purpose": "State transitions — hover, focus changes."
+        "purpose": "Hover, focus, border state changes."
       },
       {
-        "name": "duration-normal",
-        "value": "0.4s",
-        "purpose": "Section entrances and content reveals."
+        "name": "duration-reveal",
+        "value": "0.5s",
+        "purpose": "Scroll-triggered section reveals and content entrance."
       },
       {
-        "name": "stagger-children",
+        "name": "stagger-child",
         "value": "0.08s",
-        "purpose": "Stagger delay between children in a motion container."
+        "purpose": "Stagger offset between children in a list reveal."
       }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px", "note": "Small: 1-up grids, mobile nav." },
-      { "name": "md", "value": "768px", "note": "Medium: 2-up grids, expanded layout." },
-      { "name": "lg", "value": "1024px", "note": "Large: full grids, hero split, desktop nav." },
-      { "name": "container-max", "value": "1200px", "note": "Max content container width." }
+      { "name": "sm", "value": "640px", "note": "Feature cards 1-up, navigation hamburger, hero h1 32px." },
+      { "name": "md", "value": "768px", "note": "Feature cards 2-up, hero h1 48px." },
+      { "name": "lg", "value": "1024px", "note": "Full hero at 64px, feature cards 3-up, desktop nav, hero split layout." },
+      { "name": "xl", "value": "1280px", "note": "Content caps at 1200px container." }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Primary Button — Ink Pill",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The conversion CTA. Orange fill, cream label, 12px rounded rectangle. Every lead-gen trigger.",
-      "html": "<button class=\"ds-btn-primary\">Start Your Project →</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-primary:hover { background: #e64500; } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #ff4f00; outline-offset: 2px; }"
+      "description": "The sole primary CTA. Near-black ink pill, white label. Never orange — the ink IS the signal.",
+      "html": "<button class=\"ds-btn-primary\">Start Your Project</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 10px 20px; background: #292524; color: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-size: 15px; font-weight: 500; line-height: 1; letter-spacing: 0; border: none; border-radius: 9999px; cursor: pointer; transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: #0c0a09; } .ds-btn-primary:active { background: #0c0a09; } .ds-btn-primary:focus-visible { outline: 2px solid #292524; outline-offset: 2px; }"
     },
     {
-      "name": "Secondary Button",
+      "name": "Outline Button — Transparent Pill",
       "kind": "button",
-      "refersTo": "button-secondary",
-      "description": "Dark CTA — coffee ink fill, cream label. Used in dark section bands alongside the primary orange.",
-      "html": "<button class=\"ds-btn-secondary\">View Our Work</button>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #201515; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-secondary:hover { background: #36302e; } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #201515; outline-offset: 2px; }"
-    },
-    {
-      "name": "Tertiary Button",
-      "kind": "button",
-      "refersTo": "button-tertiary",
-      "description": "Outline CTA — cream fill, ink label, ink border. Lower emphasis secondary action.",
-      "html": "<button class=\"ds-btn-tertiary\">Explore Services</button>",
-      "css": ".ds-btn-tertiary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; background: #fffefb; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; line-height: 1.5; border: 1px solid #201515; border-radius: 12px; cursor: pointer; transition: background 0.2s ease, transform 0.15s ease; } .ds-btn-tertiary:hover { background: #f8f4f0; } .ds-btn-tertiary:active { transform: scale(0.98); } .ds-btn-tertiary:focus-visible { outline: 2px solid #201515; outline-offset: 2px; }"
-    },
-    {
-      "name": "Text Input",
-      "kind": "input",
-      "refersTo": "text-input",
-      "description": "Canonical form field. Cream background, ink border, 6px radius. Orange focus ring signals the conversion context.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\" /></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 600; color: #201515; } .ds-input { width: 100%; padding: 12px 16px; background: #fffefb; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; border: 1px solid #201515; border-radius: 6px; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input::placeholder { color: #c5c0b1; } .ds-input:focus { border-color: #ff4f00; box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.12); }"
-    },
-    {
-      "name": "Feature Card — Cream",
-      "kind": "card",
-      "refersTo": "card-feature-cream",
-      "description": "Default content card on cream canvas. Canvas-soft surface, 12px radius, 24px padding.",
-      "html": "<div class=\"ds-card-cream\"><h3 class=\"ds-card-title\">Custom Web Apps</h3><p class=\"ds-card-body\">End-to-end web applications built on modern frameworks that scale with your business goals.</p></div>",
-      "css": ".ds-card-cream { background: #f8f4f0; border-radius: 12px; padding: 24px; } .ds-card-title { font-family: Inter, system-ui, sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; color: #201515; margin: 0 0 10px; } .ds-card-body { font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; color: #605d52; margin: 0; max-width: 65ch; }"
-    },
-    {
-      "name": "Feature Card — Dark",
-      "kind": "card",
-      "refersTo": "card-feature-dark",
-      "description": "Polarity-flipped dark card. Coffee ink background, cream text. High-emphasis feature callout.",
-      "html": "<div class=\"ds-card-dark\"><h3 class=\"ds-card-title-dark\">Long-Term Support</h3><p class=\"ds-card-body-dark\">We don't disappear after launch. Maintenance, updates, and enhancements on demand.</p></div>",
-      "css": ".ds-card-dark { background: #201515; border-radius: 12px; padding: 24px; } .ds-card-title-dark { font-family: Inter, system-ui, sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 1.25; color: #fffefb; margin: 0 0 10px; } .ds-card-body-dark { font-family: Inter, system-ui, sans-serif; font-size: 1.125rem; line-height: 1.5; color: rgba(255,254,251,0.65); margin: 0; max-width: 65ch; }"
+      "refersTo": "button-outline",
+      "description": "Secondary CTA. Transparent background, hairline border, ink text. Lower emphasis than the ink pill.",
+      "html": "<button class=\"ds-btn-outline\">View Our Work</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 9px 19px; background: transparent; color: #0c0a09; font-family: 'Inter', system-ui, sans-serif; font-size: 15px; font-weight: 500; line-height: 1; letter-spacing: 0; border: 1px solid #d6d3d1; border-radius: 9999px; cursor: pointer; transition: border-color 0.2s, background 0.2s; } .ds-btn-outline:hover { border-color: #292524; background: rgba(12, 10, 9, 0.03); } .ds-btn-outline:focus-visible { outline: 2px solid #292524; outline-offset: 2px; }"
     },
     {
       "name": "Badge Pill",
       "kind": "chip",
       "refersTo": "badge-pill",
-      "description": "Inline pill for capability labels and metadata. Canvas-soft fill, ink text, full-pill radius.",
-      "html": "<span class=\"ds-badge\">Custom Solutions</span>",
-      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 4px 12px; background: #f8f4f0; color: #201515; font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 400; border-radius: 9999px; white-space: nowrap; }"
+      "description": "Inline capability label. Surface-strong fill, ink text, uppercase caption tracking. Used on badges and classifiers — not as section eyebrows on every heading.",
+      "html": "<span class=\"ds-badge\">FEATURED</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 4px 10px; background: #f0efed; color: #0c0a09; font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; line-height: 1.4; letter-spacing: 0.96px; text-transform: uppercase; border-radius: 9999px; }"
     },
     {
-      "name": "Navigation",
+      "name": "Feature Card",
+      "kind": "card",
+      "refersTo": "feature-card",
+      "description": "2-up or 3-up grid card. White surface, 1px warm hairline, 16px radius. Flat at rest, single shadow tier on hover.",
+      "html": "<div class=\"ds-feature-card\"><h3 class=\"ds-feature-title\">API Development</h3><p class=\"ds-feature-body\">Robust, versioned REST and GraphQL APIs built for integration at scale. Clean contracts, thorough documentation.</p></div>",
+      "css": ".ds-feature-card { background: #ffffff; border: 1px solid #e7e5e4; border-radius: 16px; padding: 24px; transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1); } .ds-feature-card:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); } .ds-feature-title { color: #0c0a09; font-family: 'Inter', system-ui, sans-serif; font-size: 20px; font-weight: 500; line-height: 1.35; letter-spacing: 0; margin: 0 0 8px 0; } .ds-feature-body { color: #4e4e4e; font-family: 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; letter-spacing: 0.16px; margin: 0; max-width: 65ch; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "text-input",
+      "description": "Canonical form field. White background, stone outline, 8px radius. 2px ink border on focus — no color ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-field-label { color: #0c0a09; font-family: 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.5; letter-spacing: 0.16px; } .ds-input { width: 100%; height: 44px; padding: 12px 16px; background: #ffffff; color: #0c0a09; font-family: 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; letter-spacing: 0.16px; border: 1px solid #d6d3d1; border-radius: 8px; box-sizing: border-box; outline: none; transition: border-color 0.15s; } .ds-input::placeholder { color: #a8a29e; } .ds-input:focus { border: 2px solid #0c0a09; padding: 11px 15px; }"
+    },
+    {
+      "name": "Top Navigation",
       "kind": "nav",
-      "refersTo": "nav-bar",
-      "description": "Sticky top nav on cream canvas. Coffee ink links, orange primary CTA, 12px button radius.",
-      "html": "<nav class=\"ds-nav\"><a href=\"/\" class=\"ds-nav-brand\"><span class=\"ds-nav-logo\">G</span><span class=\"ds-nav-name\">Gawa <span class=\"ds-nav-name-light\">Developer</span></span></a><div class=\"ds-nav-links\"><a href=\"/\" class=\"ds-nav-link\">Home</a><a href=\"/contact\" class=\"ds-nav-cta\">Start Your Project</a></div></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; background: #fffefb; border-bottom: 1px solid transparent; } .ds-nav-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; } .ds-nav-logo { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; border-radius: 8px; } .ds-nav-name { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #201515; } .ds-nav-name-light { font-weight: 400; color: #939084; } .ds-nav-links { display: flex; align-items: center; gap: 24px; } .ds-nav-link { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 400; color: #201515; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover { color: #ff4f00; } .ds-nav-cta { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 20px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.9rem; font-weight: 700; border: none; border-radius: 12px; text-decoration: none; cursor: pointer; transition: background 0.2s ease; } .ds-nav-cta:hover { background: #e64500; }"
+      "refersTo": "top-nav",
+      "description": "64px off-white nav bar. Wordmark left, minimal links center, ink pill CTA right. Links fade on hover — no color shift.",
+      "html": "<nav class=\"ds-topnav\"><a class=\"ds-nav-wordmark\" href=\"#\">Gawa <span class=\"ds-nav-muted\">Developer</span></a><ul class=\"ds-nav-links\"><li><a class=\"ds-nav-link\" href=\"#\">Services</a></li><li><a class=\"ds-nav-link\" href=\"#\">Process</a></li><li><a class=\"ds-nav-link\" href=\"#\">Contact</a></li></ul><a class=\"ds-btn-nav-cta\" href=\"/contact\">Start Your Project</a></nav>",
+      "css": ".ds-topnav { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 24px; background: #f5f5f5; font-family: 'Inter', system-ui, sans-serif; } .ds-nav-wordmark { color: #0c0a09; font-size: 15px; font-weight: 500; line-height: 1.4; text-decoration: none; } .ds-nav-muted { color: #777169; } .ds-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; padding: 0; } .ds-nav-link { color: #0c0a09; font-size: 15px; font-weight: 500; line-height: 1.4; text-decoration: none; transition: opacity 0.15s; } .ds-nav-link:hover { opacity: 0.55; } .ds-btn-nav-cta { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 10px 20px; background: #292524; color: #ffffff; font-size: 15px; font-weight: 500; line-height: 1; text-decoration: none; border-radius: 9999px; transition: background 0.2s; } .ds-btn-nav-cta:hover { background: #0c0a09; }"
     },
     {
-      "name": "Footer",
+      "name": "Gradient Orb Card",
       "kind": "custom",
-      "refersTo": "footer",
-      "description": "Deep coffee footer. Dark ink background, cream text at varying opacity levels for hierarchy.",
-      "html": "<footer class=\"ds-footer\"><div class=\"ds-footer-brand\"><span class=\"ds-footer-logo\">G</span><span class=\"ds-footer-name\">Gawa Developer</span></div><p class=\"ds-footer-tagline\">Build Better Software. Grow Faster.</p><p class=\"ds-footer-copy\">© 2025 Gawa Developer. All rights reserved.</p></footer>",
-      "css": ".ds-footer { background: #201515; padding: 48px 32px 32px; } .ds-footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; } .ds-footer-logo { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ff4f00; color: #fffefb; font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; border-radius: 8px; } .ds-footer-name { font-family: Inter, system-ui, sans-serif; font-size: 1rem; font-weight: 700; color: #fffefb; } .ds-footer-tagline { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.5; color: rgba(255,254,251,0.45); margin: 0 0 24px; } .ds-footer-copy { font-family: Inter, system-ui, sans-serif; font-size: 0.875rem; color: rgba(255,254,251,0.25); margin: 0; }"
+      "refersTo": "gradient-orb-card",
+      "description": "Signature ElevenLabs-direction pattern. Soft radial gradient orb behind display copy — atmospheric decoration only, never a content container. Use one of the five gradient tokens (mint/peach/lavender/sky/rose).",
+      "html": "<div class=\"ds-orb-card ds-orb-mint\"><h3 class=\"ds-orb-title\">Build Better Software</h3><p class=\"ds-orb-body\">We engineer scalable applications and automation that help companies streamline operations and grow with confidence.</p></div>",
+      "css": ".ds-orb-card { position: relative; background: #fafafa; border-radius: 24px; padding: 32px; overflow: hidden; font-family: 'Inter', system-ui, sans-serif; } .ds-orb-card::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 320px; border-radius: 50%; pointer-events: none; } .ds-orb-mint::before { background: radial-gradient(ellipse at center, rgba(167, 229, 211, 0.38) 0%, transparent 70%); } .ds-orb-peach::before { background: radial-gradient(ellipse at center, rgba(244, 197, 168, 0.38) 0%, transparent 70%); } .ds-orb-lavender::before { background: radial-gradient(ellipse at center, rgba(200, 184, 224, 0.38) 0%, transparent 70%); } .ds-orb-sky::before { background: radial-gradient(ellipse at center, rgba(168, 200, 232, 0.38) 0%, transparent 70%); } .ds-orb-rose::before { background: radial-gradient(ellipse at center, rgba(232, 184, 196, 0.38) 0%, transparent 70%); } .ds-orb-title { position: relative; color: #0c0a09; font-family: 'EB Garamond', 'Times New Roman', serif; font-size: 32px; font-weight: 300; line-height: 1.13; letter-spacing: -0.32px; margin: 0 0 12px 0; text-wrap: balance; } .ds-orb-body { position: relative; color: #4e4e4e; font-size: 16px; font-weight: 400; line-height: 1.5; letter-spacing: 0.16px; margin: 0; max-width: 60ch; }"
+    },
+    {
+      "name": "Dark Tier Card",
+      "kind": "card",
+      "refersTo": "pricing-tier-featured",
+      "description": "Inverted dark card for featured pricing tiers, dark CTA bands, or high-emphasis service callouts. Obsidian background, white text, muted-soft sub-text.",
+      "html": "<div class=\"ds-dark-card\"><span class=\"ds-dark-badge\">ENTERPRISE</span><h3 class=\"ds-dark-title\">Full-Stack Partnership</h3><p class=\"ds-dark-body\">Dedicated engineering team, custom SLA, and end-to-end ownership from architecture to deployment.</p><button class=\"ds-dark-cta\">Contact Us</button></div>",
+      "css": ".ds-dark-card { background: #0c0a09; border-radius: 16px; padding: 32px; color: #ffffff; font-family: 'Inter', system-ui, sans-serif; } .ds-dark-badge { display: inline-flex; align-items: center; padding: 4px 10px; background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.65); font-size: 12px; font-weight: 600; letter-spacing: 0.96px; text-transform: uppercase; border-radius: 9999px; margin-bottom: 16px; } .ds-dark-title { color: #ffffff; font-family: 'EB Garamond', 'Times New Roman', serif; font-size: 36px; font-weight: 300; line-height: 1.17; letter-spacing: -0.36px; margin: 0 0 12px 0; text-wrap: balance; } .ds-dark-body { color: #a8a29e; font-size: 16px; font-weight: 400; line-height: 1.5; letter-spacing: 0.16px; margin: 0 0 24px 0; max-width: 55ch; } .ds-dark-cta { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 10px 20px; background: #ffffff; color: #0c0a09; font-size: 15px; font-weight: 500; line-height: 1; border: none; border-radius: 9999px; cursor: pointer; transition: background 0.2s; } .ds-dark-cta:hover { background: #f0efed; }"
     }
   ],
   "narrative": {
-    "northStar": "The Confident Workshop",
-    "overview": "Gawa Developer's design language borrows the calm authority of a mature, well-run service brand — the kind that doesn't need to shout because its track record speaks. The palette is warm but not decorative: a cream-white canvas (#fffefb) that is slightly warmer than clinical, a deep coffee-brown ink (#201515) that is slightly warmer than pure black, and a single saturated orange CTA (#ff4f00) that signals action without aggression. Temperature is the voice.\n\nTypography delivers the second signal. Mona Sans at weight 500 carries hero and section headings. Inter handles sub-displays, body, buttons, and eyebrows. The two-face pairing reads as 'the brand has a distinct voice for the loud moments and uses the workhorse for the rest.'\n\nThe brand rejects the blue-and-slate developer cliché, gradient-heavy SaaS hero dashboards, overcrowded agency sites, and the clinical white-on-obsidian dark-mode portfolio aesthetic. Warmth is deliberate — it signals approachable competence, not terminal aesthetics.",
+    "northStar": "The Quiet Editorial",
+    "overview": "Gawa Developer's design direction borrows from the quietly editorial register of ElevenLabs' marketing surfaces — a voice-AI brand whose pages read like a print magazine that happens to sell software. The base canvas is off-white (#f5f5f5), not pure white, not warm cream — its neutrality is deliberate. The ink is warm near-black (#0c0a09), almost but not quite black. The only moments of 'color' are five atmospheric gradient orbs (mint, peach, lavender, sky, rose) that drift through hero bands and feature sections as decoration — they carry no content, they are pure atmosphere.\n\nDisplay type runs Waldenburg Light at weight 300. This single decision defines the editorial voice: a serif at weight 300 is a magazine caption, not a tech billboard. Inter handles body, navigation, captions, and buttons — the workhorse paired against the signature. The CTA is an ink pill, the same near-black as the text — not orange, not a gradient, not a saturated action color. Its restraint is the signal.\n\nThis system explicitly rejects: gradient-heavy SaaS hero dashboards with large metric stats; overcrowded agency sites that list services without hierarchy; dark-canvas developer-portfolio aesthetics that prioritize mood over conversion; and sites that saturate CTAs with brand color. The design earns trust through restraint. The agency is the product; the site should feel like a serious agency's calling card.",
     "keyCharacteristics": [
-      "Orange CTA accent #ff4f00 — the single conversion signature. High visibility, high intent.",
-      "Warm cream canvas #fffefb — not pure white. The temperature IS the brand voice.",
-      "Deep coffee ink #201515 — not pure black. Warmth carries through every text color.",
-      "Mona Sans weight 500 for hero and section displays; Inter for everything else. Two-face system.",
-      "12px rounded rectangle for buttons and cards — not pills, not square.",
-      "A warm neutral ladder where every surface carries warmth and none borrow from cool-slate."
+      "Off-white canvas (#f5f5f5) — not warm, not cool. Neutral editorial paper.",
+      "Warm near-black ink (#0c0a09) — CTAs, primary text, and pill buttons share the same ink.",
+      "Waldenburg Light weight 300 for all display copy — editorial magazine voice, never bold.",
+      "Inter at +0.15-0.18px tracking for body — subtly looser than raw Inter for editorial feel.",
+      "Atmospheric gradient orbs (mint/peach/lavender/sky/rose) — decoration only, never content containers.",
+      "Pill geometry for all CTAs and badges; 16px rounded rectangle for cards.",
+      "Ink pill is the sole CTA color — no orange, no saturated action accent."
     ],
     "rules": [
       {
-        "name": "The One Voice Rule",
-        "body": "colors.primary orange appears on one element per viewport: the primary CTA. Every additional orange element dilutes the conversion signal.",
+        "name": "The Ink Pill Rule",
+        "body": "The primary CTA uses the same near-black ink as the body text (#292524). There is no separate CTA accent color. The restraint is intentional — the CTA earns attention through placement and hierarchy, not through color.",
         "section": "colors"
       },
       {
-        "name": "The Warmth Rule",
-        "body": "No cool-grey neutral enters this system. Every neutral must carry warmth. Slate-50 and slate-100 read as cold; canvas-soft and mute do not.",
+        "name": "The Atmosphere Rule",
+        "body": "Gradient orbs are decoration only. They appear as soft radial blooms behind copy — never as button fills, text colors, or card backgrounds. Their rarity is what gives them brand voltage.",
         "section": "colors"
       },
       {
-        "name": "The Two-Face Rule",
-        "body": "Mona Sans for displays and eyebrows; Inter for everything else. Do not use Mona Sans at body sizes.",
-        "section": "typography"
-      },
-      {
-        "name": "The Sentence-Case Rule",
-        "body": "Display and headline copy is always sentence-case. All-caps reserved for eyebrow-uppercase labels only.",
+        "name": "The Weight-300 Doctrine",
+        "body": "Display type stays at Waldenburg weight 300. Bolding any display headline shifts the voice from editorial restraint to consumer-marketing loudness. The signature is in the lightness.",
         "section": "typography"
       },
       {
         "name": "The Flat-By-Default Rule",
-        "body": "Surfaces are flat at rest. Tonal elevation handles depth for content cards. Shadows appear only on floating elements.",
+        "body": "Cards are flat at rest (no shadow, no border lift). A single shadow tier (0 4px 16px rgba(0,0,0,0.04)) appears on hover only. Depth is earned through interaction.",
         "section": "elevation"
+      },
+      {
+        "name": "The Pill-or-Rectangle Rule",
+        "body": "CTAs and badges use pill geometry (border-radius: 9999px). Content cards use 16px rounded rectangles. These two shapes are the entire border-radius vocabulary — no mix of values.",
+        "section": "components"
       }
     ],
     "dos": [
-      "Do reserve colors.primary orange for the primary CTA only. One orange element per viewport.",
-      "Do keep the canvas warm — #fffefb, not pure white. The temperature IS the brand voice.",
-      "Do set hero headlines in typography.display-xl Mona Sans weight 500. Sentence-case, never all-caps.",
-      "Do pair Mona Sans (displays, eyebrows) with Inter (body, labels, buttons). Strict role separation.",
-      "Do use rounded.md 12px for buttons and cards. The middle radius is the brand's shape signature.",
-      "Do use motion/react spring physics for interaction feedback.",
-      "Do cap body text at 65–72ch maximum width."
+      "Do reserve the ink pill (#292524) for primary CTAs. It is the only CTA color.",
+      "Do use Waldenburg Light (or EB Garamond as substitute) at weight 300 for every display headline.",
+      "Do set Inter at +0.15-0.18px letter-spacing for body text — the editorial dialect.",
+      "Do use atmospheric gradient orbs (mint/peach/lavender/sky/rose) as radial background decoration only.",
+      "Do keep cards flat at rest. Shadow appears on :hover only — one tier maximum.",
+      "Do use pill geometry (9999px) for all CTAs and badges; 16px radius for cards.",
+      "Do cap body line length at 65–75ch.",
+      "Do use text-wrap: balance on display headings to prevent awkward line breaks."
     ],
     "donts": [
-      "Don't replace cream canvas with pure white #ffffff or cool slate-50. Warmth carries through every surface.",
-      "Don't use pure black #000000 ink. The coffee-warmth in #201515 carries through every text color.",
-      "Don't render CTAs as pills (border-radius: 9999px). The brand's button is a 12px rounded rectangle.",
-      "Don't introduce a second chromatic accent. Orange + cream + coffee is the complete palette.",
-      "Don't use cool-grey neutrals from Tailwind. Replace with canvas-soft and mute.",
+      "Don't introduce a saturated brand accent color. No orange CTA, no neon, no gradient text. Ink pill is the only CTA.",
+      "Don't bold display copy. Weight 300 is non-negotiable — bolding destroys the editorial voice.",
+      "Don't use gradient orbs as button fills, text colors, or card surfaces. Atmosphere only.",
+      "Don't add uppercase tracked eyebrows above every section heading. One deliberate badge per feature, not a grammar for every section.",
+      "Don't use sharp 0px border-radius on any interactive element. Pills for CTAs, 16px for cards.",
       "Don't build gradient-heavy hero sections with large metric stat dashboards.",
-      "Don't use border-left stripes as card decoration. Use background tints or nothing.",
-      "Don't use glassmorphism as a default card style.",
-      "Don't animate layout properties. All animation via transform and opacity only."
+      "Don't use border-left stripes as card accents. Use background tints or nothing.",
+      "Don't use dark-canvas developer-portfolio aesthetics that prioritize mood over conversion.",
+      "Don't animate layout properties. All motion via transform and opacity only."
     ]
   }
 }

@@ -66,6 +66,7 @@ export default function FAQSection() {
 
   return (
     <section
+      id="faq"
       aria-label="Frequently Asked Questions"
       className="relative overflow-hidden bg-bg-canvas py-24 sm:py-32"
     >
@@ -80,13 +81,9 @@ export default function FAQSection() {
           transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-bg-surface px-4 py-1.5 text-sm font-medium text-brand-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-primary" />
-            FAQ
-          </span>
-          <h2 className="mt-5 text-[clamp(1.75rem,4vw,2.75rem)] font-bold tracking-tight text-brand-dark">
-            Questions we hear
-            <span className="text-brand-primary"> every day</span>
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-normal tracking-tight text-brand-dark text-balance">
+            Questions we hear{" "}
+            <em>every day</em>
           </h2>
           <p className="mt-4 text-[clamp(0.9rem,1.5vw,1.05rem)] leading-relaxed text-text-secondary">
             Straightforward answers to the questions clients ask before starting
@@ -152,34 +149,21 @@ function FAQItem({
   return (
     <div
       className={[
-        "relative border-b border-border-subtle transition-colors duration-200",
+        "border-b border-border-subtle transition-colors duration-200",
         index === 0 ? "border-t" : "",
+        isOpen ? "bg-bg-surface" : "",
       ].join(" ")}
     >
-      {/* Left accent line when open */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            key="accent"
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            exit={{ scaleY: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" as const }}
-            className="absolute bottom-0 left-0 top-0 w-0.5 origin-top rounded-r bg-brand-primary"
-          />
-        )}
-      </AnimatePresence>
-
       {/* Question button */}
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex min-h-[52px] w-full items-center justify-between gap-6 py-5 pl-5 pr-1 text-left"
+        className="flex min-h-[52px] w-full items-center justify-between gap-6 py-5 px-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-inset"
       >
         <span
           className={[
             "text-sm font-semibold leading-snug transition-colors duration-200 sm:text-base",
-            isOpen ? "text-brand-primary" : "text-brand-dark",
+            isOpen ? "text-text-primary" : "text-brand-dark",
           ].join(" ")}
         >
           {faq.question}
@@ -192,7 +176,7 @@ function FAQItem({
           className={[
             "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-colors duration-200",
             isOpen
-              ? "border-brand-primary/30 bg-brand-primary/10 text-brand-primary"
+              ? "border-brand-dark/20 bg-brand-dark/6 text-text-primary"
               : "border-border-subtle bg-bg-surface text-text-muted",
           ].join(" ")}
           style={{ aspectRatio: "1/1" }}
@@ -239,7 +223,7 @@ function ContactNudge() {
     <div className="sticky top-24 flex flex-col gap-6 rounded-card border border-border-subtle bg-bg-surface p-7 shadow-card">
       {/* Icon */}
       <div
-        className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary"
+        className="flex h-12 w-12 items-center justify-center rounded-xl bg-bg-muted text-text-secondary"
         style={{ aspectRatio: "1/1" }}
       >
         <svg
@@ -270,7 +254,7 @@ function ContactNudge() {
       <motion.div whileTap={{ scale: 0.97 }}>
         <Link
           href="/contact"
-          className="flex min-h-12 w-full items-center justify-center rounded-button bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-md shadow-brand-primary/20 transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
+          className="flex min-h-12 w-full items-center justify-center rounded-button bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-colors duration-fast hover:bg-brand-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
         >
           Schedule a Free Call
         </Link>
@@ -285,7 +269,7 @@ function ContactNudge() {
         ].map((item) => (
           <li key={item} className="flex items-center gap-2 text-xs text-text-muted">
             <span
-              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-[9px] font-bold text-brand-primary"
+              className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-bg-muted text-[9px] font-bold text-text-secondary"
               aria-hidden
             >
               ✓
@@ -303,22 +287,26 @@ function ContactNudge() {
 function BackgroundDecor() {
   return (
     <>
+      {/* Mint orb — left */}
       <div
         className="pointer-events-none absolute -left-32 top-1/2 -translate-y-1/2 rounded-full blur-3xl"
         style={{
           width: "500px",
           height: "500px",
           background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(167,229,211,0.18) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />
+      {/* Rose orb — right bottom */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="pointer-events-none absolute -bottom-24 -right-24 rounded-full blur-3xl"
         style={{
-          backgroundImage:
-            "linear-gradient(var(--color-brand-dark) 1px, transparent 1px), linear-gradient(90deg, var(--color-brand-dark) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          width: "420px",
+          height: "420px",
+          background:
+            "radial-gradient(ellipse, rgba(232,184,196,0.15) 0%, transparent 70%)",
+          aspectRatio: "1/1",
         }}
       />
     </>
