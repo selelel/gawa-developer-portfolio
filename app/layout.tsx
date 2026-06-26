@@ -115,7 +115,7 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${ebGaramond.variable} ${inter.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${inter.variable} h-full scroll-smooth antialiased`}
     >
       <head>
         <script

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 
 // ── SVG Icons ──────────────────────────────────────────────────────────────
 
@@ -142,6 +142,7 @@ const REASONS: Reason[] = [
 
 export default function WhyChooseUsSection() {
   return (
+    <MotionConfig reducedMotion="user">
     <section
       aria-label="Why Choose Us"
       className="relative overflow-hidden bg-bg-canvas py-24 sm:py-32"
@@ -177,6 +178,7 @@ export default function WhyChooseUsSection() {
         </div>
       </div>
     </section>
+    </MotionConfig>
   );
 }
 
@@ -187,18 +189,13 @@ function ReasonCard({ reason, index }: { reason: Reason; index: number }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", transition: { delay: index * 0.06, duration: 0.55, ease: "easeOut" as const } }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        delay: (index % 3) * 0.08,
-        duration: 0.5,
-        ease: "easeOut" as const,
-      }}
-      whileHover={{ y: -3 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.25, ease: "easeOut" as const }}
       className={[
-        "group relative flex flex-col gap-5 overflow-hidden rounded-card border p-7 transition-all duration-300",
+        "group relative flex flex-col gap-5 overflow-hidden rounded-card border p-7 transition-colors duration-300",
         featured
           ? "border-border-subtle bg-bg-surface hover:border-accent/25 hover:shadow-card sm:col-span-2 lg:col-span-2"
           : "border-border-subtle bg-bg-canvas hover:border-accent/15 hover:bg-bg-surface hover:shadow-card",

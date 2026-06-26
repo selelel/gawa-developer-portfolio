@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 import Link from "next/link";
 
 // ── Dispatch bar chart ─────────────────────────────────────────────────────
@@ -32,7 +32,7 @@ function DispatchBarChart() {
             width={barW}
             height={barH}
             rx={2}
-            fill={i === BARS.length - 1 ? "#e11d48" : "#e4e4e7"}
+            fill={i === BARS.length - 1 ? "#3567a0" : "#e4e4e7"}
           />
         );
       })}
@@ -286,6 +286,7 @@ function TechBadge({ label }: { label: string }) {
 
 export default function FeaturedProjectsSection() {
   return (
+    <MotionConfig reducedMotion="user">
     <section
       id="projects"
       aria-label="Featured Projects"
@@ -334,13 +335,14 @@ export default function FeaturedProjectsSection() {
                 scale: 1.015,
                 transition: { duration: 0.3, ease: "easeOut" as const },
               }}
+              style={{ willChange: "transform" }}
             >
               <RedwoodOpsPreview />
             </motion.div>
           </div>
 
           {/* Copy — 2/5 */}
-          <div className="flex flex-col gap-6 lg:col-span-2">
+          <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3, ease: "easeOut" as const }} className="flex flex-col gap-6 lg:col-span-2">
             <div>
               <p className="text-xs font-medium text-text-muted">
                 Logistics Platform
@@ -386,7 +388,7 @@ export default function FeaturedProjectsSection() {
                 <TechBadge key={t} label={t} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* ── Section divider ── */}
@@ -405,7 +407,7 @@ export default function FeaturedProjectsSection() {
           >
             <StratosCRMPreview />
 
-            <div className="flex flex-col gap-4 pt-1">
+            <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.3, ease: "easeOut" as const }} className="flex flex-col gap-4 pt-1">
               <div>
                 <p className="text-xs font-medium text-text-muted">B2B SaaS</p>
                 <h3 className="font-heading mt-1 text-[clamp(1.2rem,2.5vw,1.5rem)] font-normal tracking-tight text-brand-dark">
@@ -424,7 +426,7 @@ export default function FeaturedProjectsSection() {
                   <TechBadge key={t} label={t} />
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Meridian Health — col-span-2, text-forward */}
@@ -436,14 +438,18 @@ export default function FeaturedProjectsSection() {
             className="flex flex-col gap-5 lg:col-span-2"
           >
             {/* Large impact visual anchor — EB Garamond carries editorial weight */}
-            <div className="flex flex-col justify-end gap-2.5 rounded-2xl border border-border-subtle bg-bg-surface px-7 py-9">
+            <motion.div
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3, ease: "easeOut" as const }}
+              className="flex flex-col justify-end gap-2.5 rounded-2xl border border-border-subtle bg-bg-surface px-7 py-9 transition-shadow duration-300 hover:shadow-(--shadow-card-hover)"
+            >
               <p className="font-heading text-[clamp(3.5rem,8vw,5.5rem)] font-normal leading-none tracking-tight text-brand-dark">
                 89%
               </p>
               <p className="text-sm font-medium text-accent">
                 drop in phone appointment volume
               </p>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-4 pt-1">
               <div>
@@ -500,5 +506,6 @@ export default function FeaturedProjectsSection() {
         </motion.div>
       </div>
     </section>
+    </MotionConfig>
   );
 }

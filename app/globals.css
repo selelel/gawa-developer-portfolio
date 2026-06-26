@@ -24,6 +24,7 @@
   --color-border-subtle: #e7e5e4;
   --color-border-focus: #292524;
   --shadow-card: 0px 4px 16px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 12px 40px -8px rgba(0, 0, 0, 0.12);
   --shadow-input: inset 0px 1px 2px rgba(12, 10, 9, 0.05);
 
   /* Radii — pill geometry for CTAs, 16px for cards */
@@ -42,9 +43,9 @@
   --color-gradient-sky: #a8c8e8;
   --color-gradient-rose: #e8b8c4;
 
-  /* Accent — soft red per brand spec */
-  --color-accent: #e11d48;
-  --color-accent-hover: #be123c;
+  /* Accent — steel trust blue */
+  --color-accent: #3567a0;
+  --color-accent-hover: #2a5286;
 
   /* Semantic */
   --color-semantic-error: #dc2626;

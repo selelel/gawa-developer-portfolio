@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 
 // ── SVG Icons ──────────────────────────────────────────────────────────────
 
@@ -179,6 +179,7 @@ const SUPPORTING: Service[] = [
 
 export default function ServicesSection() {
   return (
+    <MotionConfig reducedMotion="user">
     <section
       id="services"
       aria-label="Services"
@@ -237,6 +238,7 @@ export default function ServicesSection() {
         </div>
       </div>
     </section>
+    </MotionConfig>
   );
 }
 
@@ -247,13 +249,10 @@ function FeaturedRow({ service, index }: { service: Service; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -16 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      whileInView={{ opacity: 1, x: 0, transition: { delay: index * 0.1, duration: 0.5, ease: "easeOut" as const } }}
+      whileHover={{ x: 5 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        delay: index * 0.1,
-        duration: 0.5,
-        ease: "easeOut" as const,
-      }}
+      transition={{ duration: 0.25, ease: "easeOut" as const }}
       className="group flex flex-col gap-3 py-7 sm:flex-row sm:items-center sm:gap-8"
     >
       <div className="flex shrink-0 items-center gap-4 sm:w-64 lg:w-72">
@@ -279,11 +278,11 @@ function CompactCard({ service, index }: { service: Service; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{
-        delay: (index % 3) * 0.07,
+        delay: index * 0.07,
         duration: 0.45,
         ease: "easeOut" as const,
       }}
-      className="flex flex-col gap-3 rounded-card border border-white/7 p-5 transition-colors duration-200 hover:border-white/13 hover:bg-white/3"
+      className="group flex flex-col gap-3 rounded-card border border-white/7 p-5 transition-colors duration-200 hover:border-white/13 hover:bg-white/3"
     >
       <div className="text-white/40 transition-colors duration-200 group-hover:text-accent/70">
         <Icon />
