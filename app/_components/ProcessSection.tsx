@@ -344,6 +344,16 @@ function BackgroundDecor() {
             "radial-gradient(ellipse, color-mix(in srgb, var(--color-gradient-lavender) 8%, transparent) 0%, transparent 70%)",
         }}
       />
+      {/* Amber orb — bottom right (warm golden counterpoint to lavender) */}
+      <div
+        className='absolute -bottom-16 -right-20 rounded-full blur-[160px]'
+        style={{
+          width: "420px",
+          height: "360px",
+          background:
+            "radial-gradient(ellipse, rgba(227,200,120,0.07) 0%, transparent 70%)",
+        }}
+      />
       <div className='absolute inset-x-0 top-0 h-32 bg-linear-to-b from-brand-dark to-transparent' />
       <div className='absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-brand-dark to-transparent' />
     </div>

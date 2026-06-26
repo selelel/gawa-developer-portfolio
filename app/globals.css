@@ -42,6 +42,8 @@
   --color-gradient-lavender: #c8b8e0;
   --color-gradient-sky: #a8c8e8;
   --color-gradient-rose: #e8b8c4;
+  --color-gradient-amber: #e3c878;
+  --color-premium-ink: #7a5500;   /* dark amber — readable on light bg, ~5.9:1 contrast */
 
   /* Accent — steel trust blue */
   --color-accent: #3567a0;

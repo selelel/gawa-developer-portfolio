@@ -23,6 +23,7 @@ colors:
   gradient-lavender: "#c8b8e0"
   gradient-sky: "#a8c8e8"
   gradient-rose: "#e8b8c4"
+  gradient-amber: "#e3c878"
   semantic-error: "#dc2626"
   semantic-success: "#16a34a"
 
@@ -157,8 +158,8 @@ components:
     typography: "{typography.nav-link}"
     height: 64px
   top-nav-scrolled:
-    backgroundColor: "{colors.brand-dark}"
-    textColor: "#ffffff"
+    backgroundColor: "{colors.bg-canvas}"
+    textColor: "{colors.text-primary}"
     height: 64px
   card-reason:
     backgroundColor: "{colors.bg-canvas}"
@@ -213,14 +214,14 @@ Gawa Developer is a software development agency — not a personal portfolio. Th
 
 The design reads like a precision workshop at first light: clean surfaces, clear purpose, every element deliberate. **EB Garamond** at weight 400 carries the display copy — an editorial serif that signals considered craft without shouting. **Inter** handles body, navigation, forms, and CTAs — precision and legibility for all the surfaces that need to work.
 
-The canvas is off-white (`{colors.bg-canvas}` — #f5f5f5). Near-black ink (`{colors.brand-dark}` — #0c0a09) provides the primary CTA pill. The accent is a muted **steel trust blue** (`{colors.accent}` — #3567a0): measured, professional, trustworthy — not electric, not generic SaaS cobalt. It appears on interactive states, FAQ accents, and trust-signal highlights. Five atmospheric gradient orbs (mint, peach, lavender, sky, rose) drift through hero backgrounds as the only chromatic decoration — they carry no content.
+The canvas is off-white (`{colors.bg-canvas}` — #f5f5f5). Near-black ink (`{colors.brand-dark}` — #0c0a09) provides the primary CTA pill. The accent is a muted **steel trust blue** (`{colors.accent}` — #3567a0): measured, professional, trustworthy — not electric, not generic SaaS cobalt. It appears on interactive states, FAQ accents, and trust-signal highlights. Six atmospheric gradient orbs (mint, peach, lavender, sky, rose, amber) drift through section backgrounds as the only chromatic decoration — they carry no content. Sky and amber anchor the dark tech-stack and process sections; mint and lavender anchor the hero; peach and rose warm the light content sections.
 
 **Key characteristics:**
 - Off-white canvas, near-black ink. Primary conversion CTAs use the ink pill (#292524).
 - Steel trust blue (#3567a0) as the accent — for trust signals, accent CTAs, open accordion states, `text-accent` emphasis on copy.
 - EB Garamond weight 400 for all display copy — editorial gravity, never bold.
 - Inter 400/500 for body, navigation, forms. Subtle letter-spacing (+0.15–0.16px) maintains editorial feel.
-- Atmospheric gradient orbs (mint/peach/lavender/sky/rose) as decoration only — never content containers.
+- Atmospheric gradient orbs (mint/peach/lavender/sky/rose/amber) as decoration only — never content containers.
 - Pill geometry (`{rounded.pill}`) for all CTAs and badges; 16px radius (`{rounded.card}`) for content cards.
 - 96px section rhythm with generous editorial pacing.
 
@@ -249,7 +250,7 @@ The canvas is off-white (`{colors.bg-canvas}` — #f5f5f5). Near-black ink (`{co
 - **Border Subtle** (`{colors.border-subtle}` — #e7e5e4): Default 1px card outlines, section dividers, accordion borders.
 
 ### Atmospheric Gradient Stops
-- **Mint** (`{colors.gradient-mint}` — #a7e5d3) · **Peach** (`{colors.gradient-peach}` — #f4c5a8) · **Lavender** (`{colors.gradient-lavender}` — #c8b8e0) · **Sky** (`{colors.gradient-sky}` — #a8c8e8) · **Rose** (`{colors.gradient-rose}` — #e8b8c4)
+- **Mint** (`{colors.gradient-mint}` — #a7e5d3) · **Peach** (`{colors.gradient-peach}` — #f4c5a8) · **Lavender** (`{colors.gradient-lavender}` — #c8b8e0) · **Sky** (`{colors.gradient-sky}` — #a8c8e8) · **Rose** (`{colors.gradient-rose}` — #e8b8c4) · **Amber** (`{colors.gradient-amber}` — #e3c878)
 
 Used ONLY as soft radial-gradient atmospheric orbs in background decorations. Never as button fills, never as text colors.
 
@@ -305,7 +306,7 @@ Used ONLY as soft radial-gradient atmospheric orbs in background decorations. Ne
 ## 5. Components
 
 ### Navigation
-**`{components.top-nav}`** (transparent at page top) → **`{components.top-nav-scrolled}`** (`{colors.brand-dark}`) on scroll. Height 64px. Wordmark left, minimal links center, ink pill CTA ("Start Your Project") right. Mobile: wordmark + hamburger; opens to full-screen dark overlay with stacked nav links.
+**`{components.top-nav}`** (transparent at page top) → **`{components.top-nav-scrolled}`** (`{colors.bg-canvas}` at 95% opacity + `backdrop-blur-md` + 1px `{colors.border-subtle}` bottom border) on scroll. Height 64px. Wordmark left; section links (Services · Process · FAQ · Contact) absolutely centered so the nav is truly equidistant from logo and CTA at all widths; ink pill CTA right. Live scrollspy drives a sliding `layoutId` underline that highlights the active section. Mobile: wordmark + hamburger (48×48 touch target); opens a frosted-glass panel with stacked links and a full-width CTA. Focus trap and Escape-key return are implemented.
 
 ### Buttons
 **`{components.button-primary}`** — Ink pill. Background `{colors.brand-primary}`, white text, `{typography.button}`, `{rounded.pill}`, height 40px. The primary conversion CTA.
@@ -341,7 +342,7 @@ Used ONLY as soft radial-gradient atmospheric orbs in background decorations. Ne
 - Use `clamp()` for all heading sizes. Cap body width at 58–65ch.
 - Use `text-wrap: balance` on h1–h3.
 - Keep cards flat at rest. Shadow is the hover-state signal.
-- Use atmospheric orbs (mint/peach/lavender/sky/rose) only as radial background decoration behind copy — never as content fills.
+- Use atmospheric orbs (mint/peach/lavender/sky/rose/amber) only as radial background decoration behind copy — never as content fills. Sky and amber belong on dark sections (Process, TechStack, FinalCTA); mint/peach/lavender/rose on light sections.
 - Apply `whileInView` with `viewport={{ once: true, amount: 0.15 }}` for scroll reveals. Restrict to `opacity` and `transform` only.
 
 ### Don't

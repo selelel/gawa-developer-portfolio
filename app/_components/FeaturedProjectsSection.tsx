@@ -374,8 +374,8 @@ export default function FeaturedProjectsSection() {
             </div>
 
             {/* Outcome */}
-            <div className="rounded-xl border border-accent/15 bg-accent/5 px-5 py-4">
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-accent/70">
+            <div className="rounded-xl border border-gradient-amber/35 bg-gradient-amber/[0.07] px-5 py-4">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-premium-ink">
                 Outcome
               </p>
               <p className="mt-2 text-[15px] font-semibold leading-snug text-brand-dark">
@@ -418,7 +418,7 @@ export default function FeaturedProjectsSection() {
                 End-to-end CRM for B2B sales teams — kanban pipeline, deal
                 forecasting, and Stripe-connected automation. Launched in 11 weeks.
               </p>
-              <p className="text-[15px] font-semibold text-brand-dark">
+              <p className="text-[15px] font-semibold text-premium-ink">
                 $2.1M in pipeline tracked on launch week.
               </p>
               <div className="flex flex-wrap gap-2">
@@ -441,12 +441,12 @@ export default function FeaturedProjectsSection() {
             <motion.div
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3, ease: "easeOut" as const }}
-              className="flex flex-col justify-end gap-2.5 rounded-2xl border border-border-subtle bg-bg-surface px-7 py-9 transition-shadow duration-300 hover:shadow-(--shadow-card-hover)"
+              className="flex flex-col justify-end gap-2.5 rounded-2xl border border-gradient-amber/40 bg-bg-surface px-7 py-9 transition-shadow duration-300 hover:shadow-(--shadow-card-hover)"
             >
               <p className="font-heading text-[clamp(3.5rem,8vw,5.5rem)] font-normal leading-none tracking-tight text-brand-dark">
                 89%
               </p>
-              <p className="text-sm font-medium text-accent">
+              <p className="text-sm font-medium text-premium-ink">
                 drop in phone appointment volume
               </p>
             </motion.div>

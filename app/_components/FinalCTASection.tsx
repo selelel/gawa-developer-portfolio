@@ -235,6 +235,18 @@ function BackgroundEffects() {
         }}
       />
 
+      {/* Sky blue — top right (fade blue, opposing lavender) */}
+      <div
+        className="pointer-events-none absolute -right-20 -top-20 rounded-full blur-[120px]"
+        style={{
+          width: "360px",
+          height: "360px",
+          background:
+            "radial-gradient(ellipse, rgba(168,200,232,0.09) 0%, transparent 70%)",
+          aspectRatio: "1/1",
+        }}
+      />
+
       {/* Edge fades */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b from-brand-dark to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-brand-dark to-transparent" />

@@ -137,13 +137,24 @@ export default function TechStackSection() {
 function BackgroundDecor() {
   return (
     <>
+      {/* Sky blue orb — left (fade blue) */}
       <div
         className="pointer-events-none absolute -left-32 top-1/3 -translate-y-1/2 rounded-full blur-[160px]"
         style={{
           width: "500px",
           height: "400px",
           background:
-            "radial-gradient(ellipse, rgba(168,200,232,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(168,200,232,0.13) 0%, transparent 70%)",
+        }}
+      />
+      {/* Amber orb — bottom right (warm golden depth) */}
+      <div
+        className="pointer-events-none absolute -bottom-20 -right-20 rounded-full blur-[160px]"
+        style={{
+          width: "420px",
+          height: "340px",
+          background:
+            "radial-gradient(ellipse, rgba(227,200,120,0.09) 0%, transparent 70%)",
         }}
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-brand-dark to-transparent" />

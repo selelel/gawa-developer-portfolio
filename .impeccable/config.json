@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "rgba(227,200,120,0.09)",
+        "reason": "Intentional gradient-amber atmospheric orb (#e3c878 at 9% opacity), added to design system alongside --color-gradient-amber token",
+        "createdAt": "2026-06-26T11:42:56.772Z"
+      }
+    ]
+  }
+}
