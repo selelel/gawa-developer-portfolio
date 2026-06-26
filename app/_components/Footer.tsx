@@ -20,7 +20,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer aria-label="Site footer" className="bg-brand-dark">
+    <footer aria-label="Site footer" className="border-t border-white/[0.07] bg-brand-dark">
       {/* ── Main grid ── */}
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 gap-12 border-b border-white/7 py-16 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] lg:gap-8">
@@ -41,7 +41,7 @@ export default function Footer() {
               </span>
               <span className="text-sm font-bold text-white/90">
                 Gawa{" "}
-                <span className="font-medium text-white/45">Developer</span>
+                <span className="font-medium text-white/55">Developer</span>
               </span>
             </Link>
 
@@ -52,7 +52,7 @@ export default function Footer() {
 
             <Link
               href="/contact"
-              className="inline-flex min-h-11 w-fit items-center justify-center rounded-button border border-white/15 px-5 text-xs font-semibold text-white/70 transition-colors duration-200 hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+              className="inline-flex min-h-11 w-fit items-center justify-center rounded-button border border-white/20 px-5 text-sm font-semibold text-white/80 transition-colors duration-200 hover:border-white/35 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
             >
               Start Your Project
             </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="block py-1 text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
+                    className="block py-2.5 text-sm text-white/55 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="block py-1 text-sm text-white/45 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
+                    className="block py-2.5 text-sm text-white/55 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
                   >
                     {link.label}
                   </Link>
@@ -98,7 +98,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:gimelcontz@gmail.com"
-                className="block py-1 text-sm text-white/50 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
+                className="block py-2.5 text-sm text-white/60 transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-brand-dark rounded-sm"
               >
                 gimelcontz@gmail.com
               </a>
@@ -118,7 +118,7 @@ export default function Footer() {
           <p className="text-xs text-white/50">
             © {year} Gawa Developer. All rights reserved.
           </p>
-          <p className="text-xs text-white/45">
+          <p className="text-xs text-white/50">
             Build Better Software. Grow Faster.
           </p>
         </div>

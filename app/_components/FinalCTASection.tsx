@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef, type MouseEvent } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, MotionConfig, useMotionValue, useSpring, useReducedMotion } from "motion/react";
 
 // ── Data ───────────────────────────────────────────────────────────────────
 
@@ -22,10 +23,64 @@ const TRUST_CHIPS = [
   "Response within 24 hours",
 ];
 
+// ── Magnetic CTA ───────────────────────────────────────────────────────────
+
+function MagneticCTA() {
+  const ref = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const xSpring = useSpring(x, { stiffness: 250, damping: 25 });
+  const ySpring = useSpring(y, { stiffness: 250, damping: 25 });
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (shouldReduceMotion) return;
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.35);
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.35);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <div
+      ref={ref}
+      className="inline-block"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.div style={{ x: xSpring, y: ySpring }} whileTap={{ scale: 0.96 }}>
+        <Link
+          href="/contact"
+          className="group inline-flex min-h-14 min-w-12 items-center justify-center gap-2 rounded-button bg-white px-10 py-4 text-base font-semibold text-brand-dark transition-colors duration-200 hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+        >
+          Start Your Project
+          <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+            aria-hidden
+          >
+            <path
+              fillRule="evenodd"
+              d="M2 8a.5.5 0 0 1 .5-.5h9.793L10.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.293 8.5H2.5A.5.5 0 0 1 2 8z"
+            />
+          </svg>
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+
 // ── Section ────────────────────────────────────────────────────────────────
 
 export default function FinalCTASection() {
   return (
+    <MotionConfig reducedMotion="user">
     <section
       aria-label="Start Your Project"
       className="relative overflow-hidden bg-brand-dark py-32 sm:py-44"
@@ -93,26 +148,8 @@ export default function FinalCTASection() {
           transition={{ duration: 0.5, ease: "easeOut" as const, delay: 0.72 }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
-          {/* Primary — white pill on dark */}
-          <motion.div whileTap={{ scale: 0.96 }}>
-            <Link
-              href="/contact"
-              className="group inline-flex min-h-14 min-w-12 items-center justify-center gap-2 rounded-button bg-white px-10 py-4 text-base font-semibold text-brand-dark transition-colors duration-200 hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-            >
-              Start Your Project
-              <svg
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                aria-hidden
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2 8a.5.5 0 0 1 .5-.5h9.793L10.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.293 8.5H2.5A.5.5 0 0 1 2 8z"
-                />
-              </svg>
-            </Link>
-          </motion.div>
+          {/* Primary — white pill on dark, magnetic hover */}
+          <MagneticCTA />
 
           {/* Secondary — ghost outline */}
           <motion.div whileTap={{ scale: 0.96 }}>
@@ -136,7 +173,7 @@ export default function FinalCTASection() {
           {TRUST_CHIPS.map((chip) => (
             <span
               key={chip}
-              className="flex items-center gap-2 text-xs text-white/40"
+              className="flex items-center gap-2 text-xs text-white/55"
             >
               <span className="h-1 w-1 rounded-full bg-accent/50" aria-hidden />
               {chip}
@@ -154,6 +191,7 @@ export default function FinalCTASection() {
         />
       </div>
     </section>
+    </MotionConfig>
   );
 }
 
@@ -193,6 +231,18 @@ function BackgroundEffects() {
           height: "420px",
           background:
             "radial-gradient(ellipse, rgba(244,197,168,0.1) 0%, transparent 70%)",
+          aspectRatio: "1/1",
+        }}
+      />
+
+      {/* Sky blue — top right (fade blue, opposing lavender) */}
+      <div
+        className="pointer-events-none absolute -right-20 -top-20 rounded-full blur-[120px]"
+        style={{
+          width: "360px",
+          height: "360px",
+          background:
+            "radial-gradient(ellipse, rgba(168,200,232,0.09) 0%, transparent 70%)",
           aspectRatio: "1/1",
         }}
       />

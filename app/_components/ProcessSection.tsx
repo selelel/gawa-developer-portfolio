@@ -129,11 +129,17 @@ const STEPS: Step[] = [
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
   const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const goTo = useCallback((i: number) => {
     const clamped = Math.max(0, Math.min(i, STEPS.length - 1));
     setActiveStep(clamped);
     tabRefs.current[clamped]?.focus();
+    if (window.innerWidth < 1024) {
+      setTimeout(() => {
+        panelRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 80);
+    }
   }, []);
 
   return (
@@ -168,6 +174,7 @@ export default function ProcessSection() {
 
               {/* Active step detail panel */}
               <div
+                ref={panelRef}
                 role='tabpanel'
                 id='process-panel'
                 aria-labelledby={`process-tab-${activeStep}`}
@@ -235,7 +242,9 @@ export default function ProcessSection() {
                       aria-selected={isActive}
                       aria-controls='process-panel'
                       tabIndex={isActive ? 0 : -1}
-                      onMouseEnter={() => setActiveStep(i)}
+                      onMouseEnter={() => {
+                        if (window.matchMedia("(pointer: fine)").matches) setActiveStep(i);
+                      }}
                       onFocus={() => setActiveStep(i)}
                       onClick={() => goTo(i)}
                       onKeyDown={(e) => {
@@ -333,6 +342,16 @@ function BackgroundDecor() {
           height: "500px",
           background:
             "radial-gradient(ellipse, color-mix(in srgb, var(--color-gradient-lavender) 8%, transparent) 0%, transparent 70%)",
+        }}
+      />
+      {/* Amber orb — bottom right (warm golden counterpoint to lavender) */}
+      <div
+        className='absolute -bottom-16 -right-20 rounded-full blur-[160px]'
+        style={{
+          width: "420px",
+          height: "360px",
+          background:
+            "radial-gradient(ellipse, rgba(227,200,120,0.07) 0%, transparent 70%)",
         }}
       />
       <div className='absolute inset-x-0 top-0 h-32 bg-linear-to-b from-brand-dark to-transparent' />

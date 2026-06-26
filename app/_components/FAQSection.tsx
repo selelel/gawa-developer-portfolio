@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 import Link from "next/link";
 
 // ── Data ───────────────────────────────────────────────────────────────────
@@ -65,6 +65,7 @@ export default function FAQSection() {
     setOpenIndex((prev) => (prev === i ? null : i));
 
   return (
+    <MotionConfig reducedMotion="user">
     <section
       id="faq"
       aria-label="Frequently Asked Questions"
@@ -130,6 +131,7 @@ export default function FAQSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
       />
     </section>
+    </MotionConfig>
   );
 }
 

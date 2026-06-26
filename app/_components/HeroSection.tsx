@@ -1,7 +1,8 @@
 "use client";
 
+import { useId } from "react";
 import Link from "next/link";
-import { motion, MotionConfig } from "motion/react";
+import { motion, MotionConfig, useScroll, useTransform } from "motion/react";
 
 // ── Data ──────────────────────────────────────────────────────────────────
 
@@ -11,7 +12,7 @@ const HEADLINE = [
 ] as const;
 
 const DEALS = [
-  { company: "Redwood Partners", value: "$42K", stage: "Proposal",    color: "#e11d48", initial: "R" },
+  { company: "Redwood Partners", value: "$42K", stage: "Proposal",    color: "#3567a0", initial: "R" },
   { company: "TerraVault Inc.",   value: "$18K", stage: "Negotiation", color: "#d97706", initial: "T" },
   { company: "Caledon Health",    value: "$67K", stage: "Closed Won",  color: "#15803d", initial: "C" },
 ] as const;
@@ -22,11 +23,15 @@ export default function HeroSection() {
   const scrollToServices = () =>
     document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
 
+  const { scrollY } = useScroll();
+  const browserCardY = useTransform(scrollY, [0, 500], [0, -55]);
+
   return (
     <MotionConfig reducedMotion="user">
       <section
         aria-label="Hero"
-        className="relative isolate min-h-svh flex items-center overflow-hidden bg-bg-canvas px-5 sm:px-8 lg:px-12"
+        className="relative isolate min-h-screen flex items-center overflow-hidden bg-bg-canvas px-5 sm:px-8 lg:px-12"
+        style={{ minHeight: "100svh" }}
       >
         <HeroBackground />
 
@@ -41,8 +46,8 @@ export default function HeroSection() {
                   <span key={i} className="block overflow-hidden pb-[0.06em]">
                     <motion.span
                       className={`block ${line.italic ? "text-accent italic" : "text-brand-dark"}`}
-                      initial={{ y: "110%", opacity: 0 }}
-                      animate={{ y: "0%", opacity: 1 }}
+                      initial={{ y: "110%" }}
+                      animate={{ y: "0%" }}
                       transition={{ delay: 0.1 + i * 0.15, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
                     >
                       {line.text}
@@ -106,6 +111,7 @@ export default function HeroSection() {
               className="hidden items-center justify-center lg:col-span-6 lg:flex"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
+              style={{ y: browserCardY }}
               transition={{ delay: 0.38, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               aria-hidden
             >
@@ -128,6 +134,7 @@ function HeroBrowserCard() {
       animate={{ y: [0, -8, 0] }}
       whileHover={{ scale: 1.015, transition: { duration: 0.35, ease: "easeOut" } }}
       transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
+      style={{ willChange: "transform" }}
     >
       <div className="overflow-hidden rounded-card ring-1 ring-black/[0.07] shadow-[0_20px_72px_rgba(0,0,0,0.09),0_4px_16px_rgba(0,0,0,0.05)]">
 
@@ -242,6 +249,7 @@ function HeroBrowserCard() {
 // ── Dashboard chart ────────────────────────────────────────────────────────
 
 function DashboardChart() {
+  const gradId = useId();
   const values = [58, 72, 65, 89, 107, 124.8];
   const max = 140;
   const W = 340;
@@ -257,15 +265,15 @@ function DashboardChart() {
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ height: 52 }} preserveAspectRatio="none">
       <defs>
-        <linearGradient id="hero-chart-g" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#e11d48" stopOpacity="0.14" />
-          <stop offset="100%" stopColor="#e11d48" stopOpacity="0" />
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" style={{ stopColor: "var(--color-accent)", stopOpacity: 0.14 }} />
+          <stop offset="100%" style={{ stopColor: "var(--color-accent)", stopOpacity: 0 }} />
         </linearGradient>
       </defs>
       {/* Area fill fades in when chart appears */}
       <motion.path
         d={area}
-        fill="url(#hero-chart-g)"
+        fill={`url(#${gradId})`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.92, duration: 0.5 }}
@@ -274,10 +282,10 @@ function DashboardChart() {
       <motion.path
         d={line}
         fill="none"
-        stroke="#e11d48"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        style={{ stroke: "var(--color-accent)" }}
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ delay: 0.92, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
@@ -287,8 +295,7 @@ function DashboardChart() {
         cx={lastPt.x.toFixed(1)}
         cy={lastPt.y.toFixed(1)}
         r="2.5"
-        fill="#e11d48"
-        style={{ transformBox: "fill-box", transformOrigin: "center" }}
+        style={{ transformBox: "fill-box", transformOrigin: "center", fill: "var(--color-accent)" }}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1.62, duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
@@ -321,25 +328,27 @@ function HeroBackground() {
 
       {/* Animated drift orbs */}
       <motion.div
-        className="absolute rounded-full blur-[100px]"
+        className="absolute rounded-full blur-[60px]"
         style={{
-          width: 500,
-          height: 400,
+          width: 300,
+          height: 240,
           right: "-6%",
           top: "18%",
           background: "color-mix(in srgb, var(--color-gradient-mint) 36%, transparent)",
+          willChange: "transform",
         }}
         animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute rounded-full blur-[120px]"
+        className="absolute rounded-full blur-[70px]"
         style={{
-          width: 360,
-          height: 360,
+          width: 220,
+          height: 220,
           left: "-8%",
           top: "-8%",
           background: "color-mix(in srgb, var(--color-gradient-lavender) 30%, transparent)",
+          willChange: "transform",
         }}
         animate={{ y: [0, 18, 0], x: [0, -10, 0] }}
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}

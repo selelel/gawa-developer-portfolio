@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./_components/Navbar";
-import Footer from "./_components/Footer";
+import LayoutShell from "./_components/LayoutShell";
 
 const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
@@ -115,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${ebGaramond.variable} ${inter.variable} h-full antialiased`}
+      className={`${ebGaramond.variable} ${inter.variable} h-full scroll-smooth antialiased`}
     >
       <head>
         <script
@@ -126,9 +125,7 @@ export default function RootLayout({
         />
       </head>
       <body className='min-h-full flex flex-col bg-bg-canvas text-brand-dark'>
-        <Navbar />
-        {children}
-        <Footer />
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );
