@@ -1,10 +1,10 @@
-# Gawa Developer Portfolio — Claude Context
+# Gawa Solutions Portfolio — Claude Context
 
 ## Project Overview
 
-**Gawa Developer** is a software development agency website, not a personal portfolio. Its sole purpose is to convert visitors into paying clients through professional presentation, trust signals, and clear calls-to-action.
+**Gawa Solutions** is a software development agency website, not a personal portfolio. Its sole purpose is to convert visitors into paying clients through professional presentation, trust signals, and clear calls-to-action.
 
-- **Company name:** Gawa Developer
+- **Company name:** Gawa Solutions
 - **Tagline:** Build Better Software. Grow Faster.
 - **Mission:** Help businesses transform ideas into scalable digital products through modern software engineering and thoughtful design.
 

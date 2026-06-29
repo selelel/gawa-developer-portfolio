@@ -28,11 +28,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Gawa Developer — Build Better Software. Grow Faster.",
-    template: "%s | Gawa Developer",
+    default: "Gawa Solutions — Build Better Software. Grow Faster.",
+    template: "%s | Gawa Solutions",
   },
   description:
-    "Gawa Developer is a modern software development agency that builds custom web applications, SaaS platforms, mobile apps, and business automation solutions for startups and enterprises.",
+    "Gawa Solutions is a modern software development agency that builds custom web applications, SaaS platforms, mobile apps, and business automation solutions for startups and enterprises.",
   keywords: [
     "software development agency",
     "custom web applications",
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     "React development",
     "TypeScript",
   ],
-  authors: [{ name: "Gawa Developer", url: siteUrl }],
-  creator: "Gawa Developer",
+  authors: [{ name: "Gawa Solutions", url: siteUrl }],
+  creator: "Gawa Solutions",
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Gawa Developer",
-    title: "Gawa Developer — Build Better Software. Grow Faster.",
+    siteName: "Gawa Solutions",
+    title: "Gawa Solutions — Build Better Software. Grow Faster.",
     description:
       "Custom web apps, SaaS platforms, and business automation solutions that help companies streamline operations and grow with confidence.",
     images: [
@@ -57,18 +57,18 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Gawa Developer — Modern Software Development Agency",
+        alt: "Gawa Solutions — Modern Software Development Agency",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gawa Developer — Build Better Software. Grow Faster.",
+    title: "Gawa Solutions — Build Better Software. Grow Faster.",
     description:
       "Custom web apps, SaaS platforms, and business automation solutions for startups and enterprises.",
     images: ["/og-image.png"],
-    creator: "@gawadeveloper",
+    creator: "@gawasolutions",
   },
   robots: {
     index: true,
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
 const professionalServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Gawa Developer",
+  name: "Gawa Solutions",
   url: siteUrl,
   description:
     "Modern software development agency specializing in custom web applications, SaaS platforms, mobile apps, and business automation.",

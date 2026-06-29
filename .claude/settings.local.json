@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(mkdir -p \"e:/development/work/gawa-developer-portfolio/app/api/contact\")"
+    ],
+    "additionalDirectories": [
+      "e:\\development\\work\\gawa-developer-portfolio\\app\\api"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -14,10 +23,5 @@
       }
     ]
   },
-  "description": "Impeccable design detector: runs after Edit/Write/MultiEdit on UI files and surfaces findings as system reminders.",
-  "permissions": {
-    "allow": [
-      "Bash(npx tsc *)"
-    ]
-  }
+  "description": "Impeccable design detector: runs after Edit/Write/MultiEdit on UI files and surfaces findings as system reminders."
 }
