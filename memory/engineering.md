@@ -1,4 +1,4 @@
-# Engineering — Gawa Developer Portfolio
+# Engineering — Gawa Solutions Portfolio
 
 ## Stack
 

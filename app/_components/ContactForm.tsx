@@ -143,6 +143,8 @@ export default function ContactForm({
     if (Object.keys(newErrors).length === 0) onNext();
   };
 
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors = validateStep(3, data);
@@ -152,8 +154,19 @@ export default function ContactForm({
       return;
     }
     setStatus("submitting");
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus("success");
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Server error");
+      setStatus("success");
+    } catch {
+      setStatus("idle");
+      setSubmitError("Something went wrong. Please try again or email us directly.");
+    }
   };
 
   if (status === "success") return <SuccessState name={data.name} />;
@@ -285,6 +298,14 @@ export default function ContactForm({
           </motion.button>
         )}
 
+        {submitError && (
+          <p role="alert" className="flex items-center justify-center gap-1.5 text-center text-xs text-semantic-error">
+            <svg viewBox="0 0 12 12" fill="currentColor" className="h-3 w-3 shrink-0" aria-hidden>
+              <path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1zm0 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 6 4zm0 5a.75.75 0 1 1 0-1.5A.75.75 0 0 1 6 9z" />
+            </svg>
+            {submitError}
+          </p>
+        )}
         <p className="flex items-center justify-center gap-1.5 text-center text-xs text-text-muted">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 shrink-0" aria-hidden>
             <rect x="3" y="7" width="10" height="8" rx="1.5" />

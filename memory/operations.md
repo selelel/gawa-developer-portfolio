@@ -1,4 +1,4 @@
-# Operations — Gawa Developer Portfolio
+# Operations — Gawa Solutions Portfolio
 
 ## Dev Setup
 

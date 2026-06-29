@@ -1,6 +1,6 @@
 ---
 version: 1
-name: Gawa Developer
+name: Gawa Solutions
 description: Software development agency site. Off-white (#f5f5f5) canvas, warm near-black ink (#0c0a09), and a muted steel trust blue (#3567a0) accent. EB Garamond for editorial display authority; Inter for legibility and precision. Trust earned through restraint — not saturation.
 
 colors:
@@ -210,7 +210,7 @@ components:
 
 ## 1. Overview: The Precision Workbench
 
-Gawa Developer is a software development agency — not a personal portfolio. The site's sole job is to convert visitors into qualified leads by projecting calm technical authority.
+Gawa Solutions is a software development agency — not a personal portfolio. The site's sole job is to convert visitors into qualified leads by projecting calm technical authority.
 
 The design reads like a precision workshop at first light: clean surfaces, clear purpose, every element deliberate. **EB Garamond** at weight 400 carries the display copy — an editorial serif that signals considered craft without shouting. **Inter** handles body, navigation, forms, and CTAs — precision and legibility for all the surfaces that need to work.
 

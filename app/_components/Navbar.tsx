@@ -136,7 +136,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="relative z-10 flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2"
-            aria-label="Gawa Developer — Home"
+            aria-label="Gawa Solutions — Home"
           >
             <span
               className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-primary text-[11px] font-black text-white"
@@ -147,7 +147,7 @@ export default function Navbar() {
             </span>
             <span className="text-sm font-bold text-brand-dark">
               Gawa{" "}
-              <span className="font-medium text-text-muted">Developer</span>
+              <span className="font-medium text-text-muted">Solutions</span>
             </span>
           </Link>
 

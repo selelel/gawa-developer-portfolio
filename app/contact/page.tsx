@@ -4,7 +4,7 @@ import ContactPageShell from "../_components/ContactPageShell";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start your project with Gawa Developer. Submit a free inquiry and we'll respond within 24 hours to schedule your strategy call.",
+    "Start your project with Gawa Solutions. Submit a free inquiry and we'll respond within 24 hours to schedule your strategy call.",
   alternates: {
     canonical: "https://gawadeveloper.com/contact",
   },

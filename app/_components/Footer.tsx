@@ -30,7 +30,7 @@ export default function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-lg w-fit"
-              aria-label="Gawa Developer — Home"
+              aria-label="Gawa Solutions — Home"
             >
               <span
                 className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/8 text-[11px] font-black text-white/80"
@@ -41,7 +41,7 @@ export default function Footer() {
               </span>
               <span className="text-sm font-bold text-white/90">
                 Gawa{" "}
-                <span className="font-medium text-white/55">Developer</span>
+                <span className="font-medium text-white/55">Solutions</span>
               </span>
             </Link>
 
@@ -116,7 +116,7 @@ export default function Footer() {
         {/* ── Bottom bar ── */}
         <div className="flex flex-col items-center gap-3 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="text-xs text-white/50">
-            © {year} Gawa Developer. All rights reserved.
+            © {year} Gawa Solutions. All rights reserved.
           </p>
           <p className="text-xs text-white/50">
             Build Better Software. Grow Faster.

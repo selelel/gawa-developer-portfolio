@@ -10,7 +10,7 @@ Startup founders, SMB owners, enterprise teams, agencies, and SaaS entrepreneurs
 
 ## Product Purpose
 
-Gawa Developer is a software development agency whose website has one job: convert visitors into qualified project leads. Every section exists to move a visitor one step closer to submitting a project inquiry. Success is a filled contact form.
+Gawa Solutions is a software development agency whose website has one job: convert visitors into qualified project leads. Every section exists to move a visitor one step closer to submitting a project inquiry. Success is a filled contact form.
 
 ## Brand Personality
 

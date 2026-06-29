@@ -1,4 +1,4 @@
-# Feedback — Gawa Developer Portfolio
+# Feedback — Gawa Solutions Portfolio
 
 Validated patterns and corrections from prior sessions.
 

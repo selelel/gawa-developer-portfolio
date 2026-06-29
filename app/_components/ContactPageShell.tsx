@@ -42,7 +42,7 @@ export default function ContactPageShell() {
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" aria-hidden>
                   <path d="M10 3L5 8l5 5" />
                 </svg>
-                Gawa Developer
+                Gawa Solutions
               </Link>
             </motion.div>
           ) : (

@@ -1,4 +1,4 @@
-# Decisions — Gawa Developer Portfolio
+# Decisions — Gawa Solutions Portfolio
 
 ---
 

@@ -1,6 +1,6 @@
-# Memory Index — Gawa Developer Portfolio
+# Memory Index — Gawa Solutions Portfolio
 
-Project-local memory for the Gawa Developer agency site.
+Project-local memory for the Gawa Solutions agency site.
 
 ## Canonical Memory
 
